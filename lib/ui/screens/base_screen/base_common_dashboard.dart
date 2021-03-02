@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:custom_clippers/custom_clippers.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
+import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
 
 class BaseCommonDashboard extends StatelessWidget {
@@ -75,7 +76,12 @@ class BaseCommonDashboard extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: sy(28)),
-                      ButtonWithArrowWidget(text: 'Upload Kasus'),
+                      ButtonWithArrowWidget(
+                        text: 'Upload Kasus',
+                        onTap: () {
+                          Get.to(() => BaseInputBackground());
+                        },
+                      ),
                       ButtonWithArrowWidget(text: 'Upload Laporan Harian'),
                       ButtonWithArrowWidget(text: 'Statitik Penilaian'),
                       ButtonWithArrowWidget(text: 'Upload LP'),
@@ -183,35 +189,38 @@ class ButtonWithArrowWidget extends StatelessWidget {
   const ButtonWithArrowWidget({Key key, this.text, this.onTap}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 16),
-      padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-      decoration: BoxDecoration(
-        color: Colors.grey[300].withOpacity(0.8),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 2,
-            spreadRadius: 0.5,
-            color: Colors.black.withOpacity(0.2),
-            offset: Offset(0, 2),
-          )
-        ],
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            text,
-            style: GoogleFonts.varelaRound(
-              fontSize: 16,
-              color: Colors.black,
-              fontWeight: FontWeight.w400,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.only(top: 16),
+        padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+        decoration: BoxDecoration(
+          color: Colors.grey[300].withOpacity(0.8),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 2,
+              spreadRadius: 0.5,
+              color: Colors.black.withOpacity(0.2),
+              offset: Offset(0, 2),
+            )
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              text,
+              style: GoogleFonts.varelaRound(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
+              ),
             ),
-          ),
-          SizedBox(width: sy(22)),
-          Icon(FontAwesomeIcons.chevronRight)
-        ],
+            SizedBox(width: sy(22)),
+            Icon(FontAwesomeIcons.chevronRight)
+          ],
+        ),
       ),
     );
   }
