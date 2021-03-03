@@ -29,10 +29,10 @@ class PrimaryButton extends StatelessWidget {
     return RaisedButton(
       onPressed: isLoading ? () {} : onPressed,
       color: color,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       child: Container(
         alignment: flex ? Alignment.center : null,
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: EdgeInsets.symmetric(vertical: padding),
         child: isLoading
             ? SizedBox(
                 height: 20,

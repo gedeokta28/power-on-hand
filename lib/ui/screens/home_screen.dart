@@ -11,12 +11,10 @@ import 'package:power_on_hand/ui/widgets/primary_button.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Color(0xFFDA251D),
-        width: Get.width,
-        height: Get.height,
-        child: SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xFFDA251D),
+        body: SingleChildScrollView(
           child: Column(
             children: [
               Container(

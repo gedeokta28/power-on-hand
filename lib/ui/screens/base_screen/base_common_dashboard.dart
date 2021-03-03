@@ -1,10 +1,14 @@
+import 'package:custom_clippers/custom_clippers.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:custom_clippers/custom_clippers.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
+import 'package:power_on_hand/ui/screens/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
+import 'package:power_on_hand/ui/screens/kanit/kanit_upload_kasus_screen.dart';
+import 'package:power_on_hand/ui/screens/kanit/kanit_upload_lp_screen.dart';
+import 'package:power_on_hand/ui/screens/spri/spri_input_kegiatan_direktur_screen.dart';
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
 
 class BaseCommonDashboard extends StatelessWidget {
@@ -12,7 +16,7 @@ class BaseCommonDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
+        body: SizedBox(
           height: Get.height - paddingY * 2,
           width: Get.width,
           child: SingleChildScrollView(
@@ -30,6 +34,15 @@ class BaseCommonDashboard extends StatelessWidget {
                         colors: [Color(0xFFFC2424), Color(0xFF9D7AFF)],
                       ),
                     ),
+                  ),
+                ),
+                // Police Standing Image
+                Positioned(
+                  top: sy(105),
+                  right: sy(8),
+                  child: Image(
+                    image: AssetImage('assets/images/police_standing.png'),
+                    height: Get.height / 1.6,
                   ),
                 ),
                 Padding(
@@ -79,13 +92,37 @@ class BaseCommonDashboard extends StatelessWidget {
                       ButtonWithArrowWidget(
                         text: 'Upload Kasus',
                         onTap: () {
-                          Get.to(() => BaseInputBackground());
+                          Get.to(() => KanitUploadKasusScreen());
                         },
                       ),
-                      ButtonWithArrowWidget(text: 'Upload Laporan Harian'),
-                      ButtonWithArrowWidget(text: 'Statitik Penilaian'),
-                      ButtonWithArrowWidget(text: 'Upload LP'),
-                      ButtonWithArrowWidget(text: 'Upload Paparan'),
+                      ButtonWithArrowWidget(
+                        text: 'Upload Laporan Harian',
+                        onTap: () {
+                          showToast('work in progress');
+                        },
+                      ),
+                      ButtonWithArrowWidget(
+                        text: 'Statitik Penilaian',
+                        onTap: () {
+                          Get.bottomSheet(
+                            KanitStatistikPenilaianBottomSheet(),
+                            isScrollControlled: true,
+                            // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                          );
+                        },
+                      ),
+                      ButtonWithArrowWidget(
+                        text: 'Upload LP',
+                        onTap: () {
+                          Get.to(() => KanitUploadLpScreen());
+                        },
+                      ),
+                      ButtonWithArrowWidget(
+                        text: 'Upload Paparan',
+                        onTap: () {
+                          Get.to(() => SpriInputKegiatanDirekturScreen());
+                        },
+                      ),
                       SizedBox(height: sy(12)),
                       Divider(),
                       Row(

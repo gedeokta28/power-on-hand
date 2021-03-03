@@ -32,7 +32,10 @@ dependencies:
   font_awesome_flutter: ^8.11.0
   flare_flutter: ^2.0.6
   custom_clippers: ^0.0.2
-
+  fl_chart: ^0.12.3
+  percent_indicator: ^2.1.9+1
+  random_color: ^1.0.5
+  oktoast: ^2.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

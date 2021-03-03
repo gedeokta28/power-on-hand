@@ -2,19 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
-import 'package:power_on_hand/ui/widgets/text_field_widget.dart';
 
 class BaseInputBackground extends StatelessWidget {
+  final Widget children;
+  final String title;
+  final String buttonText;
+  final Function buttonOnTap;
+
+  const BaseInputBackground({
+    Key key,
+    @required this.children,
+    @required this.title,
+    this.buttonText,
+    this.buttonOnTap,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SizedBox(
-          height: Get.height,
-          width: Get.width,
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          child: Container(
+            constraints: BoxConstraints(
+              minHeight: Get.height - paddingY,
+            ),
             child: Stack(
               children: [
                 // Blue Circle
@@ -58,11 +72,11 @@ class BaseInputBackground extends StatelessWidget {
                 ),
                 // Top Grey Circle
                 Positioned(
-                  top: -410,
-                  left: -220,
+                  top: sy(-345),
+                  left: sy(-200),
                   child: Container(
-                    width: 600,
-                    height: 600,
+                    width: sy(500),
+                    height: sy(500),
                     decoration: BoxDecoration(
                       color: Color(0xFF4C525C),
                       borderRadius: BorderRadius.circular(300),
@@ -84,19 +98,22 @@ class BaseInputBackground extends StatelessWidget {
                             ),
                           ),
                           Spacer(),
-                          PrimaryButton(
-                            title: 'Input',
-                            onPressed: () {},
-                            color: Colors.black87,
-                            fontColor: Colors.white,
-                          )
+                          buttonText == null
+                              ? SizedBox(height: sy(38))
+                              : PrimaryButton(
+                                  title: buttonText,
+                                  onPressed: buttonOnTap ?? () {},
+                                  color: Colors.black87,
+                                  fontColor: Colors.white,
+                                )
                         ],
                       ),
-                      SizedBox(height: sy(22)),
-                      SizedBox(
+                      Container(
                         width: Get.width / 1.5,
+                        height: sy(100),
+                        alignment: Alignment.centerLeft,
                         child: Text(
-                          'Input Kegiatan Direktur',
+                          title,
                           style: GoogleFonts.varelaRound(
                             fontSize: 32,
                             color: Colors.white,
@@ -104,32 +121,7 @@ class BaseInputBackground extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: sy(28)),
-                      TextFieldWidget(
-                        title: 'Tanggal',
-                        hintText: '23/01/2021',
-                      ),
-                      TextFieldWidget(
-                        title: 'Kunjungan',
-                        maxLines: 4,
-                      ),
-                      TextFieldWidget(
-                        title: 'Rapat',
-                      ),
-                      TextFieldWidget(
-                        title: 'Press Release',
-                      ),
-                      TextFieldWidget(
-                        title: 'Tamu',
-                      ),
-                      TextFieldWidget(
-                        title: 'Makan Siang',
-                      ),
-                      SizedBox(height: sy(28)),
-                      PrimaryButton(
-                        title: 'Upload',
-                        onPressed: () {},
-                      ),
+                      children
                     ],
                   ),
                 ),

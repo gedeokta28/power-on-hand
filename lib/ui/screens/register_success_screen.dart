@@ -21,7 +21,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
   }
 
   void startTimer() {
-    Timer(Duration(milliseconds: 2500), () {
+    Timer(Duration(milliseconds: 1500), () {
       Get.off(() => LoginScreen());
     });
   }
