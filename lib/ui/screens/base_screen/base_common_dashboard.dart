@@ -17,6 +17,7 @@ class BaseCommonDashboard extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
+          // todo delete this padding
           height: Get.height - paddingY * 2,
           width: Get.width,
           child: SingleChildScrollView(
@@ -96,7 +97,7 @@ class BaseCommonDashboard extends StatelessWidget {
                         },
                       ),
                       ButtonWithArrowWidget(
-                        text: 'Upload Laporan Harian',
+                        text: 'Dashboard Kasubdit',
                         onTap: () {
                           Get.to(() => KasubditDashboardScreen());
                         },

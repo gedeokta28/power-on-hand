@@ -103,14 +103,14 @@ class KasubditDashboardScreen extends StatelessWidget {
             onTapLihat: () {
               showToast('wip');
             },
-            chartWidget: BarChartSample3(),
+            chartWidget: StatistikPenilaianWidget(),
           ),
           SizedBox(height: sy(8)),
           Card(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
             margin: EdgeInsets.zero,
             child: Padding(
-              padding: EdgeInsets.only(top: sy(8)),
+              padding: EdgeInsets.fromLTRB(0, sy(8), 0, sy(8)),
               child: Column(
                 children: [
                   Text(
@@ -148,7 +148,7 @@ class KasubditDashboardScreen extends StatelessWidget {
                   ),
                   SizedBox(height: sy(4)),
                   SizedBox(
-                    height: sy(120),
+                    height: sy(140),
                     child: ListView(
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
@@ -162,7 +162,68 @@ class KasubditDashboardScreen extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          SizedBox(height: sy(8)),
+          Card(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+            margin: EdgeInsets.zero,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(sy(4), sy(8), sy(4), sy(8)),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  DashboardMenuItemWidget(title: 'Upload Kasus'),
+                  DashboardMenuItemWidget(title: 'Upload LP'),
+                  DashboardMenuItemWidget(title: 'Upload Paparan'),
+                  DashboardMenuItemWidget(title: 'Aktivitas Anggota'),
+                  DashboardMenuItemWidget(title: 'Statistik Penilaian'),
+                ],
+              ),
+            ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class DashboardMenuItemWidget extends StatelessWidget {
+  final String title;
+  final Function onTap;
+
+  const DashboardMenuItemWidget({
+    Key key,
+    @required this.title,
+    this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: Get.width / 5 - sy(8),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            width: sy(32),
+            height: sy(32),
+            alignment: Alignment.topCenter,
+            margin: EdgeInsets.only(bottom: sy(4)),
+            decoration: BoxDecoration(
+              color: Colors.red.shade300,
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.varelaRound(
+              fontSize: sy(10),
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
@@ -180,14 +241,14 @@ class AnggotaItemWidget extends StatelessWidget {
       margin: EdgeInsets.all(sy(4)),
       decoration: BoxDecoration(
         gradient: new LinearGradient(
-          colors: [Colors.lightBlueAccent, Colors.lightBlueAccent.withOpacity(0.5)],
+          colors: [Colors.lightBlueAccent.shade100, Colors.lightBlueAccent.shade100.withOpacity(0.5)],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
         borderRadius: BorderRadius.circular(sy(20)),
       ),
       child: Padding(
-        padding: EdgeInsets.all(sy(6)),
+        padding: EdgeInsets.symmetric(horizontal: sy(12), vertical: sy(8)),
         child: Column(
           children: [
             Icon(
@@ -196,15 +257,19 @@ class AnggotaItemWidget extends StatelessWidget {
               size: sy(42),
             ),
             SizedBox(height: sy(12)),
-            Text(
-              'Bripka Andrea',
-              style: GoogleFonts.varelaRound(
-                fontSize: sy(12),
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+            SizedBox(
+              width: sy(60),
+              child: Text(
+                'Bripka Andrea',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.varelaRound(
+                  fontSize: sy(12),
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-            SizedBox(height: sy(4)),
+            SizedBox(height: sy(6)),
             Container(
               padding: EdgeInsets.all(sy(6)),
               decoration: BoxDecoration(
@@ -276,7 +341,7 @@ class StatistikItemWidget extends StatelessWidget {
   }
 }
 
-class BarChartSample3 extends StatelessWidget {
+class StatistikPenilaianWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -312,8 +377,8 @@ class BarChartSample3 extends StatelessWidget {
             bottomTitles: SideTitles(
               showTitles: true,
               getTextStyles: (value) => GoogleFonts.varelaRound(
-                fontSize: sy(10),
-                fontWeight: FontWeight.w500,
+                fontSize: sy(9),
+                fontWeight: FontWeight.bold,
                 color: Colors.black87,
               ),
               margin: sy(16),
@@ -324,7 +389,7 @@ class BarChartSample3 extends StatelessWidget {
                   case 1:
                     return 'SUBDIT II';
                   case 2:
-                    return 'SUBDIT IIII';
+                    return 'SUBDIT III';
                   case 3:
                     return 'SUBDIT IV';
                   case 4:
