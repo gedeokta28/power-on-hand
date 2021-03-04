@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/screens/kanit/kanit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/kanit/kanit_upload_lp_screen.dart';
+import 'package:power_on_hand/ui/screens/kasubdit/kasubdit_dashboard_screen.dart';
 import 'package:power_on_hand/ui/screens/spri/spri_input_kegiatan_direktur_screen.dart';
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
 
@@ -98,7 +98,7 @@ class BaseCommonDashboard extends StatelessWidget {
                       ButtonWithArrowWidget(
                         text: 'Upload Laporan Harian',
                         onTap: () {
-                          showToast('work in progress');
+                          Get.to(() => KasubditDashboardScreen());
                         },
                       ),
                       ButtonWithArrowWidget(

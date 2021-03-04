@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:power_on_hand/core/constant/constant.dart';
 
 class Indicator extends StatelessWidget {
   final Color color;
@@ -35,8 +36,8 @@ class Indicator extends StatelessWidget {
           ),
           Text(
             text,
-            style: GoogleFonts.montserrat(
-              fontSize: 12,
+            style: GoogleFonts.varelaRound(
+              fontSize: sy(10),
               fontWeight: FontWeight.w500,
             ),
           ),

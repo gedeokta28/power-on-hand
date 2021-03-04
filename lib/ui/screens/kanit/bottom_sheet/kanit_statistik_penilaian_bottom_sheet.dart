@@ -71,12 +71,18 @@ class KanitStatistikPenilaianBottomSheet extends StatelessWidget {
             ],
           ),
           SizedBox(height: sy(12)),
-          Align(
-            alignment: Alignment.center,
-            child: GrafikPercentWidget(
-              title: '11 Kasus Masuk',
-              percentage: 25,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GrafikPercentWidget(
+                title: '11 Kasus Masuk',
+                percentage: 25,
+              ),
+              GrafikPercentWidget(
+                title: '5 Kasus Dikirim',
+                percentage: 90,
+              ),
+            ],
           ),
           SizedBox(height: sy(12)),
           PointWidget(
