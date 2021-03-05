@@ -5,9 +5,11 @@ class ScaffoldThreeTopCircleContainer extends StatelessWidget {
   ScaffoldThreeTopCircleContainer({
     Key key,
     @required this.children,
+    this.customPaddingX,
   }) : super(key: key);
 
   final Column children;
+  final double customPaddingX;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,7 +57,10 @@ class ScaffoldThreeTopCircleContainer extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: paddingX, vertical: paddingY),
+                padding: EdgeInsets.symmetric(
+                  horizontal: customPaddingX ?? paddingX,
+                  vertical: paddingY,
+                ),
                 child: children,
               ),
             ],

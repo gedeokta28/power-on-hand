@@ -72,11 +72,11 @@ class BaseInputBackground extends StatelessWidget {
                 ),
                 // Top Grey Circle
                 Positioned(
-                  top: sy(-345),
-                  left: sy(-200),
+                  top: -420,
+                  left: -220,
                   child: Container(
-                    width: sy(500),
-                    height: sy(500),
+                    width: 600,
+                    height: 600,
                     decoration: BoxDecoration(
                       color: Color(0xFF4C525C),
                       borderRadius: BorderRadius.circular(300),
@@ -99,7 +99,7 @@ class BaseInputBackground extends StatelessWidget {
                           ),
                           Spacer(),
                           buttonText == null
-                              ? SizedBox(height: sy(38))
+                              ? SizedBox(height: 48)
                               : PrimaryButton(
                                   title: buttonText,
                                   onPressed: buttonOnTap ?? () {},
@@ -110,7 +110,7 @@ class BaseInputBackground extends StatelessWidget {
                       ),
                       Container(
                         width: Get.width / 1.5,
-                        height: sy(100),
+                        height: 110,
                         alignment: Alignment.centerLeft,
                         child: Text(
                           title,

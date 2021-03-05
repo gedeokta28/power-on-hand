@@ -38,7 +38,7 @@ class SpriInputKegiatanDirekturScreen extends StatelessWidget {
           TextFieldWidget(
             title: 'Makan Siang',
           ),
-          SizedBox(height: sy(28)),
+          SizedBox(height: 28),
           PrimaryButton(
             title: 'Upload',
             flex: true,

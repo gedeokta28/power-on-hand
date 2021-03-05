@@ -16,7 +16,7 @@ class KasubditDashboardScreen extends StatelessWidget {
       color: const Color(0xff13d38e),
       value: 30,
       title: '30%',
-      radius: sy(65),
+      radius: 65,
       titleStyle: GoogleFonts.montserrat(
         fontSize: 14,
         fontWeight: FontWeight.w500,
@@ -27,7 +27,7 @@ class KasubditDashboardScreen extends StatelessWidget {
       color: const Color(0xFFCF1F69),
       value: 40,
       title: '40%',
-      radius: sy(65),
+      radius: 65,
       titleStyle: GoogleFonts.montserrat(
         fontSize: 14,
         fontWeight: FontWeight.w500,
@@ -38,7 +38,7 @@ class KasubditDashboardScreen extends StatelessWidget {
       color: const Color(0xff845bef),
       value: 30,
       title: '30%',
-      radius: sy(65),
+      radius: 65,
       titleStyle: GoogleFonts.montserrat(
         fontSize: 14,
         fontWeight: FontWeight.w500,
@@ -65,6 +65,7 @@ class KasubditDashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScaffoldThreeTopCircleContainer(
+      customPaddingX: Get.width * 0.02,
       children: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -87,28 +88,35 @@ class KasubditDashboardScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: sy(24)),
-          StatistikItemWidget(
-            title: 'Statistik Laporan',
-            onTapLihat: () {
-              showToast('wip');
-            },
-            chartWidget: GrafikWidget(
-              indicatorList: kelaminIndicatorList,
-              pieChartList: kelaminChartList,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              StatistikItemWidget(
+                title: 'Statistik Penilaian',
+                onTapLihat: () {
+                  showToast('wip');
+                },
+                color: Color(0xFFF44771),
+                chartWidget: StatistikPenilaianWidget(),
+              ),
+              StatistikItemWidget(
+                title: 'Statistik Laporan',
+                onTapLihat: () {
+                  showToast('wip');
+                },
+                color: Color(0xFF9DFFE1),
+                chartWidget: GrafikWidget(
+                  indicatorList: kelaminIndicatorList,
+                  pieChartList: kelaminChartList,
+                ),
+              ),
+            ],
           ),
-          SizedBox(height: sy(8)),
-          StatistikItemWidget(
-            title: 'Statistik Penilaian',
-            onTapLihat: () {
-              showToast('wip');
-            },
-            chartWidget: StatistikPenilaianWidget(),
-          ),
-          SizedBox(height: sy(8)),
+          SizedBox(height: 12),
           Card(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             margin: EdgeInsets.zero,
+            color: Color(0xFFFFD8D8),
             child: Padding(
               padding: EdgeInsets.fromLTRB(0, sy(8), 0, sy(8)),
               child: Column(
@@ -127,7 +135,7 @@ class KasubditDashboardScreen extends StatelessWidget {
                     children: [
                       Icon(
                         FontAwesomeIcons.chevronLeft,
-                        size: sy(16),
+                        size: 16,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(4.0),
@@ -142,14 +150,15 @@ class KasubditDashboardScreen extends StatelessWidget {
                       ),
                       Icon(
                         FontAwesomeIcons.chevronRight,
-                        size: sy(16),
+                        size: 16,
                       ),
                     ],
                   ),
                   SizedBox(height: sy(4)),
                   SizedBox(
-                    height: sy(140),
+                    height: 160,
                     child: ListView(
+                      shrinkWrap: true,
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       children: [
@@ -163,12 +172,13 @@ class KasubditDashboardScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: sy(8)),
+          SizedBox(height: 12),
           Card(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             margin: EdgeInsets.zero,
+            color: Color(0xFFFDE6FF),
             child: Padding(
-              padding: EdgeInsets.fromLTRB(sy(4), sy(8), sy(4), sy(8)),
+              padding: EdgeInsets.fromLTRB(4, 8, 4, 8),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -296,20 +306,23 @@ class StatistikItemWidget extends StatelessWidget {
   final String title;
   final Function onTapLihat;
   final Widget chartWidget;
+  final Color color;
 
   const StatistikItemWidget({
     Key key,
     @required this.title,
+    @required this.color,
     @required this.onTapLihat,
     @required this.chartWidget,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       margin: EdgeInsets.zero,
+      color: color,
       child: Padding(
-        padding: EdgeInsets.all(sy(8)),
+        padding: EdgeInsets.fromLTRB(2, 8, 2, 0),
         child: Column(
           children: [
             Text(
@@ -320,8 +333,11 @@ class StatistikItemWidget extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: sy(4)),
-            chartWidget,
+            SizedBox(height: 4),
+            SizedBox(
+              height: Get.height / 3 - paddingX,
+              child: chartWidget,
+            ),
             FlatButton(
               visualDensity: VisualDensity.compact,
               onPressed: onTapLihat,
@@ -342,14 +358,41 @@ class StatistikItemWidget extends StatelessWidget {
 }
 
 class StatistikPenilaianWidget extends StatelessWidget {
+  final Color barBackgroundColor = const Color(0xff72d8bf);
+  BarChartGroupData makeGroupData(
+    int x,
+    double y, {
+    bool isTouched = false,
+    Color barColor = Colors.white,
+    double width = 16,
+    List<int> showTooltips = const [],
+  }) {
+    return BarChartGroupData(
+      x: x,
+      barRods: [
+        BarChartRodData(
+          y: isTouched ? y + 1 : y,
+          colors: isTouched ? [Colors.yellow] : [barColor],
+          width: width,
+          backDrawRodData: BackgroundBarChartRodData(
+            show: true,
+            y: 40,
+            colors: [barBackgroundColor],
+          ),
+        ),
+      ],
+      showingTooltipIndicators: showTooltips,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.7,
+    return SizedBox(
+      width: Get.width / 2 - paddingX,
       child: BarChart(
         BarChartData(
           alignment: BarChartAlignment.spaceAround,
-          maxY: 20,
+          maxY: 40,
           barTouchData: BarTouchData(
             enabled: false,
             touchTooltipData: BarTouchTooltipData(
@@ -367,6 +410,7 @@ class StatistikPenilaianWidget extends StatelessWidget {
                   GoogleFonts.varelaRound(
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
+                    fontSize: 10,
                   ),
                 );
               },
@@ -377,11 +421,11 @@ class StatistikPenilaianWidget extends StatelessWidget {
             bottomTitles: SideTitles(
               showTitles: true,
               getTextStyles: (value) => GoogleFonts.varelaRound(
-                fontSize: 9,
+                fontSize: 6,
                 fontWeight: FontWeight.bold,
                 color: Colors.black87,
               ),
-              margin: sy(16),
+              margin: 8,
               getTitles: (double value) {
                 switch (value.toInt()) {
                   case 0:
@@ -405,41 +449,11 @@ class StatistikPenilaianWidget extends StatelessWidget {
             show: false,
           ),
           barGroups: [
-            BarChartGroupData(
-              x: 0,
-              barRods: [
-                BarChartRodData(y: 8, colors: [Colors.lightBlueAccent, Colors.greenAccent])
-              ],
-              showingTooltipIndicators: [0],
-            ),
-            BarChartGroupData(
-              x: 1,
-              barRods: [
-                BarChartRodData(y: 10, colors: [Colors.lightBlueAccent, Colors.greenAccent])
-              ],
-              showingTooltipIndicators: [0],
-            ),
-            BarChartGroupData(
-              x: 2,
-              barRods: [
-                BarChartRodData(y: 14, colors: [Colors.lightBlueAccent, Colors.greenAccent])
-              ],
-              showingTooltipIndicators: [0],
-            ),
-            BarChartGroupData(
-              x: 3,
-              barRods: [
-                BarChartRodData(y: 15, colors: [Colors.lightBlueAccent, Colors.greenAccent])
-              ],
-              showingTooltipIndicators: [0],
-            ),
-            BarChartGroupData(
-              x: 3,
-              barRods: [
-                BarChartRodData(y: 13, colors: [Colors.lightBlueAccent, Colors.greenAccent])
-              ],
-              showingTooltipIndicators: [0],
-            ),
+            makeGroupData(0, 15, showTooltips: [0], barColor: Color(0xFF2FFFE6)),
+            makeGroupData(0, 20, showTooltips: [0], barColor: Color(0xFFE0FF9F)),
+            makeGroupData(0, 25, showTooltips: [0], barColor: Color(0xFFFF7070)),
+            makeGroupData(0, 5, showTooltips: [0], barColor: Color(0xFF313131)),
+            makeGroupData(0, 15, showTooltips: [0], barColor: Color(0xFFFFC738)),
           ],
         ),
       ),

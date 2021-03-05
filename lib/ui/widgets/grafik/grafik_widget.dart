@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/widgets/grafik/indicator_widget.dart';
 
@@ -11,9 +12,11 @@ class GrafikWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        AspectRatio(
-          aspectRatio: 1.8,
+        SizedBox(
+          height: 160,
+          width: Get.width / 2 - paddingX,
           child: PieChart(
             PieChartData(
                 borderData: FlBorderData(
@@ -25,10 +28,8 @@ class GrafikWidget extends StatelessWidget {
                 sections: pieChartList),
           ),
         ),
-        SizedBox(height: sy(2)),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             ...indicatorList,
           ],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:power_on_hand/core/constant/constant.dart';
 
 class Indicator extends StatelessWidget {
   final Color color;
@@ -24,26 +23,25 @@ class Indicator extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Container(
-            width: size,
+            width: 10,
             height: size,
             decoration: BoxDecoration(
               shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
               color: color,
             ),
           ),
-          SizedBox(
-            width: 4,
-          ),
+          SizedBox(width: 2),
           SizedBox(
             width: 35,
             child: Text(
               text,
               style: GoogleFonts.varelaRound(
-                fontSize: 5,
-                fontWeight: FontWeight.w500,
+                fontSize: 5.5,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
+          SizedBox(width: 2),
         ],
       ),
     );
