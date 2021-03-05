@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
 
 import 'package:power_on_hand/core/constant/constant.dart';
+import 'package:power_on_hand/ui/screens/direktur/bottom_menu/bottom_menu_screen.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/dashboard_menu_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/statistik_item_widget.dart';
@@ -14,7 +15,7 @@ import 'package:power_on_hand/ui/widgets/grafik/grafik_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/indicator_widget.dart';
 import 'package:power_on_hand/ui/widgets/scaffold_three_color_container.dart';
 
-class KasubditDashboardScreen extends StatelessWidget {
+class DirekturDashboardScreen extends StatelessWidget {
   final List<PieChartSectionData> kelaminChartList = [
     PieChartSectionData(
       color: const Color(0xff13d38e),
@@ -180,21 +181,42 @@ class KasubditDashboardScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 12),
-          Card(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            margin: EdgeInsets.zero,
-            color: Color(0xFFFDE6FF),
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(4, 8, 4, 8),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+          InkWell(
+            onTap: () {
+              Get.to(() => BottomMenuScreen());
+            },
+            child: Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              margin: EdgeInsets.zero,
+              color: Color(0xFFFDE6FF),
+              child: Column(
                 children: [
-                  DashboardMenuItemWidget(title: 'Upload Kasus'),
-                  DashboardMenuItemWidget(title: 'Upload LP'),
-                  DashboardMenuItemWidget(title: 'Upload Paparan'),
-                  DashboardMenuItemWidget(title: 'Aktivitas Anggota'),
-                  DashboardMenuItemWidget(title: 'Statistik Penilaian'),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: sy(36),
+                      height: sy(4),
+                      margin: EdgeInsets.all(sy(8)),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(4, 8, 4, 8),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        DashboardMenuItemWidget(title: 'Indagsi', widget: Icon(FontAwesomeIcons.industry)),
+                        DashboardMenuItemWidget(title: 'Perbankan', widget: Icon(FontAwesomeIcons.university)),
+                        DashboardMenuItemWidget(title: 'Tipidkor', widget: Icon(FontAwesomeIcons.handHoldingUsd)),
+                        DashboardMenuItemWidget(title: 'Tipidter', widget: Icon(FontAwesomeIcons.recycle)),
+                        DashboardMenuItemWidget(title: 'Siber', widget: Image.asset('assets/images/siber.png')),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
+import 'package:power_on_hand/ui/screens/chose_tipe_screen.dart';
 import 'package:power_on_hand/ui/screens/register_screen.dart';
 import 'package:power_on_hand/ui/widgets/half_color_button.dart';
 import 'package:power_on_hand/ui/widgets/logo_bareskim.dart';
@@ -71,7 +70,7 @@ class LoginScreen extends StatelessWidget {
               Spacer(),
               InkWell(
                 onTap: () {
-                  Get.to(() => BaseCommonDashboard());
+                  Get.to(() => ChooseTipeScreeen());
                 },
                 child: Container(
                   width: 50,

@@ -8,7 +8,7 @@ class ScaffoldThreeTopCircleContainer extends StatelessWidget {
     this.customPaddingX,
   }) : super(key: key);
 
-  final Column children;
+  final Widget children;
   final double customPaddingX;
   @override
   Widget build(BuildContext context) {
