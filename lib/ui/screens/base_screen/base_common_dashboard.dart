@@ -27,7 +27,7 @@ class BaseCommonDashboard extends StatelessWidget {
                 ClipPath(
                   clipper: SinCosineWaveClipper(),
                   child: Container(
-                    height: sy(180),
+                    height: 200,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.centerLeft,
@@ -40,7 +40,7 @@ class BaseCommonDashboard extends StatelessWidget {
                 // Police Standing Image
                 Positioned(
                   top: sy(105),
-                  right: sy(8),
+                  right: sx(10),
                   child: Image(
                     image: AssetImage('assets/images/police_standing.png'),
                     height: Get.height / 1.6,

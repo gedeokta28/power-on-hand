@@ -268,7 +268,7 @@ class AnggotaItemWidget extends StatelessWidget {
             ),
             SizedBox(height: sy(12)),
             SizedBox(
-              width: sy(60),
+              width: sx(100),
               child: Text(
                 'Bripka Andrea',
                 textAlign: TextAlign.center,

@@ -30,8 +30,9 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
   Widget build(BuildContext context) {
     return ScaffoldThreeTopCircleContainer(
       children: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          SizedBox(height: sy(150)),
           SizedBox(
             child: FlareActor('assets/flare/success.flr', animation: 'play'),
             height: sy(200),
