@@ -42,7 +42,7 @@ class KanitStatistikPenilaianBottomSheet extends StatelessWidget {
                 child: Text(
                   'Senin, 01-02-2021',
                   style: GoogleFonts.varelaRound(
-                    fontSize: sy(12),
+                    fontSize: 14,
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
                   ),
@@ -121,7 +121,7 @@ class GrafikPercentWidget extends StatelessWidget {
           "$percentage%",
           style: GoogleFonts.varelaRound(
             fontWeight: FontWeight.bold,
-            fontSize: sy(16),
+            fontSize: 16,
             color: Colors.blue,
           ),
         ),
@@ -129,7 +129,7 @@ class GrafikPercentWidget extends StatelessWidget {
           title,
           style: GoogleFonts.varelaRound(
             fontWeight: FontWeight.bold,
-            fontSize: sy(12),
+            fontSize: 14,
           ),
         ),
         circularStrokeCap: CircularStrokeCap.round,

@@ -116,7 +116,7 @@ class KasubditDashboardScreen extends StatelessWidget {
                   Text(
                     'Daftar Anggota',
                     style: GoogleFonts.varelaRound(
-                      fontSize: sy(12),
+                      fontSize: 12,
                       color: Colors.black87,
                       fontWeight: FontWeight.bold,
                     ),
@@ -134,7 +134,7 @@ class KasubditDashboardScreen extends StatelessWidget {
                         child: Text(
                           'Unit II',
                           style: GoogleFonts.varelaRound(
-                            fontSize: sy(14),
+                            fontSize: 14,
                             color: Colors.black54,
                             fontWeight: FontWeight.bold,
                           ),
@@ -219,7 +219,7 @@ class DashboardMenuItemWidget extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: GoogleFonts.varelaRound(
-              fontSize: sy(10),
+              fontSize: 10,
               color: Colors.black87,
               fontWeight: FontWeight.bold,
             ),
@@ -263,7 +263,7 @@ class AnggotaItemWidget extends StatelessWidget {
                 'Bripka Andrea',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.varelaRound(
-                  fontSize: sy(12),
+                  fontSize: 12,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
@@ -279,7 +279,7 @@ class AnggotaItemWidget extends StatelessWidget {
               child: Text(
                 'Dinas',
                 style: GoogleFonts.varelaRound(
-                  fontSize: sy(12),
+                  fontSize: 12,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -315,12 +315,12 @@ class StatistikItemWidget extends StatelessWidget {
             Text(
               title,
               style: GoogleFonts.varelaRound(
-                fontSize: sy(14),
+                fontSize: 14,
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: sy(6)),
+            SizedBox(height: sy(4)),
             chartWidget,
             FlatButton(
               visualDensity: VisualDensity.compact,
@@ -328,7 +328,7 @@ class StatistikItemWidget extends StatelessWidget {
               child: Text(
                 'Lihat Statistik',
                 style: GoogleFonts.varelaRound(
-                  fontSize: sy(12),
+                  fontSize: 14,
                   color: Colors.black87,
                   fontWeight: FontWeight.bold,
                 ),
@@ -377,7 +377,7 @@ class StatistikPenilaianWidget extends StatelessWidget {
             bottomTitles: SideTitles(
               showTitles: true,
               getTextStyles: (value) => GoogleFonts.varelaRound(
-                fontSize: sy(9),
+                fontSize: 9,
                 fontWeight: FontWeight.bold,
                 color: Colors.black87,
               ),

@@ -36,7 +36,7 @@ class BaseUploadSuccess extends StatelessWidget {
                   'Laporan Terkirim',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.varelaRound(
-                    fontSize: sy(32),
+                    fontSize: 32,
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
                   ),
@@ -46,7 +46,7 @@ class BaseUploadSuccess extends StatelessWidget {
               Text(
                 'Terimakasih :) Selamat Beraktifitas',
                 style: GoogleFonts.varelaRound(
-                  fontSize: sy(16),
+                  fontSize: 16,
                   color: Colors.black87,
                   fontWeight: FontWeight.bold,
                 ),

@@ -32,13 +32,16 @@ class Indicator extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 6,
+            width: 4,
           ),
-          Text(
-            text,
-            style: GoogleFonts.varelaRound(
-              fontSize: sy(10),
-              fontWeight: FontWeight.w500,
+          SizedBox(
+            width: 35,
+            child: Text(
+              text,
+              style: GoogleFonts.varelaRound(
+                fontSize: 5,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ],
