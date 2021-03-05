@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
-import 'package:power_on_hand/ui/screens/kanit/kanit_upload_lp_screen.dart';
+import 'package:power_on_hand/ui/widgets/input/text_and_input_widget.dart';
 
 class KanitUploadKasusScreen extends StatelessWidget {
   @override
@@ -105,20 +105,20 @@ class LaporanListItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Icon(FontAwesomeIcons.squareFull, color: Colors.black54, size: sy(12)),
-          LaporanChipItemWidget(text: 'Arif Sucahyo', color: Color(0xFFB5FF88)),
-          LaporanChipItemWidget(text: 'Judi Online', color: Color(0xFF3DB9FF)),
-          LaporanChipItemWidget(text: '21/02/2021', color: Color(0xFFFF8080)),
+          RoundedChipColor(text: 'Arif Sucahyo', color: Color(0xFFB5FF88)),
+          RoundedChipColor(text: 'Judi Online', color: Color(0xFF3DB9FF)),
+          RoundedChipColor(text: '21/02/2021', color: Color(0xFFFF8080)),
         ],
       ),
     );
   }
 }
 
-class LaporanChipItemWidget extends StatelessWidget {
+class RoundedChipColor extends StatelessWidget {
   final String text;
   final Color color;
 
-  const LaporanChipItemWidget({Key key, @required this.text, @required this.color}) : super(key: key);
+  const RoundedChipColor({Key key, @required this.text, @required this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

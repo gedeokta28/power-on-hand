@@ -32,7 +32,7 @@ class Indicator extends StatelessWidget {
           ),
           SizedBox(width: 2),
           SizedBox(
-            width: 35,
+            width: 38,
             child: Text(
               text,
               style: GoogleFonts.varelaRound(
