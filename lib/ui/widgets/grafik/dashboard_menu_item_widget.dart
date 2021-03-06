@@ -10,7 +10,7 @@ class DashboardMenuItemWidget extends StatelessWidget {
 
   const DashboardMenuItemWidget({
     Key key,
-    @required this.title,
+    this.title,
     this.onTap,
     this.widget,
   }) : super(key: key);
@@ -18,7 +18,7 @@ class DashboardMenuItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: Get.width / 5 - sx(8),
+      width: Get.width / 6,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -33,15 +33,17 @@ class DashboardMenuItemWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.varelaRound(
-              fontSize: 10,
-              color: Colors.black87,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          title == null
+              ? SizedBox()
+              : Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.varelaRound(
+                    fontSize: 10,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
         ],
       ),
     );

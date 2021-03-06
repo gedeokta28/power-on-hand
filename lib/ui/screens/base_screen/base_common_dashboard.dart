@@ -7,7 +7,6 @@ import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/screens/kanit/kanit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/kanit/kanit_upload_lp_screen.dart';
-import 'package:power_on_hand/ui/screens/kasubdit/dashboard/kasubdit_dashboard_screen.dart';
 import 'package:power_on_hand/ui/screens/spri/spri_input_kegiatan_direktur_screen.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
@@ -94,9 +93,9 @@ class BaseCommonDashboard extends StatelessWidget {
                       },
                     ),
                     ButtonWithArrowWidget(
-                      text: 'Dashboard Kasubdit',
+                      text: 'Upload Laporan Harian',
                       onTap: () {
-                        Get.to(() => KasubditDashboardScreen());
+                        Get.to(() => KanitUploadLpScreen());
                       },
                     ),
                     ButtonWithArrowWidget(

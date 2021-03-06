@@ -183,7 +183,7 @@ class DirekturDashboardScreen extends StatelessWidget {
           SizedBox(height: 12),
           InkWell(
             onTap: () {
-              Get.to(() => BottomMenuScreen());
+              Get.to(() => BottomMenuScreen(), transition: Transition.downToUp);
             },
             child: Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
