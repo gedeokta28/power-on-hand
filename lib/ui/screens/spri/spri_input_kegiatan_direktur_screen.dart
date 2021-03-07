@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
-import 'package:power_on_hand/ui/screens/base_screen/base_upload_success.dart';
+import 'package:power_on_hand/ui/screens/base_screen/success_screen.dart';
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
 import 'package:power_on_hand/ui/widgets/text_field_widget.dart';
 
@@ -45,7 +45,7 @@ class SpriInputKegiatanDirekturScreen extends StatelessWidget {
             fontColor: Colors.white,
             padding: 14,
             onPressed: () {
-              Get.off(() => BaseUploadSuccess());
+              Get.off(() => SuccessScreen(title: 'Kegiatan Direktur Telah Diinput'));
             },
           ),
         ],

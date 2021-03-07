@@ -7,6 +7,7 @@ import 'package:oktoast/oktoast.dart';
 
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/direktur/bottom_menu/bottom_menu_screen.dart';
+import 'package:power_on_hand/ui/screens/direktur/notification_screen.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/dashboard_menu_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/statistik_item_widget.dart';
@@ -80,7 +81,11 @@ class DirekturDashboardScreen extends StatelessWidget {
               children: [
                 InkWell(onTap: Get.back, child: Icon(FontAwesomeIcons.alignLeft)),
                 Spacer(),
-                InkWell(onTap: Get.back, child: Icon(FontAwesomeIcons.solidBell)),
+                InkWell(
+                    onTap: () {
+                      Get.to(() => NotificationScreen());
+                    },
+                    child: Icon(FontAwesomeIcons.solidBell)),
               ],
             ),
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
+
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
 import 'package:power_on_hand/ui/widgets/input/text_and_input_widget.dart';
@@ -117,13 +118,23 @@ class LaporanListItem extends StatelessWidget {
 class RoundedChipColor extends StatelessWidget {
   final String text;
   final Color color;
+  final double padding;
+  final Color fontColor;
+  final double fontSize;
 
-  const RoundedChipColor({Key key, @required this.text, @required this.color}) : super(key: key);
+  const RoundedChipColor({
+    Key key,
+    this.text,
+    this.color,
+    this.padding = 6,
+    this.fontColor,
+    this.fontSize = 12,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(sy(6)),
+      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(20),
@@ -131,8 +142,9 @@ class RoundedChipColor extends StatelessWidget {
       child: Text(
         text,
         style: GoogleFonts.varelaRound(
-          fontSize: 12,
+          fontSize: fontSize,
           fontWeight: FontWeight.bold,
+          color: fontColor,
         ),
       ),
     );

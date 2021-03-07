@@ -13,13 +13,13 @@ class DashboardHistoryItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: sy(170),
-      height: sy(200),
       margin: EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
         color: Color(0xFFEBEEFF),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: sy(120)),
           Text(

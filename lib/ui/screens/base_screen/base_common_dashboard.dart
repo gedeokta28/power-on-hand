@@ -23,7 +23,7 @@ class BaseCommonDashboard extends StatelessWidget {
               ClipPath(
                 clipper: SinCosineWaveClipper(),
                 child: Container(
-                  height: 200,
+                  height: sx(200),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
@@ -39,7 +39,7 @@ class BaseCommonDashboard extends StatelessWidget {
                 right: sx(10),
                 child: Image(
                   image: AssetImage('assets/images/police_standing.png'),
-                  height: Get.height / 1.6,
+                  height: sx(400),
                 ),
               ),
               Padding(
@@ -153,10 +153,11 @@ class BaseCommonDashboard extends StatelessWidget {
                     ),
                     SizedBox(height: sy(24)),
                     SizedBox(
-                      height: sy(210),
+                      height: sy(200),
                       child: ListView(
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
                         children: [
                           DashboardHistoryItemWidget(title: 'Judi Online', onTap: () {}),
                           DashboardHistoryItemWidget(title: 'Kosmetik Palsu', onTap: () {}),

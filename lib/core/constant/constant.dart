@@ -7,11 +7,10 @@ const double baseWidth = 360.0;
 final paddingX = Get.width * 0.04;
 final double paddingY = sy(16);
 
-const double scale = 1;
 double sy(double value) {
   return value * Get.height / baseHeight;
 }
 
 double sx(double value) {
-  return value * Get.width / baseHeight;
+  return value * Get.width / baseWidth;
 }

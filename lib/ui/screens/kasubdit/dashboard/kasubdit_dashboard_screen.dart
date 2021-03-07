@@ -163,7 +163,7 @@ class KasubditDashboardScreen extends StatelessWidget {
                   ),
                   SizedBox(height: sy(4)),
                   SizedBox(
-                    height: sy(140),
+                    height: sy(130),
                     child: ListView(
                       shrinkWrap: true,
                       physics: BouncingScrollPhysics(),

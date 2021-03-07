@@ -11,6 +11,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print('height');
+    print(Get.height);
+
+    print('width');
+    print(Get.width);
+
     return OKToast(
       position: ToastPosition.bottom,
       textStyle: GoogleFonts.varelaRound(),

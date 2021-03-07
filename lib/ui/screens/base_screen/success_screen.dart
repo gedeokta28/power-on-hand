@@ -6,7 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
 
-class BaseUploadSuccess extends StatelessWidget {
+class SuccessScreen extends StatelessWidget {
+  final String title;
+
+  const SuccessScreen({Key key, @required this.title}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +37,7 @@ class BaseUploadSuccess extends StatelessWidget {
               SizedBox(
                 width: Get.width - paddingX * 2,
                 child: Text(
-                  'Laporan Terkirim',
+                  title,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.varelaRound(
                     fontSize: 32,

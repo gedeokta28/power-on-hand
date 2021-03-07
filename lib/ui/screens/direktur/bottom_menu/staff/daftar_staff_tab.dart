@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/direktur/bottom_menu/menu_item_long_grey_widget.dart';
 import 'package:power_on_hand/ui/screens/direktur/bottom_menu/menu_title_widget.dart';
-import 'package:power_on_hand/ui/screens/direktur/bottom_menu/staff/bag_wassidik.dart';
+import 'package:power_on_hand/ui/screens/direktur/bottom_menu/staff/wassidik/bag_wassidik.dart';
 
 class DaftarStaffTab extends StatelessWidget {
   @override

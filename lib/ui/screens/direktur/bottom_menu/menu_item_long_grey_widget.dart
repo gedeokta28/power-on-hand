@@ -31,6 +31,14 @@ class MenuItemLongGreyWidget extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                 ),
                 color: Colors.grey.shade300,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    offset: Offset(0, 1),
+                    blurRadius: 1,
+                    spreadRadius: 0.5,
+                  ),
+                ],
               ),
               padding: subtitle == null ? EdgeInsets.fromLTRB(12, 14, 8, 14) : EdgeInsets.all(8),
               child: Column(
