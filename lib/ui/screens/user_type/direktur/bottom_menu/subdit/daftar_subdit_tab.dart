@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/ui/screens/direktur/bottom_menu/menu_item_long_grey_widget.dart';
-import 'package:power_on_hand/ui/screens/direktur/bottom_menu/menu_title_widget.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/menu_item_long_grey_widget.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/menu_title_widget.dart';
 
 class DaftarSubditTab extends StatelessWidget {
   @override

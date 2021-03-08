@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/ui/screens/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
-import 'package:power_on_hand/ui/screens/kanit/kanit_upload_kasus_screen.dart';
-import 'package:power_on_hand/ui/screens/kanit/kanit_upload_lp_screen.dart';
-import 'package:power_on_hand/ui/screens/spri/spri_input_kegiatan_direktur_screen.dart';
-import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
-import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 
 class BaseCommonDashboard extends StatelessWidget {
+  final List<Widget> children;
+  final String name;
+
+  const BaseCommonDashboard({
+    Key key,
+    @required this.children,
+    @required this.name,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -58,7 +62,7 @@ class BaseCommonDashboard extends StatelessWidget {
                     SizedBox(
                       width: Get.width / 1.5,
                       child: Text(
-                        'Hi, Prawira Bagus Pratama',
+                        name,
                         style: GoogleFonts.varelaRound(
                           fontSize: 32,
                           color: Colors.white,
@@ -86,85 +90,7 @@ class BaseCommonDashboard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: sy(28)),
-                    ButtonWithArrowWidget(
-                      text: 'Upload Kasus',
-                      onTap: () {
-                        Get.to(() => KanitUploadKasusScreen());
-                      },
-                    ),
-                    ButtonWithArrowWidget(
-                      text: 'Upload Laporan Harian',
-                      onTap: () {
-                        Get.to(() => KanitUploadLpScreen());
-                      },
-                    ),
-                    ButtonWithArrowWidget(
-                      text: 'Statitik Penilaian',
-                      onTap: () {
-                        Get.bottomSheet(
-                          KanitStatistikPenilaianBottomSheet(),
-                          isScrollControlled: true,
-                          // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                        );
-                      },
-                    ),
-                    ButtonWithArrowWidget(
-                      text: 'Upload LP',
-                      onTap: () {
-                        Get.to(() => KanitUploadLpScreen());
-                      },
-                    ),
-                    ButtonWithArrowWidget(
-                      text: 'Upload Paparan',
-                      onTap: () {
-                        Get.to(() => SpriInputKegiatanDirekturScreen());
-                      },
-                    ),
-                    SizedBox(height: sy(12)),
-                    Divider(),
-                    Row(
-                      children: [
-                        Text(
-                          'History Kasus',
-                          style: GoogleFonts.varelaRound(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF353E6C),
-                          ),
-                        ),
-                        Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 4, right: 4),
-                          child: Icon(
-                            FontAwesomeIcons.calendarAlt,
-                            size: 14,
-                            color: Color(0xFFBACCFD),
-                          ),
-                        ),
-                        Text(
-                          '18 January 2020',
-                          style: GoogleFonts.varelaRound(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFFBACCFD),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: sy(24)),
-                    SizedBox(
-                      height: sy(200),
-                      child: ListView(
-                        physics: BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        children: [
-                          DashboardHistoryItemWidget(title: 'Judi Online', onTap: () {}),
-                          DashboardHistoryItemWidget(title: 'Kosmetik Palsu', onTap: () {}),
-                          DashboardHistoryItemWidget(title: 'Bisnis Bodong', onTap: () {}),
-                        ],
-                      ),
-                    ),
+                    ...children,
                   ],
                 ),
               ),

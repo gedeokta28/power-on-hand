@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
 
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/ui/screens/direktur/bottom_menu/bottom_menu_screen.dart';
-import 'package:power_on_hand/ui/screens/direktur/notification_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/bottom_menu_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/dashboard_menu_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/statistik_item_widget.dart';
@@ -168,10 +168,9 @@ class DirekturDashboardScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: sy(4)),
-                  SizedBox(
+                  Container(
                     height: sy(140),
                     child: ListView(
-                      shrinkWrap: true,
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       children: [

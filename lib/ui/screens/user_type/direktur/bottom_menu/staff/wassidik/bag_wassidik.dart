@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/ui/screens/direktur/bottom_menu/base_bottom_menu.dart';
-import 'package:power_on_hand/ui/screens/direktur/bottom_menu/menu_item_long_grey_widget.dart';
-import 'package:power_on_hand/ui/screens/direktur/bottom_menu/staff/wassidik/gelar_perkara.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/base_bottom_menu.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/menu_item_long_grey_widget.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/staff/wassidik/gelar_perkara.dart';
 
 class BagKorwas extends StatelessWidget {
   @override

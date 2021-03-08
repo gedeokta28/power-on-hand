@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/ui/screens/direktur/bottom_menu/staff/daftar_staff_tab.dart';
-import 'package:power_on_hand/ui/screens/direktur/bottom_menu/subdit/daftar_subdit_tab.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/staff/daftar_staff_tab.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/subdit/daftar_subdit_tab.dart';
 import 'package:power_on_hand/ui/widgets/grafik/dashboard_menu_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/scaffold_three_color_container.dart';
 
