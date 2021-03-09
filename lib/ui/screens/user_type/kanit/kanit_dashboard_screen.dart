@@ -64,11 +64,10 @@ class KanitDashboardScreen extends StatelessWidget {
         DashboardHistoryListTitleWidget(title: 'History Kasus', date: '18 January 2020'),
         SizedBox(height: sy(24)),
         SizedBox(
-          height: sy(200),
+          height: 200,
           child: ListView(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
             children: [
               DashboardHistoryItemWidget(title: 'Judi Online', onTap: () {}),
               DashboardHistoryItemWidget(title: 'Kosmetik Palsu', onTap: () {}),

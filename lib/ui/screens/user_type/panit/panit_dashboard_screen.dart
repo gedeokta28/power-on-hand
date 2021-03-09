@@ -68,7 +68,6 @@ class PanitDashboardScreen extends StatelessWidget {
           child: ListView(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
             children: [
               DashboardHistoryItemWidget(title: 'Judi Online', onTap: () {}),
               DashboardHistoryItemWidget(title: 'Kosmetik Palsu', onTap: () {}),

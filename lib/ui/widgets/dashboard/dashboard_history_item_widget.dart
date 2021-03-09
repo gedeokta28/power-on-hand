@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:power_on_hand/core/constant/constant.dart';
+
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
 
 class DashboardHistoryItemWidget extends StatelessWidget {
   final String title;
   final Function onTap;
+  final ImageProvider image;
 
-  const DashboardHistoryItemWidget({Key key, this.title, this.onTap}) : super(key: key);
+  const DashboardHistoryItemWidget({
+    Key key,
+    @required this.title,
+    this.onTap,
+    this.image,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: sy(170),
+      width: 170,
+      padding: EdgeInsets.all(4),
       margin: EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
         color: Color(0xFFEBEEFF),
@@ -21,7 +28,13 @@ class DashboardHistoryItemWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(height: sy(120)),
+          Container(
+            margin: EdgeInsets.all(8),
+            height: 100,
+            child: Image(
+              image: image ?? AssetImage('assets/images/history_item.png'),
+            ),
+          ),
           Text(
             title,
             style: GoogleFonts.varelaRound(
@@ -30,7 +43,7 @@ class DashboardHistoryItemWidget extends StatelessWidget {
               color: Colors.black87,
             ),
           ),
-          SizedBox(height: sy(10)),
+          SizedBox(height: 8),
           PrimaryButton(
             title: 'Lihat Kasus',
             color: Color(0xFF1657FF),

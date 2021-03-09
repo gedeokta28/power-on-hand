@@ -50,7 +50,6 @@ class KanitUploadKasusScreen extends StatelessWidget {
               ],
             ),
             child: ListView(
-              shrinkWrap: true,
               children: [
                 Padding(
                   padding: EdgeInsets.all(sy(8)),

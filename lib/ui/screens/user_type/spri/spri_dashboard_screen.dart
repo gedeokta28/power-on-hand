@@ -44,7 +44,6 @@ class SpriDashboardScreen extends StatelessWidget {
           child: ListView(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
             children: [
               DashboardHistoryItemWidget(title: 'Nama Tamu', onTap: () {}),
               DashboardHistoryItemWidget(title: 'Kosmetik Palsu', onTap: () {}),

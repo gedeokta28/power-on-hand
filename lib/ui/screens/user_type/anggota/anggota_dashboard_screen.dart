@@ -50,7 +50,6 @@ class AnggotaDashboardScreen extends StatelessWidget {
           child: ListView(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
             children: [
               DashboardHistoryItemWidget(title: 'Nama Dokumen', onTap: () {}),
               DashboardHistoryItemWidget(title: 'Nama Dokumen', onTap: () {}),
