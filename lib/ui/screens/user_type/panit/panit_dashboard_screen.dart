@@ -10,7 +10,7 @@ import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_list_title_widget.dart';
 
-class KanitDashboardScreen extends StatelessWidget {
+class PanitDashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseCommonDashboard(

@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_paparan_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/spri/spri_input_kegiatan_direktur_screen.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_list_title_widget.dart';
 
-class KanitDashboardScreen extends StatelessWidget {
+class SpriDashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseCommonDashboard(
@@ -19,41 +17,19 @@ class KanitDashboardScreen extends StatelessWidget {
         Container(
           constraints: BoxConstraints(minHeight: 330),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ButtonWithArrowWidget(
-                text: 'Upload Kasus',
+                text: 'Input Kegiatan Wadir',
                 onTap: () {
-                  Get.to(() => KanitUploadKasusScreen());
+                  Get.to(() => SpriInputKegiatanDirekturScreen());
                 },
               ),
               ButtonWithArrowWidget(
-                text: 'Upload Laporan Harian',
+                text: 'Input Kegiatan Tamu',
                 onTap: () {
                   Get.to(() => KanitUploadLpScreen());
-                },
-              ),
-              ButtonWithArrowWidget(
-                text: 'Statitik Penilaian',
-                onTap: () {
-                  Get.bottomSheet(
-                    KanitStatistikPenilaianBottomSheet(),
-                    isScrollControlled: true,
-                    // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                  );
-                },
-              ),
-              ButtonWithArrowWidget(
-                text: 'Upload LP',
-                onTap: () {
-                  Get.to(() => KanitUploadLpScreen());
-                },
-              ),
-              ButtonWithArrowWidget(
-                text: 'Upload Paparan',
-                onTap: () {
-                  Get.to(() => KanitUploadPaparanScreen());
                 },
               ),
             ],
@@ -61,7 +37,7 @@ class KanitDashboardScreen extends StatelessWidget {
         ),
         SizedBox(height: sy(12)),
         Divider(),
-        DashboardHistoryListTitleWidget(title: 'History Kasus', date: '18 January 2020'),
+        DashboardHistoryListTitleWidget(title: 'History Tamu', date: '18 January 2020'),
         SizedBox(height: sy(24)),
         SizedBox(
           height: sy(200),
@@ -70,7 +46,7 @@ class KanitDashboardScreen extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             children: [
-              DashboardHistoryItemWidget(title: 'Judi Online', onTap: () {}),
+              DashboardHistoryItemWidget(title: 'Nama Tamu', onTap: () {}),
               DashboardHistoryItemWidget(title: 'Kosmetik Palsu', onTap: () {}),
               DashboardHistoryItemWidget(title: 'Bisnis Bodong', onTap: () {}),
             ],

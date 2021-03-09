@@ -15,8 +15,8 @@ class RegisterScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Color(0xFF58BFE6),
         body: SingleChildScrollView(
-          child: SizedBox(
-            width: Get.width,
+          child: Container(
+            constraints: BoxConstraints(maxHeight: Get.height),
             child: Stack(
               children: [
                 // Grey Circle
@@ -103,7 +103,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: sy(42)),
+                      SizedBox(height: sy(48)),
                       Align(
                         alignment: Alignment.bottomRight,
                         child: HalfColorButtonWidget(
