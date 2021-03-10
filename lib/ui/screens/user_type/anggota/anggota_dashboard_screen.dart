@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/anggota/anggota_input_kasus_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/anggota/anggota_input_laporan_harian_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_list_title_widget.dart';
-import 'package:power_on_hand/ui/widgets/grafik/statistik_penilaian_widget.dart';
 
 class AnggotaDashboardScreen extends StatelessWidget {
   @override
@@ -23,19 +24,22 @@ class AnggotaDashboardScreen extends StatelessWidget {
               ButtonWithArrowWidget(
                 text: 'Input Kasus',
                 onTap: () {
-                  Get.to(() => KanitUploadLpScreen());
+                  Get.to(() => AnggotaInputKasusScreen());
                 },
               ),
               ButtonWithArrowWidget(
                 text: 'Input Laporan Harian',
                 onTap: () {
-                  Get.to(() => KanitUploadLpScreen());
+                  Get.to(() => AnggotaInputLaporanHarianScreen());
                 },
               ),
               ButtonWithArrowWidget(
                 text: 'Statistik Penilaian',
                 onTap: () {
-                  Get.to(() => StatistikPenilaianWidget());
+                  Get.bottomSheet(
+                    KanitStatistikPenilaianBottomSheet(),
+                    isScrollControlled: true,
+                  );
                 },
               ),
             ],

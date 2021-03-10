@@ -40,7 +40,6 @@ class KanitDashboardScreen extends StatelessWidget {
                   Get.bottomSheet(
                     KanitStatistikPenilaianBottomSheet(),
                     isScrollControlled: true,
-                    // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                   );
                 },
               ),

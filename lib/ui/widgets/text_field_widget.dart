@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:power_on_hand/core/constant/constant.dart';
 
 class TextFieldWidget extends StatelessWidget {
   final TextEditingController cText;
@@ -15,6 +15,7 @@ class TextFieldWidget extends StatelessWidget {
   final String helperText;
   final int maxLines;
   final Function onChanged;
+  final bool addSuffixIcon;
 
   TextFieldWidget(
       {this.title,
@@ -27,6 +28,7 @@ class TextFieldWidget extends StatelessWidget {
       this.helperText,
       this.onChanged,
       this.isReadOnly = false,
+      this.addSuffixIcon = false,
       this.isPassword = false,
       this.isTheLast = false});
 
@@ -35,7 +37,7 @@ class TextFieldWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(height: sy(8)),
+        SizedBox(height: 8),
         title == null
             ? SizedBox()
             : Text(
@@ -67,9 +69,11 @@ class TextFieldWidget extends StatelessWidget {
             obscureText: isPassword,
             keyboardType: keyboardType,
             onChanged: onChanged,
-            style: GoogleFonts.varelaRound(fontSize: 16),
+            style: GoogleFonts.varelaRound(fontSize: 14),
             controller: cText,
             decoration: InputDecoration(
+              isDense: true,
+              suffixIcon: !addSuffixIcon ? null : Icon(FontAwesomeIcons.solidFileAlt, color: Colors.black87),
               helperText: helperText ?? null,
               helperStyle: GoogleFonts.varelaRound(
                 fontStyle: FontStyle.italic,
@@ -102,6 +106,22 @@ class TextFieldWidget extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  factory TextFieldWidget.file({
+    String title,
+    String hintText,
+    Function onTap,
+    TextEditingController cText,
+  }) {
+    return TextFieldWidget(
+      title: title,
+      hintText: hintText,
+      addSuffixIcon: true,
+      isReadOnly: true,
+      onTap: onTap,
+      cText: cText,
     );
   }
 }

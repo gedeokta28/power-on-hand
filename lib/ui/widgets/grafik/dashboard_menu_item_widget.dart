@@ -17,34 +17,37 @@ class DashboardMenuItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: Get.width / 6,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            width: Get.width / 7,
-            height: Get.width / 7,
-            child: widget == null ? SizedBox() : widget,
-            alignment: Alignment.center,
-            margin: EdgeInsets.only(bottom: sy(4)),
-            decoration: BoxDecoration(
-              color: Colors.red.shade300,
-              borderRadius: BorderRadius.circular(30),
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(
+        width: Get.width / 6,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              width: Get.width / 7,
+              height: Get.width / 7,
+              child: widget == null ? SizedBox() : widget,
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(bottom: sy(4)),
+              decoration: BoxDecoration(
+                color: Colors.red.shade300,
+                borderRadius: BorderRadius.circular(30),
+              ),
             ),
-          ),
-          title == null
-              ? SizedBox()
-              : Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.varelaRound(
-                    fontSize: 10,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.bold,
+            title == null
+                ? SizedBox()
+                : Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.varelaRound(
+                      fontSize: 10,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-        ],
+          ],
+        ),
       ),
     );
   }

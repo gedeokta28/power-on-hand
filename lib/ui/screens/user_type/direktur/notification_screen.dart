@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/base_bottom_menu.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
+import 'package:power_on_hand/ui/widgets/grafik/rounded_chip_color.dart';
 
 class NotificationScreen extends StatelessWidget {
   @override

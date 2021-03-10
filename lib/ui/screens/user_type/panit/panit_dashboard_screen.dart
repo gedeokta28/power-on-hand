@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_paparan_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/panit/panit_upload_lp_screen.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_list_title_widget.dart';
@@ -25,13 +23,13 @@ class PanitDashboardScreen extends StatelessWidget {
               ButtonWithArrowWidget(
                 text: 'Upload Kasus',
                 onTap: () {
-                  Get.to(() => KanitUploadKasusScreen());
+                  Get.to(() => PanitUploadLpScreen());
                 },
               ),
               ButtonWithArrowWidget(
                 text: 'Upload Laporan Harian',
                 onTap: () {
-                  Get.to(() => KanitUploadLpScreen());
+                  Get.to(() => PanitUploadLpScreen());
                 },
               ),
               ButtonWithArrowWidget(
@@ -40,20 +38,13 @@ class PanitDashboardScreen extends StatelessWidget {
                   Get.bottomSheet(
                     KanitStatistikPenilaianBottomSheet(),
                     isScrollControlled: true,
-                    // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                   );
                 },
               ),
               ButtonWithArrowWidget(
                 text: 'Upload LP',
                 onTap: () {
-                  Get.to(() => KanitUploadLpScreen());
-                },
-              ),
-              ButtonWithArrowWidget(
-                text: 'Upload Paparan',
-                onTap: () {
-                  Get.to(() => KanitUploadPaparanScreen());
+                  Get.to(() => PanitUploadLpScreen());
                 },
               ),
             ],

@@ -9,12 +9,12 @@ import 'package:power_on_hand/ui/widgets/input/text_and_input_widget.dart';
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
 import 'package:power_on_hand/ui/widgets/text_field_widget.dart';
 
-class KanitUploadLpScreen extends StatefulWidget {
+class PanitUploadLpScreen extends StatefulWidget {
   @override
-  _KanitUploadLpScreenState createState() => _KanitUploadLpScreenState();
+  _PanitUploadLpScreenState createState() => _PanitUploadLpScreenState();
 }
 
-class _KanitUploadLpScreenState extends State<KanitUploadLpScreen> {
+class _PanitUploadLpScreenState extends State<PanitUploadLpScreen> {
   PlatformFile pfileLP;
   TextEditingController cLP = TextEditingController();
 

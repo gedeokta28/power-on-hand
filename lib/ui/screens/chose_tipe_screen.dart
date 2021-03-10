@@ -7,11 +7,7 @@ import 'package:power_on_hand/ui/screens/user_type/direktur/direktur_dashboard_s
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_dashboard_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kasubdit/dashboard/kasubdit_dashboard_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/panit/panit_dashboard_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/renmin/renmin_dashboard_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/satgas_pangan_binops/satgas_pangan_binops_dashboard_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/satgas_pen_binops/satgas_pen_binops_dashboard_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/spri/spri_dashboard_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/wassidik/wassidik_dashboard_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/wadir/wadir_dashboard_screen.dart';
 
 class ChooseTipeScreeen extends StatelessWidget {
   @override
@@ -25,6 +21,13 @@ class ChooseTipeScreeen extends StatelessWidget {
             trailing: Icon(FontAwesomeIcons.chevronRight),
             onTap: () {
               Get.to(() => DirekturDashboardScreen());
+            },
+          ),
+          ListTile(
+            title: Text('Wadir'),
+            trailing: Icon(FontAwesomeIcons.chevronRight),
+            onTap: () {
+              Get.to(() => WadirDashboardScreen());
             },
           ),
           ListTile(
@@ -49,47 +52,47 @@ class ChooseTipeScreeen extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('SPRI'),
-            trailing: Icon(FontAwesomeIcons.chevronRight),
-            onTap: () {
-              Get.to(() => SpriDashboardScreen());
-            },
-          ),
-          ListTile(
-            title: Text('Satgas PEN - BINOPS'),
-            trailing: Icon(FontAwesomeIcons.chevronRight),
-            onTap: () {
-              Get.to(() => SatgasPenBinopsDashboardScreen());
-            },
-          ),
-          ListTile(
-            title: Text('BAG WASIDIK'),
-            trailing: Icon(FontAwesomeIcons.chevronRight),
-            onTap: () {
-              Get.to(() => WassidikDashboardScreen());
-            },
-          ),
-          ListTile(
             title: Text('Anggota'),
             trailing: Icon(FontAwesomeIcons.chevronRight),
             onTap: () {
               Get.to(() => AnggotaDashboardScreen());
             },
           ),
-          ListTile(
-            title: Text('Satgas PANGAN - BINOPS'),
-            trailing: Icon(FontAwesomeIcons.chevronRight),
-            onTap: () {
-              Get.to(() => SatgasPanganBinopsDashboardScreen());
-            },
-          ),
-          ListTile(
-            title: Text('Renmin'),
-            trailing: Icon(FontAwesomeIcons.chevronRight),
-            onTap: () {
-              Get.to(() => RenminDashboardScreen());
-            },
-          ),
+          // ListTile(
+          //   title: Text('SPRI'),
+          //   trailing: Icon(FontAwesomeIcons.chevronRight),
+          //   onTap: () {
+          //     Get.to(() => SpriDashboardScreen());
+          //   },
+          // ),
+          // ListTile(
+          //   title: Text('Satgas PEN - BINOPS'),
+          //   trailing: Icon(FontAwesomeIcons.chevronRight),
+          //   onTap: () {
+          //     Get.to(() => SatgasPenBinopsDashboardScreen());
+          //   },
+          // ),
+          // ListTile(
+          //   title: Text('BAG WASIDIK'),
+          //   trailing: Icon(FontAwesomeIcons.chevronRight),
+          //   onTap: () {
+          //     Get.to(() => WassidikDashboardScreen());
+          //   },
+          // ),
+          // ListTile(
+          //   title: Text('Satgas PANGAN - BINOPS'),
+          //   trailing: Icon(FontAwesomeIcons.chevronRight),
+          //   onTap: () {
+          //     Get.to(() => SatgasPanganBinopsDashboardScreen());
+          //   },
+          // ),
+          // ListTile(
+          //   title: Text('Renmin'),
+          //   trailing: Icon(FontAwesomeIcons.chevronRight),
+          //   onTap: () {
+          //     Get.to(() => RenminDashboardScreen());
+          //   },
+          // ),
         ],
       ),
     );
