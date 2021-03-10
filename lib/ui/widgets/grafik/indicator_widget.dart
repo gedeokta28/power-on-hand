@@ -36,7 +36,7 @@ class Indicator extends StatelessWidget {
             child: Text(
               text,
               style: GoogleFonts.varelaRound(
-                fontSize: 5.5,
+                fontSize: 5,
                 fontWeight: FontWeight.bold,
               ),
             ),

@@ -4,16 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
-
-import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/bottom_menu_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/dashboard_menu_item_widget.dart';
-import 'package:power_on_hand/ui/widgets/grafik/statistik_item_widget.dart';
-import 'package:power_on_hand/ui/widgets/grafik/statistik_penilaian_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/grafik_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/indicator_widget.dart';
+import 'package:power_on_hand/ui/widgets/grafik/statistik_item_widget.dart';
+import 'package:power_on_hand/ui/widgets/grafik/statistik_penilaian_widget.dart';
 import 'package:power_on_hand/ui/widgets/scaffold_three_color_container.dart';
 
 class DirekturDashboardScreen extends StatelessWidget {
@@ -53,7 +51,7 @@ class DirekturDashboardScreen extends StatelessWidget {
     ),
   ];
 
-  final List<Indicator> kelaminIndicatorList = [
+  final List<Indicator> laporanIndicatorList = [
     Indicator(
       color: Color(0xff13d38e),
       text: 'Laporan Masuk',
@@ -89,7 +87,7 @@ class DirekturDashboardScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: sy(16)),
+          SizedBox(height: 16),
           SizedBox(
             width: Get.width / 1.5,
             child: Text(
@@ -100,7 +98,7 @@ class DirekturDashboardScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: sy(24)),
+          SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -119,7 +117,7 @@ class DirekturDashboardScreen extends StatelessWidget {
                 },
                 color: Color(0xFF9DFFE1),
                 chartWidget: GrafikWidget(
-                  indicatorList: kelaminIndicatorList,
+                  indicatorList: laporanIndicatorList,
                   pieChartList: kelaminChartList,
                 ),
               ),
@@ -131,7 +129,7 @@ class DirekturDashboardScreen extends StatelessWidget {
             margin: EdgeInsets.zero,
             color: Color(0xFFFFD8D8),
             child: Padding(
-              padding: EdgeInsets.fromLTRB(0, sy(8), 0, sy(8)),
+              padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
               child: Column(
                 children: [
                   Text(
@@ -142,7 +140,7 @@ class DirekturDashboardScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: sy(2)),
+                  SizedBox(height: 2),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -167,9 +165,9 @@ class DirekturDashboardScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: sy(4)),
+                  SizedBox(height: 4),
                   Container(
-                    height: sy(140),
+                    height: 150,
                     child: ListView(
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
@@ -198,9 +196,9 @@ class DirekturDashboardScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      width: sy(36),
-                      height: sy(4),
-                      margin: EdgeInsets.all(sy(8)),
+                      width: 36,
+                      height: 4,
+                      margin: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
                         color: Colors.black54,

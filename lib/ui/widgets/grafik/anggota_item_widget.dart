@@ -18,7 +18,7 @@ class AnggotaItemWidget extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
-        borderRadius: BorderRadius.circular(sy(20)),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: sy(12), vertical: sy(8)),
@@ -28,11 +28,11 @@ class AnggotaItemWidget extends StatelessWidget {
             Icon(
               FontAwesomeIcons.userSecret,
               color: Colors.black,
-              size: sy(42),
+              size: 42,
             ),
-            SizedBox(height: sy(12)),
+            SizedBox(height: 12),
             SizedBox(
-              width: sx(90),
+              width: 80,
               child: Text(
                 'Bripka Andrea',
                 textAlign: TextAlign.center,
@@ -43,12 +43,12 @@ class AnggotaItemWidget extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: sy(6)),
+            SizedBox(height: 6),
             Container(
-              padding: EdgeInsets.all(sy(6)),
+              padding: EdgeInsets.all(6),
               decoration: BoxDecoration(
                 color: Colors.green[600],
-                borderRadius: BorderRadius.circular(sy(20)),
+                borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
                 'Dinas',

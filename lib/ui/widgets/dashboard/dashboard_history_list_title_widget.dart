@@ -19,7 +19,7 @@ class DashboardHistoryListTitleWidget extends StatelessWidget {
         Text(
           title,
           style: GoogleFonts.varelaRound(
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Color(0xFF353E6C),
           ),

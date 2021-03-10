@@ -38,7 +38,7 @@ class DashboardHistoryItemWidget extends StatelessWidget {
           Text(
             title,
             style: GoogleFonts.varelaRound(
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.w600,
               color: Colors.black87,
             ),

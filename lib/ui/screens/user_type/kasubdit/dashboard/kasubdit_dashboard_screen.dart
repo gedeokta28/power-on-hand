@@ -4,18 +4,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
-
-import 'package:power_on_hand/core/constant/constant.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_paparan_screen.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/dashboard_menu_item_widget.dart';
-import 'package:power_on_hand/ui/widgets/grafik/statistik_item_widget.dart';
-import 'package:power_on_hand/ui/widgets/grafik/statistik_penilaian_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/grafik_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/indicator_widget.dart';
+import 'package:power_on_hand/ui/widgets/grafik/statistik_item_widget.dart';
+import 'package:power_on_hand/ui/widgets/grafik/statistik_penilaian_widget.dart';
 import 'package:power_on_hand/ui/widgets/scaffold_three_color_container.dart';
 
 class KasubditDashboardScreen extends StatelessWidget {
@@ -55,7 +54,7 @@ class KasubditDashboardScreen extends StatelessWidget {
     ),
   ];
 
-  final List<Indicator> kelaminIndicatorList = [
+  final List<Indicator> laporanIndicatorList = [
     Indicator(
       color: Color(0xff13d38e),
       text: 'Laporan Masuk',
@@ -83,11 +82,15 @@ class KasubditDashboardScreen extends StatelessWidget {
               children: [
                 InkWell(onTap: Get.back, child: Icon(FontAwesomeIcons.alignLeft)),
                 Spacer(),
-                InkWell(onTap: Get.back, child: Icon(FontAwesomeIcons.solidBell)),
+                InkWell(
+                    onTap: () {
+                      Get.to(() => NotificationScreen());
+                    },
+                    child: Icon(FontAwesomeIcons.solidBell)),
               ],
             ),
           ),
-          SizedBox(height: sy(16)),
+          SizedBox(height: 16),
           SizedBox(
             width: Get.width / 1.5,
             child: Text(
@@ -98,7 +101,7 @@ class KasubditDashboardScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: sy(24)),
+          SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -117,7 +120,7 @@ class KasubditDashboardScreen extends StatelessWidget {
                 },
                 color: Color(0xFF9DFFE1),
                 chartWidget: GrafikWidget(
-                  indicatorList: kelaminIndicatorList,
+                  indicatorList: laporanIndicatorList,
                   pieChartList: kelaminChartList,
                 ),
               ),
@@ -129,7 +132,7 @@ class KasubditDashboardScreen extends StatelessWidget {
             margin: EdgeInsets.zero,
             color: Color(0xFFFFD8D8),
             child: Padding(
-              padding: EdgeInsets.fromLTRB(0, sy(8), 0, sy(8)),
+              padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
               child: Column(
                 children: [
                   Text(
@@ -140,7 +143,7 @@ class KasubditDashboardScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: sy(2)),
+                  SizedBox(height: 2),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -165,9 +168,9 @@ class KasubditDashboardScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: sy(4)),
-                  SizedBox(
-                    height: sy(130),
+                  SizedBox(height: 4),
+                  Container(
+                    height: 150,
                     child: ListView(
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,

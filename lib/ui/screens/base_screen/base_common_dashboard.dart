@@ -23,11 +23,11 @@ class BaseCommonDashboard extends StatelessWidget {
         body: SingleChildScrollView(
           child: Stack(
             children: [
-              // Blue Circle
+              // Clippath
               ClipPath(
                 clipper: SinCosineWaveClipper(),
                 child: Container(
-                  height: sx(200),
+                  height: 220,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
@@ -39,11 +39,11 @@ class BaseCommonDashboard extends StatelessWidget {
               ),
               // Police Standing Image
               Positioned(
-                top: sy(105),
+                top: sy(120),
                 right: sx(10),
                 child: Image(
                   image: AssetImage('assets/images/police_standing.png'),
-                  height: sx(400),
+                  height: sy(400),
                 ),
               ),
               Padding(
@@ -64,7 +64,7 @@ class BaseCommonDashboard extends StatelessWidget {
                       child: Text(
                         name,
                         style: GoogleFonts.varelaRound(
-                          fontSize: 32,
+                          fontSize: 28,
                           color: Colors.white,
                         ),
                       ),
@@ -89,7 +89,7 @@ class BaseCommonDashboard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: sy(28)),
+                    SizedBox(height: 28),
                     ...children,
                   ],
                 ),
