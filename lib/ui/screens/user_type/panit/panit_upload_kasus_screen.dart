@@ -6,7 +6,7 @@ import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart'
 import 'package:power_on_hand/ui/widgets/grafik/laporan_list_item.dart';
 import 'package:power_on_hand/ui/widgets/input/text_and_input_widget.dart';
 
-class KanitUploadKasusScreen extends StatelessWidget {
+class PanitUploadKasusScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseInputBackground(

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
+import 'package:power_on_hand/ui/screens/user_type/panit/panit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/panit/panit_upload_lp_screen.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
@@ -23,7 +24,7 @@ class PanitDashboardScreen extends StatelessWidget {
               ButtonWithArrowWidget(
                 text: 'Upload Kasus',
                 onTap: () {
-                  Get.to(() => PanitUploadLpScreen());
+                  Get.to(() => PanitUploadKasusScreen());
                 },
               ),
               ButtonWithArrowWidget(
