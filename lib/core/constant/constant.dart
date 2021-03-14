@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 const double baseHeight = 640.0;
@@ -13,4 +14,8 @@ double sy(double value) {
 
 double sx(double value) {
   return value * Get.width / baseWidth;
+}
+
+class Styles {
+  static final primaryColor = Color(0xFF2BD9F5);
 }

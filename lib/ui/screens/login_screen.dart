@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/ui/screens/chose_tipe_screen.dart';
+import 'package:power_on_hand/core/controllers/auth_controller.dart';
 import 'package:power_on_hand/ui/screens/register_screen.dart';
 import 'package:power_on_hand/ui/widgets/half_color_button.dart';
 import 'package:power_on_hand/ui/widgets/logo_bareskim.dart';
@@ -11,6 +11,9 @@ import 'package:power_on_hand/ui/widgets/rounded_text_field.dart';
 import 'package:power_on_hand/ui/widgets/scaffold_three_color_container.dart';
 
 class LoginScreen extends StatelessWidget {
+  final cEmail = TextEditingController();
+  final cPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return ScaffoldThreeTopCircleContainer(
@@ -31,7 +34,7 @@ class LoginScreen extends StatelessWidget {
               LogoBareskimWidget(),
             ],
           ),
-          SizedBox(height: sy(12)),
+          SizedBox(height: 12),
           Text(
             'Power',
             style: GoogleFonts.varelaRound(
@@ -41,7 +44,7 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: sy(20)),
+            padding: EdgeInsets.only(left: 20),
             child: Text(
               'On Hand',
               style: GoogleFonts.varelaRound(
@@ -51,14 +54,21 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: sy(36)),
-          RoundedTextFieldWidget(hintText: 'Your Email'),
-          RoundedTextFieldWidget(hintText: 'Password'),
-          SizedBox(height: sy(14)),
+          SizedBox(height: 36),
+          RoundedTextFieldWidget(
+            hintText: 'Your Email',
+            cText: cEmail,
+          ),
+          RoundedTextFieldWidget(
+            hintText: 'Password',
+            cText: cPassword,
+            isPassword: true,
+          ),
+          SizedBox(height: 14),
           Row(
             children: [
-              FlatButton(
-                onPressed: () {},
+              Padding(
+                padding: EdgeInsets.all(paddingX),
                 child: Text(
                   'Login',
                   style: GoogleFonts.varelaRound(
@@ -70,7 +80,11 @@ class LoginScreen extends StatelessWidget {
               Spacer(),
               InkWell(
                 onTap: () {
-                  Get.to(() => ChooseTipeScreeen());
+                  FocusScope.of(context).unfocus();
+                  AuthController.to.login(
+                    email: cEmail.text.trim(),
+                    password: cPassword.text.trim(),
+                  );
                 },
                 child: Container(
                   width: 50,
@@ -87,7 +101,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: sy(42)),
+          SizedBox(height: 42),
           Row(
             children: [
               HalfColorButtonWidget(

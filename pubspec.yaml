@@ -37,6 +37,10 @@ dependencies:
   random_color: ^1.0.5
   oktoast: ^2.3.2
   file_picker: ^2.1.7
+  get_storage: ^1.4.0
+  dio: ^3.0.10
+  cached_network_image: ^2.5.0
+
 
 dev_dependencies:
   flutter_test:

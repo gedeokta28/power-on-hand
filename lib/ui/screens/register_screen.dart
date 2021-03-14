@@ -3,20 +3,48 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
+import 'package:power_on_hand/core/controllers/auth_controller.dart';
+import 'package:power_on_hand/core/utils/validate_utils.dart';
 import 'package:power_on_hand/ui/screens/login_screen.dart';
-import 'package:power_on_hand/ui/screens/register_success_screen.dart';
 import 'package:power_on_hand/ui/widgets/half_color_button.dart';
+import 'package:power_on_hand/ui/widgets/input/dropdown_widget.dart';
 import 'package:power_on_hand/ui/widgets/rounded_text_field.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
+  @override
+  _RegisterScreenState createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  final _formKey = GlobalKey<FormState>();
+
+  final cName = TextEditingController();
+  final cEmail = TextEditingController();
+  final cPhone = TextEditingController();
+  final cPassword = TextEditingController();
+
+  int _titleId;
+  void _dropdownCallback(int value) {
+    setState(() {
+      _titleId = value;
+    });
+    print(value);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    AuthController.to.getTitleList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFF58BFE6),
-        body: SingleChildScrollView(
-          child: Container(
-            constraints: BoxConstraints(maxHeight: Get.height),
+        body: Container(
+          // constraints: BoxConstraints(maxHeight: Get.height),
+          child: SingleChildScrollView(
             child: Stack(
               children: [
                 // Grey Circle
@@ -47,73 +75,125 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: paddingX, vertical: paddingY),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      InkWell(
-                        onTap: Get.back,
-                        child: Icon(
-                          FontAwesomeIcons.chevronLeft,
-                          color: Colors.white,
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InkWell(
+                          onTap: Get.back,
+                          child: Icon(
+                            FontAwesomeIcons.chevronLeft,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: sy(22)),
-                      Text(
-                        'Create \nAccount',
-                        style: GoogleFonts.varelaRound(
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                        SizedBox(height: sy(22)),
+                        Text(
+                          'Create \nAccount',
+                          style: GoogleFonts.varelaRound(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: sy(14)),
-                      RoundedTextFieldWidget(hintText: 'Name'),
-                      RoundedTextFieldWidget(hintText: 'Your Email'),
-                      RoundedTextFieldWidget(hintText: 'Password'),
-                      RoundedTextFieldWidget(hintText: 'No Handphone'),
-                      RoundedTextFieldWidget(hintText: 'Daftar Sebagai'),
-                      SizedBox(height: sy(14)),
-                      Row(
-                        children: [
-                          FlatButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Sign Up',
-                              style: GoogleFonts.varelaRound(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                        SizedBox(height: sy(14)),
+                        RoundedTextFieldWidget(
+                          hintText: 'Name',
+                          cText: cName,
+                          validator: (value) {
+                            return ValidateUtils.requiredField(value, 'Name wajib diisi');
+                          },
+                        ),
+                        RoundedTextFieldWidget(
+                          hintText: 'Your Email',
+                          cText: cEmail,
+                          validator: (value) {
+                            return ValidateUtils.validateEmail(value);
+                          },
+                        ),
+                        RoundedTextFieldWidget(
+                          hintText: 'Password',
+                          cText: cPassword,
+                          validator: (value) {
+                            return ValidateUtils.requiredField(value, 'Password wajib diisi');
+                          },
+                        ),
+                        RoundedTextFieldWidget(
+                          hintText: 'No Handphone',
+                          cText: cPhone,
+                          keyboardType: TextInputType.phone,
+                          validator: (value) {
+                            return ValidateUtils.requiredField(value, 'Phone wajib diisi');
+                          },
+                        ),
+                        GetBuilder<AuthController>(
+                          builder: (_) {
+                            return DropdownWidget(
+                              dropdownCallback: _dropdownCallback,
+                              dropdownValue: _titleId,
+                              dropdownDataList: _.listTitle,
+                            );
+                          },
+                        ),
+                        SizedBox(height: 14),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(paddingX),
+                              child: Text(
+                                'Sign Up',
+                                style: GoogleFonts.varelaRound(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                          Spacer(),
-                          InkWell(
-                            onTap: () => Get.off(() => RegisterSuccessScreen()),
-                            child: Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF4C525C),
-                                borderRadius: BorderRadius.circular(90),
-                              ),
-                              child: Icon(
-                                FontAwesomeIcons.arrowRight,
-                                color: Colors.white,
+                            Spacer(),
+                            Material(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(90),
+                              child: InkWell(
+                                onTap: () async {
+                                  FocusScope.of(context).unfocus();
+                                  var isValid = _formKey.currentState.validate();
+                                  if (isValid) {
+                                    AuthController.to.register(
+                                      name: cName.text.trim(),
+                                      email: cEmail.text.trim(),
+                                      phone: cPhone.text.trim(),
+                                      password: cPassword.text.trim(),
+                                      titleId: _titleId,
+                                    );
+                                  }
+                                },
+                                child: Ink(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF4C525C),
+                                    borderRadius: BorderRadius.circular(90),
+                                  ),
+                                  child: Icon(
+                                    FontAwesomeIcons.arrowRight,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: sy(48)),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: HalfColorButtonWidget(
-                          text: 'Login',
-                          color: Color(0xFF58BFE6),
-                          width: 90,
-                          onTap: () => Get.to(() => LoginScreen()),
+                          ],
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 48),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: HalfColorButtonWidget(
+                            text: 'Login',
+                            color: Color(0xFF58BFE6),
+                            width: 90,
+                            onTap: () => Get.to(() => LoginScreen()),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
