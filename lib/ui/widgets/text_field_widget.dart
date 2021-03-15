@@ -16,6 +16,8 @@ class TextFieldWidget extends StatelessWidget {
   final int maxLines;
   final Function onChanged;
   final bool addSuffixIcon;
+  final bool hasShadow;
+  final Color fillColor;
 
   TextFieldWidget(
       {this.title,
@@ -27,8 +29,10 @@ class TextFieldWidget extends StatelessWidget {
       this.maxLines = 1,
       this.helperText,
       this.onChanged,
+      this.fillColor,
       this.isReadOnly = false,
       this.addSuffixIcon = false,
+      this.hasShadow = true,
       this.isPassword = false,
       this.isTheLast = false});
 
@@ -49,18 +53,20 @@ class TextFieldWidget extends StatelessWidget {
               ),
         SizedBox(height: 4),
         Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 1,
-                spreadRadius: 0.1,
-                color: Colors.black.withOpacity(0.2),
-                offset: Offset(0, 1),
-              )
-            ],
-          ),
+          // decoration: !hasShadow
+          //     ? null
+          //     : BoxDecoration(
+          //         color: Colors.white,
+          //         borderRadius: BorderRadius.circular(20),
+          //         boxShadow: [
+          //           BoxShadow(
+          //             blurRadius: 1,
+          //             spreadRadius: 0.1,
+          //             color: Colors.black.withOpacity(0.2),
+          //             offset: Offset(0, 1),
+          //           )
+          //         ],
+          //       ),
           child: TextFormField(
             maxLines: maxLines,
             readOnly: isReadOnly,
@@ -94,7 +100,11 @@ class TextFieldWidget extends StatelessWidget {
                   style: BorderStyle.none,
                 ),
               ),
-              fillColor: Colors.white,
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              ),
+              fillColor: fillColor ?? Colors.white,
               filled: true,
               errorStyle: GoogleFonts.varelaRound(
                 fontSize: 12,

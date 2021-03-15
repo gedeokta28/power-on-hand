@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:power_on_hand/core/controllers/auth_controller.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/bottom_menu_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
@@ -77,7 +78,12 @@ class DirekturDashboardScreen extends StatelessWidget {
             padding: EdgeInsets.all(Get.width * 0.02),
             child: Row(
               children: [
-                InkWell(onTap: Get.back, child: Icon(FontAwesomeIcons.alignLeft)),
+                InkWell(
+                  onTap: () {
+                    AuthController.to.logout();
+                  },
+                  child: Icon(FontAwesomeIcons.alignLeft),
+                ),
                 Spacer(),
                 InkWell(
                     onTap: () {

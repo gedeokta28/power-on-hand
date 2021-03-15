@@ -8,7 +8,7 @@ import 'package:power_on_hand/core/utils/validate_utils.dart';
 import 'package:power_on_hand/ui/screens/login_screen.dart';
 import 'package:power_on_hand/ui/widgets/half_color_button.dart';
 import 'package:power_on_hand/ui/widgets/input/dropdown_widget.dart';
-import 'package:power_on_hand/ui/widgets/rounded_text_field.dart';
+import 'package:power_on_hand/ui/widgets/text_field_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -97,28 +97,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                         SizedBox(height: sy(14)),
-                        RoundedTextFieldWidget(
+                        TextFieldWidget(
+                          fillColor: Colors.grey[300].withOpacity(0.8),
                           hintText: 'Name',
                           cText: cName,
                           validator: (value) {
                             return ValidateUtils.requiredField(value, 'Name wajib diisi');
                           },
                         ),
-                        RoundedTextFieldWidget(
+                        TextFieldWidget(
+                          fillColor: Colors.grey[300].withOpacity(0.8),
                           hintText: 'Your Email',
                           cText: cEmail,
                           validator: (value) {
                             return ValidateUtils.validateEmail(value);
                           },
                         ),
-                        RoundedTextFieldWidget(
+                        TextFieldWidget(
+                          fillColor: Colors.grey[300].withOpacity(0.8),
                           hintText: 'Password',
                           cText: cPassword,
                           validator: (value) {
                             return ValidateUtils.requiredField(value, 'Password wajib diisi');
                           },
                         ),
-                        RoundedTextFieldWidget(
+                        TextFieldWidget(
+                          fillColor: Colors.grey[300].withOpacity(0.8),
                           hintText: 'No Handphone',
                           cText: cPhone,
                           keyboardType: TextInputType.phone,

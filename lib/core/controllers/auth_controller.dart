@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
 import 'package:power_on_hand/core/controllers/base_controller.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
@@ -121,5 +122,10 @@ class AuthController extends BaseController {
         break;
       default:
     }
+  }
+
+  void logout() async {
+    await StorageUtils.to.storage.erase();
+    Phoenix.rebirth(Get.context);
   }
 }

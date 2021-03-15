@@ -27,8 +27,8 @@ class DropDownFormField extends FormField<dynamic> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  margin: EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
                     color: Colors.grey[300].withOpacity(0.8),
                     borderRadius: BorderRadius.circular(20),
@@ -59,7 +59,7 @@ class DropDownFormField extends FormField<dynamic> {
                             child: Text(
                               title.name,
                               style: GoogleFonts.varelaRound(
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.black87,
                                 fontWeight: FontWeight.w400,
                               ),
