@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
+import 'package:power_on_hand/core/utils/file_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
 import 'package:power_on_hand/ui/screens/base_screen/success_screen.dart';
 import 'package:power_on_hand/ui/widgets/input/text_and_input_widget.dart';
@@ -15,13 +16,13 @@ class AnggotaInputKasusScreen extends StatefulWidget {
 }
 
 class _AnggotaInputKasusScreenState extends State<AnggotaInputKasusScreen> {
-  PlatformFile pfileLP;
-  TextEditingController cLP = TextEditingController();
+  PlatformFile pfileKasus;
+  TextEditingController cKasus = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return BaseInputBackground(
-      title: 'Input LP',
+      title: 'Input Kasus',
       buttonText: 'Upload',
       buttonOnTap: () {
         showToast('wip');
@@ -46,6 +47,15 @@ class _AnggotaInputKasusScreenState extends State<AnggotaInputKasusScreen> {
           ),
           TextFieldWidget.file(
             title: 'Identitas Pelapor',
+            onTap: () async {
+              var file = await FileUtils.openFileExplorer();
+              if (file != null) {
+                // setState(() {
+                //   pfileLP = file;
+                // });
+                // cLP.text = file.name;
+              }
+            },
           ),
           TextFieldWidget.file(
             title: 'Barang Bukti',
@@ -68,7 +78,7 @@ class _AnggotaInputKasusScreenState extends State<AnggotaInputKasusScreen> {
             fontColor: Colors.white,
             padding: 14,
             onPressed: () async {
-              Get.off(() => SuccessScreen(title: 'LP Terkirim'));
+              Get.off(() => SuccessScreen(title: 'Kasus Terkirim'));
             },
           ),
         ],

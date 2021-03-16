@@ -96,12 +96,16 @@ class DirekturDashboardScreen extends StatelessWidget {
           SizedBox(height: 16),
           SizedBox(
             width: Get.width / 1.5,
-            child: Text(
-              'Hi, Username',
-              style: GoogleFonts.varelaRound(
-                fontSize: 32,
-                color: Colors.white,
-              ),
+            child: GetBuilder<AuthController>(
+              builder: (_) {
+                return Text(
+                  'Hi, Perwira ${_?.user?.name ?? ""}',
+                  style: GoogleFonts.varelaRound(
+                    fontSize: 28,
+                    color: Colors.white,
+                  ),
+                );
+              },
             ),
           ),
           SizedBox(height: 24),

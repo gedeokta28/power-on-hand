@@ -94,9 +94,8 @@ class TextFieldWidget extends StatelessWidget {
                 color: Colors.black38,
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 borderSide: BorderSide(
-                  width: 0,
                   style: BorderStyle.none,
                 ),
               ),

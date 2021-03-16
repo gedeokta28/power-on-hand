@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
 import 'package:power_on_hand/core/controllers/base_controller.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
@@ -9,8 +8,14 @@ import 'package:power_on_hand/core/models/user_model.dart';
 import 'package:power_on_hand/core/services/auth_service.dart';
 import 'package:power_on_hand/core/utils/dialog_utils.dart';
 import 'package:power_on_hand/core/utils/storage_utils.dart';
+import 'package:power_on_hand/ui/screens/home_screen.dart';
 import 'package:power_on_hand/ui/screens/register_success_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/anggota/anggota_dashboard_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/direktur_dashboard_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_dashboard_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/kasubdit/dashboard/kasubdit_dashboard_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/panit/panit_dashboard_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/wadir/wadir_dashboard_screen.dart';
 
 class AuthController extends BaseController {
   static AuthController get to => Get.find();
@@ -106,26 +111,28 @@ class AuthController extends BaseController {
         Get.offAll(() => DirekturDashboardScreen());
         break;
       case "wadir":
-        Get.offAll(() => DirekturDashboardScreen());
+        Get.offAll(() => WadirDashboardScreen());
         break;
       case "kasubdit":
-        Get.offAll(() => DirekturDashboardScreen());
+        Get.offAll(() => KasubditDashboardScreen());
         break;
       case "kanit":
-        Get.offAll(() => DirekturDashboardScreen());
+        Get.offAll(() => KanitDashboardScreen());
         break;
       case "panit":
-        Get.offAll(() => DirekturDashboardScreen());
+        Get.offAll(() => PanitDashboardScreen);
         break;
       case "anggota":
-        Get.offAll(() => DirekturDashboardScreen());
+        Get.offAll(() => AnggotaDashboardScreen());
         break;
       default:
     }
   }
 
   void logout() async {
-    await StorageUtils.to.storage.erase();
-    Phoenix.rebirth(Get.context);
+    DialogUtils.showChoose('Anda mau keluar ?', 'Ya', onClick: () async {
+      await StorageUtils.to.storage.erase();
+      Get.offAll(() => HomeScreen());
+    });
   }
 }

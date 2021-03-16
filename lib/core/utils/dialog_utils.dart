@@ -48,7 +48,7 @@ class DialogUtils {
     );
   }
 
-  static void showChoose(String message, IconData icon, String buttonText, {Function onClick, bool closeOnOk = true}) {
+  static void showChoose(String message, String buttonText, {@required Function onClick, bool closeOnOk = true}) {
     Get.dialog(
       InfoDialog(
         text: message,
@@ -62,7 +62,7 @@ class DialogUtils {
             Get.back();
           }
         },
-        icon: icon,
+        icon: FontAwesomeIcons.checkCircle,
         onClickCancel: () => Get.back(),
         clickText: buttonText,
       ),

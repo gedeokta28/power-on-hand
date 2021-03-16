@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,18 +12,12 @@ void main() async {
   await GetStorage.init();
   Get.put(StorageUtils());
   Get.put(AuthController());
-  runApp(Phoenix(child: MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print('height');
-    print(Get.height);
-
-    print('width');
-    print(Get.width);
-
     return OKToast(
       position: ToastPosition.bottom,
       textStyle: GoogleFonts.varelaRound(),
