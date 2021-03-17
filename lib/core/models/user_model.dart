@@ -7,12 +7,14 @@ class UserModel {
   String phone;
   String status;
   String title;
+  String work;
   UserModel({
     @required this.id,
     @required this.name,
     @required this.email,
     @required this.phone,
     @required this.status,
+    @required this.work,
     @required this.title,
   });
 
@@ -23,6 +25,7 @@ class UserModel {
       email: json['email'],
       phone: json['phone'],
       status: json['status'],
+      work: json['work'],
       title: json['title'] == null ? '' : json['title']['role'],
     );
   }

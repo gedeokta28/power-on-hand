@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/user_controller.dart';
+import 'package:power_on_hand/ui/widgets/dialog/input_dialog.dart';
 
 class BaseCommonDashboard extends StatelessWidget {
   final List<Widget> children;
@@ -79,23 +80,32 @@ class BaseCommonDashboard extends StatelessWidget {
                         },
                       ),
                     ),
-                    Chip(
-                      backgroundColor: Color(0xFF4DB4FF),
-                      visualDensity: VisualDensity.compact,
-                      label: Text(
-                        'Dinas',
-                        style: GoogleFonts.varelaRound(
-                          fontSize: 12,
-                          color: Colors.white,
+                    InkWell(
+                      onTap: () async {
+                        Get.dialog(InputStatusDialog());
+                      },
+                      child: Chip(
+                        backgroundColor: Color(0xFF4DB4FF),
+                        visualDensity: VisualDensity.compact,
+                        label: GetBuilder<UserController>(
+                          builder: (_) {
+                            return Text(
+                              _.user.work ?? '',
+                              style: GoogleFonts.varelaRound(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                            );
+                          },
                         ),
-                      ),
-                      labelPadding: EdgeInsets.only(right: 4),
-                      avatar: Container(
-                        width: 12,
-                        height: 12,
-                        decoration: BoxDecoration(
-                          color: Colors.greenAccent[400],
-                          borderRadius: BorderRadius.circular(180),
+                        labelPadding: EdgeInsets.only(right: 4),
+                        avatar: Container(
+                          width: 12,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            color: Colors.greenAccent[400],
+                            borderRadius: BorderRadius.circular(180),
+                          ),
                         ),
                       ),
                     ),

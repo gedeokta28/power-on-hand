@@ -55,4 +55,10 @@ class UserService extends HttpConnection {
       return UserModel.fromJson(res.data);
     }
   }
+
+  Future updateStatus(String status) async {
+    FormData _data = FormData.fromMap({"work": status});
+
+    return await post('/user/updatestatus', data: _data);
+  }
 }

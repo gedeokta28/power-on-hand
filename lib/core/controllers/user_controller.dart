@@ -23,7 +23,7 @@ class UserController extends BaseController {
   List<TitleModel> listTitle = [];
   UserModel user;
 
-  var _authService = UserService();
+  var _userService = UserService();
 
   @override
   void onInit() async {
@@ -39,7 +39,7 @@ class UserController extends BaseController {
   // Get title list to use in register
   Future getTitleList() async {
     setLoading(true);
-    listTitle = await _authService.getListTitle();
+    listTitle = await _userService.getListTitle();
     update();
     setLoading(false);
   }
@@ -52,7 +52,7 @@ class UserController extends BaseController {
     @required int titleId,
   }) async {
     setLoading(true);
-    ApiResponseModel res = await _authService.register(
+    ApiResponseModel res = await _userService.register(
       name,
       email,
       phone,
@@ -78,7 +78,7 @@ class UserController extends BaseController {
     @required String password,
   }) async {
     setLoading(true);
-    dio.Response res = await _authService.login(email, password);
+    dio.Response res = await _userService.login(email, password);
     setLoading(false);
 
     //* Throw errors
@@ -100,7 +100,7 @@ class UserController extends BaseController {
   }
 
   Future getUser() async {
-    user = await _authService.me();
+    user = await _userService.me();
     update();
   }
 
@@ -136,5 +136,26 @@ class UserController extends BaseController {
       await StorageUtils.to.storage.erase();
       Get.offAll(() => HomeScreen());
     });
+  }
+
+  Future updateStatus({
+    @required String status,
+  }) async {
+    DialogUtils.showLoading('Updating');
+    ApiResponseModel res = await _userService.updateStatus(status);
+
+    //* Throw errors
+    if (res.status >= 400) {
+      DialogUtils.showInfo(res.data['errors'].toString());
+      return;
+    }
+
+    if (res?.status == 200) {
+      DialogUtils.closeDialog();
+      DialogUtils.showInfo('Status update success');
+      getUser();
+    } else {
+      DialogUtils.showWarning('Login gagal, silahkan coba lagi atau hubungi admin');
+    }
   }
 }
