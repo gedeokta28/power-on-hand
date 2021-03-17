@@ -5,7 +5,7 @@ import 'package:power_on_hand/core/controllers/base_controller.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
 import 'package:power_on_hand/core/models/title_model.dart';
 import 'package:power_on_hand/core/models/user_model.dart';
-import 'package:power_on_hand/core/services/auth_service.dart';
+import 'package:power_on_hand/core/services/user_service.dart';
 import 'package:power_on_hand/core/utils/dialog_utils.dart';
 import 'package:power_on_hand/core/utils/storage_utils.dart';
 import 'package:power_on_hand/ui/screens/home_screen.dart';
@@ -17,13 +17,13 @@ import 'package:power_on_hand/ui/screens/user_type/kasubdit/dashboard/kasubdit_d
 import 'package:power_on_hand/ui/screens/user_type/panit/panit_dashboard_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/wadir/wadir_dashboard_screen.dart';
 
-class AuthController extends BaseController {
-  static AuthController get to => Get.find();
+class UserController extends BaseController {
+  static UserController get to => Get.find();
 
   List<TitleModel> listTitle = [];
   UserModel user;
 
-  var _authService = AuthService();
+  var _authService = UserService();
 
   @override
   void onInit() async {
@@ -126,6 +126,8 @@ class AuthController extends BaseController {
         Get.offAll(() => AnggotaDashboardScreen());
         break;
       default:
+        Get.offAll(() => AnggotaDashboardScreen());
+        break;
     }
   }
 

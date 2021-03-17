@@ -4,7 +4,7 @@ import 'package:power_on_hand/core/models/title_model.dart';
 import 'package:power_on_hand/core/models/user_model.dart';
 import 'package:power_on_hand/core/services/http_connection.dart';
 
-class AuthService extends HttpConnection {
+class UserService extends HttpConnection {
   Future getListTitle() async {
     ApiResponseModel resp = await get('/title/list', needsToken: false);
     if (resp.status == 200) {

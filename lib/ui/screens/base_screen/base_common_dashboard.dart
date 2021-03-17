@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/core/controllers/auth_controller.dart';
+import 'package:power_on_hand/core/controllers/user_controller.dart';
 
 class BaseCommonDashboard extends StatelessWidget {
   final List<Widget> children;
@@ -56,7 +56,7 @@ class BaseCommonDashboard extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            AuthController.to.logout();
+                            UserController.to.logout();
                           },
                           child: Icon(FontAwesomeIcons.signOutAlt),
                         ),
@@ -67,7 +67,7 @@ class BaseCommonDashboard extends StatelessWidget {
                     SizedBox(height: sy(22)),
                     SizedBox(
                       width: Get.width / 1.5,
-                      child: GetBuilder<AuthController>(
+                      child: GetBuilder<UserController>(
                         builder: (_) {
                           return Text(
                             'HI, Perwira ${_?.user?.name ?? ""}',

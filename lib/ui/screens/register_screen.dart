@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/core/controllers/auth_controller.dart';
+import 'package:power_on_hand/core/controllers/user_controller.dart';
 import 'package:power_on_hand/core/utils/validate_utils.dart';
 import 'package:power_on_hand/ui/screens/login_screen.dart';
 import 'package:power_on_hand/ui/widgets/half_color_button.dart';
@@ -34,7 +34,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   void initState() {
     super.initState();
-    AuthController.to.getTitleList();
+    UserController.to.getTitleList();
   }
 
   @override
@@ -130,7 +130,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return ValidateUtils.requiredField(value, 'Phone wajib diisi');
                           },
                         ),
-                        GetBuilder<AuthController>(
+                        GetBuilder<UserController>(
                           builder: (_) {
                             return DropdownWidget(
                               dropdownCallback: _dropdownCallback,
@@ -161,7 +161,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   FocusScope.of(context).unfocus();
                                   var isValid = _formKey.currentState.validate();
                                   if (isValid) {
-                                    AuthController.to.register(
+                                    UserController.to.register(
                                       name: cName.text.trim(),
                                       email: cEmail.text.trim(),
                                       phone: cPhone.text.trim(),

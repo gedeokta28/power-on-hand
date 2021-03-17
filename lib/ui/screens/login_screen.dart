@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/core/controllers/auth_controller.dart';
+import 'package:power_on_hand/core/controllers/user_controller.dart';
 import 'package:power_on_hand/core/utils/validate_utils.dart';
 import 'package:power_on_hand/ui/screens/register_screen.dart';
 import 'package:power_on_hand/ui/widgets/half_color_button.dart';
@@ -94,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                   onTap: () {
                     FocusScope.of(context).unfocus();
                     if (_formKey.currentState.validate()) {
-                      AuthController.to.login(
+                      UserController.to.login(
                         email: cEmail.text.trim(),
                         password: cPassword.text.trim(),
                       );

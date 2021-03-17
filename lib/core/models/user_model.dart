@@ -23,7 +23,7 @@ class UserModel {
       email: json['email'],
       phone: json['phone'],
       status: json['status'],
-      title: json['title']['role'],
+      title: json['title'] == null ? '' : json['title']['role'],
     );
   }
 }

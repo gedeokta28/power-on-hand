@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:power_on_hand/core/controllers/auth_controller.dart';
+import 'package:power_on_hand/core/controllers/user_controller.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/bottom_menu_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
@@ -80,7 +80,7 @@ class DirekturDashboardScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    AuthController.to.logout();
+                    UserController.to.logout();
                   },
                   child: Icon(FontAwesomeIcons.alignLeft),
                 ),
@@ -96,7 +96,7 @@ class DirekturDashboardScreen extends StatelessWidget {
           SizedBox(height: 16),
           SizedBox(
             width: Get.width / 1.5,
-            child: GetBuilder<AuthController>(
+            child: GetBuilder<UserController>(
               builder: (_) {
                 return Text(
                   'Hi, Perwira ${_?.user?.name ?? ""}',
