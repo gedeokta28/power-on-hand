@@ -59,7 +59,6 @@ class InputStatusDialog extends StatelessWidget {
             onPressed: () {
               if (_formKey.currentState.validate()) {
                 UserController.to.updateStatus(status: cStatus.text);
-                DialogUtils.closeDialog();
               }
             },
             child: Text(

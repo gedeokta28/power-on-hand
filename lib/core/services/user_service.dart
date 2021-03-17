@@ -23,8 +23,6 @@ class UserService extends HttpConnection {
     String password,
     int titleId,
   ) async {
-    print('titleId');
-    print(titleId);
     FormData _data = FormData.fromMap({
       "name": name,
       "title_id": 7,

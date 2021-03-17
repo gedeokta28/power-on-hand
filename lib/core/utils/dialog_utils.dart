@@ -6,7 +6,15 @@ import 'package:power_on_hand/ui/widgets/dialog/info_dialog.dart';
 import 'package:power_on_hand/ui/widgets/dialog/loading_dialog.dart';
 
 class DialogUtils {
-  static void showInfo(String message, {String buttonText = "OK", Function onClick, bool closeOnOk = true}) {
+  // closePreDialog is for closing dialog before opening new one
+  static void showInfo(
+    String message, {
+    String buttonText = "OK",
+    Function onClick,
+    bool closeOnOk = true,
+    bool closePreDialog = false,
+  }) {
+    if (closePreDialog) closeDialog();
     Get.dialog(
       InfoDialog(
         text: message,
@@ -27,7 +35,14 @@ class DialogUtils {
     );
   }
 
-  static void showWarning(String message, {String buttonText = "OK", Function onClick, bool closeOnOk = true}) {
+  static void showWarning(
+    String message, {
+    String buttonText = "OK",
+    Function onClick,
+    bool closeOnOk = true,
+    bool closePreDialog = false,
+  }) {
+    if (closePreDialog) closeDialog();
     Get.dialog(
       InfoDialog(
         text: message,
@@ -48,7 +63,14 @@ class DialogUtils {
     );
   }
 
-  static void showChoose(String message, String buttonText, {@required Function onClick, bool closeOnOk = true}) {
+  static void showChoose(
+    String message,
+    String buttonText, {
+    @required Function onClick,
+    bool closeOnOk = true,
+    bool closePreDialog = false,
+  }) {
+    if (closePreDialog) closeDialog();
     Get.dialog(
       InfoDialog(
         text: message,
@@ -70,7 +92,11 @@ class DialogUtils {
     );
   }
 
-  static void showLoading(String message) {
+  static void showLoading(
+    String message, {
+    bool closePreDialog = false,
+  }) {
+    if (closePreDialog) closeDialog();
     Get.dialog(
       LoadingDialog(text: message),
       barrierDismissible: false,

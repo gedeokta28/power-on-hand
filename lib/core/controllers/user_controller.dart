@@ -51,7 +51,7 @@ class UserController extends BaseController {
     @required String password,
     @required int titleId,
   }) async {
-    setLoading(true);
+    DialogUtils.showLoading('Registering...');
     ApiResponseModel res = await _userService.register(
       name,
       email,
@@ -59,17 +59,17 @@ class UserController extends BaseController {
       password,
       titleId,
     );
-    setLoading(false);
 
     if (res?.status == 422) {
-      DialogUtils.showInfo(res.errors.toString());
+      DialogUtils.showInfo(res.errors.toString(), closePreDialog: true);
       return;
     }
 
     if (res?.status == 201) {
-      Get.to(() => RegisterSuccessScreen());
+      DialogUtils.closeDialog();
+      Get.off(() => RegisterSuccessScreen());
     } else {
-      DialogUtils.showWarning('Pendaftaran gagal, silahkan coba lagi atau hubungi admin');
+      DialogUtils.showWarning('Pendaftaran gagal, silahkan coba lagi atau hubungi admin', closePreDialog: true);
     }
   }
 
@@ -77,13 +77,12 @@ class UserController extends BaseController {
     @required String email,
     @required String password,
   }) async {
-    setLoading(true);
+    DialogUtils.showLoading('Login in..');
     dio.Response res = await _userService.login(email, password);
-    setLoading(false);
 
     //* Throw errors
     if (res.statusCode >= 400) {
-      DialogUtils.showInfo(res.data['errors'].toString());
+      DialogUtils.showInfo(res.data['errors'].toString(), closePreDialog: true);
       return;
     }
 
@@ -95,7 +94,7 @@ class UserController extends BaseController {
       await getUser();
       sendToDashboard();
     } else {
-      DialogUtils.showWarning('Login gagal, silahkan coba lagi atau hubungi admin');
+      DialogUtils.showWarning('Login gagal, silahkan coba lagi atau hubungi admin', closePreDialog: true);
     }
   }
 
@@ -141,7 +140,7 @@ class UserController extends BaseController {
   Future updateStatus({
     @required String status,
   }) async {
-    DialogUtils.showLoading('Updating');
+    DialogUtils.showLoading('Updating...', closePreDialog: true);
     ApiResponseModel res = await _userService.updateStatus(status);
 
     //* Throw errors
@@ -151,8 +150,7 @@ class UserController extends BaseController {
     }
 
     if (res?.status == 200) {
-      DialogUtils.closeDialog();
-      DialogUtils.showInfo('Status update success');
+      DialogUtils.showInfo('Status update success', closePreDialog: true);
       getUser();
     } else {
       DialogUtils.showWarning('Login gagal, silahkan coba lagi atau hubungi admin');

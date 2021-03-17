@@ -81,7 +81,7 @@ class BaseCommonDashboard extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () async {
+                      onTap: () {
                         Get.dialog(InputStatusDialog());
                       },
                       child: Chip(

@@ -14,11 +14,14 @@ class LoadingDialog extends StatelessWidget {
       title: Center(
         child: CircularProgressIndicator(),
       ),
-      content: Text(text,
-          style: TextStyle(
-            color: Colors.black87,
-            fontSize: 16,
-          )),
+      content: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.black87,
+          fontSize: 16,
+        ),
+      ),
     );
   }
 }

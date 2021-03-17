@@ -123,6 +123,7 @@ class TextFieldWidget extends StatelessWidget {
     String hintText,
     Function onTap,
     TextEditingController cText,
+    Function validator,
   }) {
     return TextFieldWidget(
       title: title,
@@ -131,6 +132,7 @@ class TextFieldWidget extends StatelessWidget {
       isReadOnly: true,
       onTap: onTap,
       cText: cText,
+      validator: validator,
     );
   }
 }
