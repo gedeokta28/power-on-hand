@@ -105,6 +105,7 @@ class UserController extends BaseController {
 
 // Send user to their dashboard according to role
   void sendToDashboard() {
+    print(user.title);
     switch (user.title) {
       case "direktur":
         Get.offAll(() => DirekturDashboardScreen());
@@ -119,7 +120,7 @@ class UserController extends BaseController {
         Get.offAll(() => KanitDashboardScreen());
         break;
       case "panit":
-        Get.offAll(() => PanitDashboardScreen);
+        Get.offAll(() => PanitDashboardScreen());
         break;
       case "anggota":
         Get.offAll(() => AnggotaDashboardScreen());
