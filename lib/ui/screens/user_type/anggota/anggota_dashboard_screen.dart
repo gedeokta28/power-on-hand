@@ -8,7 +8,7 @@ import 'package:power_on_hand/core/utils/helper_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
 import 'package:power_on_hand/ui/screens/user_type/anggota/anggota_input_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/anggota/anggota_input_laporan_harian_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
+import 'package:power_on_hand/ui/widgets/bottom_sheet/statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_list_title_widget.dart';
@@ -48,7 +48,7 @@ class _AnggotaDashboardScreenState extends State<AnggotaDashboardScreen> {
                 text: 'Statistik Penilaian',
                 onTap: () {
                   Get.bottomSheet(
-                    KanitStatistikPenilaianBottomSheet(),
+                    StatistikPenilaianBottomSheet(),
                     isScrollControlled: true,
                   );
                 },

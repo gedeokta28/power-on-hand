@@ -4,10 +4,10 @@ import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/kanit_controller.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_paparan_screen.dart';
+import 'package:power_on_hand/ui/widgets/bottom_sheet/statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_list_title_widget.dart';
@@ -40,7 +40,7 @@ class KanitDashboardScreen extends StatelessWidget {
                 text: 'Statitik Penilaian',
                 onTap: () {
                   Get.bottomSheet(
-                    KanitStatistikPenilaianBottomSheet(),
+                    StatistikPenilaianBottomSheet(),
                     isScrollControlled: true,
                   );
                 },

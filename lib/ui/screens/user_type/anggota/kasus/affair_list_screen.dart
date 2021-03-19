@@ -19,27 +19,30 @@ class AffairListScreen extends StatelessWidget {
           child: GetBuilder<AnggotaController>(
             autoRemove: false,
             builder: (_) {
-              return _.listAffair.isEmpty
-                  ? Center(child: CircularProgressIndicator())
-                  : ListView.separated(
-                      separatorBuilder: (_, __) => Divider(height: 1),
-                      physics: BouncingScrollPhysics(),
-                      itemCount: _.listAffair.length,
-                      itemBuilder: (context, index) {
-                        var affair = _.listAffair[index];
-                        return ListTile(
-                          onTap: () {
-                            // return affair chosen
-                            Get.back(result: affair);
-                          },
-                          dense: true,
-                          title: Text(
-                            affair.name,
-                            style: GoogleFonts.varelaRound(fontSize: 14),
-                          ),
-                        );
-                      },
-                    );
+              if (_.listAffair.isEmpty) {
+                _.getAffairList();
+                _.getProvisionList();
+                return Center(child: CircularProgressIndicator());
+              }
+              return ListView.separated(
+                separatorBuilder: (_, __) => Divider(height: 1),
+                physics: BouncingScrollPhysics(),
+                itemCount: _.listAffair.length,
+                itemBuilder: (context, index) {
+                  var affair = _.listAffair[index];
+                  return ListTile(
+                    onTap: () {
+                      // return affair chosen
+                      Get.back(result: affair);
+                    },
+                    dense: true,
+                    title: Text(
+                      affair.name,
+                      style: GoogleFonts.varelaRound(fontSize: 14),
+                    ),
+                  );
+                },
+              );
             },
           ),
         ),

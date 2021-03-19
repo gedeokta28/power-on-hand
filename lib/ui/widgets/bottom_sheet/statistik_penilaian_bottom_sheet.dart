@@ -3,24 +3,24 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:power_on_hand/core/constant/constant.dart';
+import 'package:power_on_hand/core/controllers/anggota_controller.dart';
 import 'package:random_color/random_color.dart';
 
-class KanitStatistikPenilaianBottomSheet extends StatelessWidget {
+class StatistikPenilaianBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height - sy(70),
+      height: Get.height - 70,
       color: Colors.white,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Align(
             alignment: Alignment.center,
             child: Container(
-              width: sy(36),
-              height: sy(4),
-              margin: EdgeInsets.all(sy(8)),
+              width: 36,
+              height: 4,
+              margin: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.black54,
@@ -38,7 +38,7 @@ class KanitStatistikPenilaianBottomSheet extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(sy(8)),
+                padding: EdgeInsets.all(8),
                 child: Text(
                   'Senin, 01-02-2021',
                   style: GoogleFonts.varelaRound(
@@ -57,37 +57,30 @@ class KanitStatistikPenilaianBottomSheet extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              GrafikPercentWidget(
-                title: '23 Laporan Masuk',
-                percentage: 75,
-              ),
-              GrafikPercentWidget(
-                title: '7 Laporan Terkirim',
-                percentage: 40,
-              ),
-            ],
+          GetBuilder<AnggotaController>(
+            builder: (_) {
+              return Wrap(
+                runSpacing: 12,
+                spacing: 12,
+                children: _.listStatistik == null
+                    ? Center(child: CircularProgressIndicator())
+                    : _.listStatistik
+                        .map((statistik) => GrafikPercentWidget(
+                              title: statistik.name,
+                              percentage: statistik.percentange,
+                            ))
+                        .toList()
+                        .cast<Widget>(),
+              );
+            },
           ),
-          SizedBox(height: sy(12)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              GrafikPercentWidget(
-                title: '11 Kasus Masuk',
-                percentage: 25,
-              ),
-              GrafikPercentWidget(
-                title: '5 Kasus Dikirim',
-                percentage: 90,
-              ),
-            ],
-          ),
-          SizedBox(height: sy(12)),
-          PointWidget(
-            text: 'Point',
-            textChip: '25',
+          SizedBox(height: 12),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: PointWidget(
+              text: 'Point',
+              textChip: '25',
+            ),
           ),
         ],
       ),
@@ -105,15 +98,15 @@ class GrafikPercentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(sy(12)),
-      margin: EdgeInsets.all(sy(4)),
+      padding: EdgeInsets.all(12),
+      margin: EdgeInsets.all(4),
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.05),
         borderRadius: BorderRadius.circular(30),
       ),
       child: CircularPercentIndicator(
         radius: Get.width / 3.3,
-        lineWidth: sy(14),
+        lineWidth: 20,
         animation: true,
         animationDuration: 1000,
         percent: percentage / 100,
@@ -158,8 +151,8 @@ class PointWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.all(sy(8)),
-          padding: EdgeInsets.symmetric(vertical: sy(4), horizontal: sy(8)),
+          margin: EdgeInsets.all(8),
+          padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
           decoration: BoxDecoration(
             color: Colors.red[300],
             borderRadius: BorderRadius.circular(30),
@@ -182,9 +175,9 @@ class PointWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(width: sy(6)),
+              SizedBox(width: 6),
               Container(
-                padding: EdgeInsets.all(sy(6)),
+                padding: EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   color: Colors.green[300],
                   borderRadius: BorderRadius.circular(20),

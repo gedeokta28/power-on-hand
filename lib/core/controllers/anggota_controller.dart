@@ -6,8 +6,10 @@ import 'package:intl/intl.dart';
 import 'package:power_on_hand/core/controllers/base_controller.dart';
 import 'package:power_on_hand/core/models/affair_model.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
+import 'package:power_on_hand/core/models/chart/daily_model.dart';
 import 'package:power_on_hand/core/models/kasus_model.dart';
 import 'package:power_on_hand/core/models/provision_model.dart';
+import 'package:power_on_hand/core/services/chart_service.dart';
 import 'package:power_on_hand/core/services/kasus_service.dart';
 import 'package:power_on_hand/core/utils/dialog_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/success_screen.dart';
@@ -18,15 +20,16 @@ class AnggotaController extends BaseController {
   List<ProvisionModel> listProvision = [];
   List<AffairModel> listAffair = [];
   List<KasusModel> listKasusHistory;
+  List<DailyModel> listStatistik;
 
   var _kasusService = KasusService();
+  var _chartService = ChartService();
 
   @override
   void onInit() {
     super.onInit();
-    getProvisionList();
-    getAffairList();
     getKasusHistoryList();
+    getAnggotaChart();
   }
 
   Future getProvisionList() async {
@@ -92,5 +95,10 @@ class AnggotaController extends BaseController {
     update();
 
     setLoading(false);
+  }
+
+  Future getAnggotaChart() async {
+    listStatistik = await _chartService.getAnggotaChart();
+    update();
   }
 }

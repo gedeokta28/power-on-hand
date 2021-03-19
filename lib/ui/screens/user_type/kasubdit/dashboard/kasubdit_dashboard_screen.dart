@@ -5,10 +5,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/bottom_sheet/kanit_statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_paparan_screen.dart';
+import 'package:power_on_hand/ui/widgets/bottom_sheet/statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/dashboard_menu_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/grafik_widget.dart';
@@ -212,7 +212,7 @@ class KasubditDashboardScreen extends StatelessWidget {
                     title: 'Aktivitas Anggota',
                     onTap: () {
                       Get.bottomSheet(
-                        KanitStatistikPenilaianBottomSheet(),
+                        StatistikPenilaianBottomSheet(),
                         isScrollControlled: true,
                       );
                     },
@@ -221,7 +221,7 @@ class KasubditDashboardScreen extends StatelessWidget {
                     title: 'Statistik Penilaian',
                     onTap: () {
                       Get.bottomSheet(
-                        KanitStatistikPenilaianBottomSheet(),
+                        StatistikPenilaianBottomSheet(),
                         isScrollControlled: true,
                       );
                     },
