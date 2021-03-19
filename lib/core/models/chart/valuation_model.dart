@@ -20,12 +20,4 @@ class ValuationModel {
         subdit4: json["Subdit 4"] == null ? null : json["Subdit 4"],
         subdit5: json["Subdit 5"] == null ? null : json["Subdit 5"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "Subdit 1": subdit1 == null ? null : subdit1,
-        "Subdit 2": subdit2 == null ? null : subdit2,
-        "Subdit 3": subdit3 == null ? null : subdit3,
-        "Subdit 4": subdit4 == null ? null : subdit4,
-        "Subdit 5": subdit5 == null ? null : subdit5,
-      };
 }

@@ -14,10 +14,4 @@ class DailyModel {
         total: json["total"],
         percentange: json["percentange"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "total": total,
-        "percentange": percentange,
-      };
 }

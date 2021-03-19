@@ -1,74 +1,16 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_paparan_screen.dart';
-import 'package:power_on_hand/ui/widgets/bottom_sheet/statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/dashboard_menu_item_widget.dart';
-import 'package:power_on_hand/ui/widgets/grafik/grafik_widget.dart';
-import 'package:power_on_hand/ui/widgets/grafik/indicator_widget.dart';
-import 'package:power_on_hand/ui/widgets/grafik/statistik_item_widget.dart';
-import 'package:power_on_hand/ui/widgets/grafik/statistik_penilaian_widget.dart';
 import 'package:power_on_hand/ui/widgets/scaffold_three_color_container.dart';
 
 class KasubditDashboardScreen extends StatelessWidget {
-  final List<PieChartSectionData> kelaminChartList = [
-    PieChartSectionData(
-      color: const Color(0xff13d38e),
-      value: 30,
-      title: '30%',
-      radius: 65,
-      titleStyle: GoogleFonts.montserrat(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: Colors.white,
-      ),
-    ),
-    PieChartSectionData(
-      color: const Color(0xFFCF1F69),
-      value: 40,
-      title: '40%',
-      radius: 65,
-      titleStyle: GoogleFonts.montserrat(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: Colors.white,
-      ),
-    ),
-    PieChartSectionData(
-      color: const Color(0xff845bef),
-      value: 30,
-      title: '30%',
-      radius: 65,
-      titleStyle: GoogleFonts.montserrat(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: Colors.white,
-      ),
-    ),
-  ];
-
-  final List<Indicator> laporanIndicatorList = [
-    Indicator(
-      color: Color(0xff13d38e),
-      text: 'Laporan Masuk',
-    ),
-    Indicator(
-      color: Color(0xFFCF1F69),
-      text: 'Laporan Terselesaikan',
-    ),
-    Indicator(
-      color: Color(0xff845bef),
-      text: 'Laporan Tidak Terselesaikan',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return ScaffoldThreeTopCircleContainer(
@@ -105,25 +47,22 @@ class KasubditDashboardScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              StatistikItemWidget(
-                title: 'Statistik Penilaian',
-                onTapLihat: () {
-                  showToast('wip');
-                },
-                color: Color(0xFFF44771),
-                chartWidget: StatistikPenilaianWidget(),
-              ),
-              StatistikItemWidget(
-                title: 'Statistik Laporan',
-                onTapLihat: () {
-                  showToast('wip');
-                },
-                color: Color(0xFF9DFFE1),
-                chartWidget: GrafikWidget(
-                  indicatorList: laporanIndicatorList,
-                  pieChartList: kelaminChartList,
-                ),
-              ),
+              // StatistikItemWidget(
+              //   title: 'Statistik Penilaian',
+              //   onTapLihat: () {
+              //     showToast('wip');
+              //   },
+              //   color: Color(0xFFF44771),
+              //   chartWidget: StatistikPenilaianWidget(),
+              // ),
+              // StatistikItemWidget(
+              //   title: 'Statistik Laporan',
+              //   onTapLihat: () {
+              //     showToast('wip');
+              //   },
+              //   color: Color(0xFF9DFFE1),
+              //   chartWidget: GrafikWidget(),
+              // ),
             ],
           ),
           SizedBox(height: 12),
@@ -211,19 +150,19 @@ class KasubditDashboardScreen extends StatelessWidget {
                   DashboardMenuItemWidget(
                     title: 'Aktivitas Anggota',
                     onTap: () {
-                      Get.bottomSheet(
-                        StatistikPenilaianBottomSheet(),
-                        isScrollControlled: true,
-                      );
+                      // Get.bottomSheet(
+                      //   StatistikPenilaianBottomSheet(),
+                      //   isScrollControlled: true,
+                      // );
                     },
                   ),
                   DashboardMenuItemWidget(
                     title: 'Statistik Penilaian',
                     onTap: () {
-                      Get.bottomSheet(
-                        StatistikPenilaianBottomSheet(),
-                        isScrollControlled: true,
-                      );
+                      // Get.bottomSheet(
+                      //   StatistikPenilaianBottomSheet(),
+                      //   isScrollControlled: true,
+                      // );
                     },
                   ),
                 ],

@@ -1,10 +1,3 @@
-import 'dart:convert';
-
-List<TitleModel> titleModelFromJson(String str) =>
-    List<TitleModel>.from(json.decode(str).map((x) => TitleModel.fromJson(x)));
-
-String titleModelToJson(List<TitleModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class TitleModel {
   TitleModel({
     this.id,
@@ -33,14 +26,4 @@ class TitleModel {
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "alias": alias == null ? null : alias,
-        "role": role,
-        "limit": limit,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
-      };
 }

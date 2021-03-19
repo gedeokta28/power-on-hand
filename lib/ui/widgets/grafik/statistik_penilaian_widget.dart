@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
+import 'package:power_on_hand/core/models/chart/valuation_model.dart';
 
 class StatistikPenilaianWidget extends StatelessWidget {
+  final List<ValuationModel> listStatistik;
+  const StatistikPenilaianWidget({Key key, @required this.listStatistik}) : super(key: key);
+
   final Color barBackgroundColor = const Color(0xff72d8bf);
+  final maxY = 100.0;
+
   BarChartGroupData makeGroupData(
     int x,
     double y, {
@@ -23,7 +29,7 @@ class StatistikPenilaianWidget extends StatelessWidget {
           width: width,
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
-            y: 40,
+            y: maxY,
             colors: [barBackgroundColor],
           ),
         ),
@@ -39,7 +45,7 @@ class StatistikPenilaianWidget extends StatelessWidget {
       child: BarChart(
         BarChartData(
           alignment: BarChartAlignment.spaceAround,
-          maxY: 40,
+          maxY: maxY,
           barTouchData: BarTouchData(
             enabled: false,
             touchTooltipData: BarTouchTooltipData(
@@ -96,11 +102,11 @@ class StatistikPenilaianWidget extends StatelessWidget {
             show: false,
           ),
           barGroups: [
-            makeGroupData(0, 15, showTooltips: [0], barColor: Color(0xFF2FFFE6)),
-            makeGroupData(0, 20, showTooltips: [0], barColor: Color(0xFFE0FF9F)),
-            makeGroupData(0, 25, showTooltips: [0], barColor: Color(0xFFFF7070)),
-            makeGroupData(0, 5, showTooltips: [0], barColor: Color(0xFF313131)),
-            makeGroupData(0, 15, showTooltips: [0], barColor: Color(0xFFFFC738)),
+            makeGroupData(0, listStatistik[0].subdit1.toDouble(), showTooltips: [0], barColor: Color(0xFF2FFFE6)),
+            makeGroupData(0, listStatistik[1].subdit2.toDouble(), showTooltips: [0], barColor: Color(0xFFE0FF9F)),
+            makeGroupData(0, listStatistik[2].subdit3.toDouble(), showTooltips: [0], barColor: Color(0xFFFF7070)),
+            makeGroupData(0, listStatistik[3].subdit4.toDouble(), showTooltips: [0], barColor: Color(0xFF313131)),
+            makeGroupData(0, listStatistik[4].subdit5.toDouble(), showTooltips: [0], barColor: Color(0xFFFFC738)),
           ],
         ),
       ),

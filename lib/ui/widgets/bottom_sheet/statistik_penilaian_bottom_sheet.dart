@@ -3,10 +3,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:power_on_hand/core/controllers/anggota_controller.dart';
+import 'package:power_on_hand/core/models/chart/daily_model.dart';
 import 'package:random_color/random_color.dart';
 
 class StatistikPenilaianBottomSheet extends StatelessWidget {
+  final List<DailyModel> listStatistik;
+  const StatistikPenilaianBottomSheet({
+    Key key,
+    @required this.listStatistik,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,22 +63,18 @@ class StatistikPenilaianBottomSheet extends StatelessWidget {
               ),
             ],
           ),
-          GetBuilder<AnggotaController>(
-            builder: (_) {
-              return Wrap(
-                runSpacing: 12,
-                spacing: 12,
-                children: _.listStatistik == null
-                    ? Center(child: CircularProgressIndicator())
-                    : _.listStatistik
-                        .map((statistik) => GrafikPercentWidget(
-                              title: statistik.name,
-                              percentage: statistik.percentange,
-                            ))
-                        .toList()
-                        .cast<Widget>(),
-              );
-            },
+          Wrap(
+            runSpacing: 12,
+            spacing: 12,
+            children: listStatistik == null
+                ? Center(child: CircularProgressIndicator())
+                : listStatistik
+                    .map((statistik) => GrafikPercentWidget(
+                          title: statistik.name,
+                          percentage: statistik.percentange,
+                        ))
+                    .toList()
+                    .cast<Widget>(),
           ),
           SizedBox(height: 12),
           Container(

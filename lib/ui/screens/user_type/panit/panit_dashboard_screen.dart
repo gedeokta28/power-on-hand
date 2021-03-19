@@ -6,7 +6,6 @@ import 'package:power_on_hand/core/controllers/panit_controller.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
 import 'package:power_on_hand/ui/screens/user_type/panit/panit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/panit/panit_upload_lp_screen.dart';
-import 'package:power_on_hand/ui/widgets/bottom_sheet/statistik_penilaian_bottom_sheet.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_list_title_widget.dart';
@@ -38,10 +37,10 @@ class PanitDashboardScreen extends StatelessWidget {
               ButtonWithArrowWidget(
                 text: 'Statitik Penilaian',
                 onTap: () {
-                  Get.bottomSheet(
-                    StatistikPenilaianBottomSheet(),
-                    isScrollControlled: true,
-                  );
+                  // Get.bottomSheet(
+                  //   StatistikPenilaianBottomSheet(),
+                  //   isScrollControlled: true,
+                  // );
                 },
               ),
               ButtonWithArrowWidget(

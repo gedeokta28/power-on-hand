@@ -48,7 +48,11 @@ class _AnggotaDashboardScreenState extends State<AnggotaDashboardScreen> {
                 text: 'Statistik Penilaian',
                 onTap: () {
                   Get.bottomSheet(
-                    StatistikPenilaianBottomSheet(),
+                    GetBuilder<AnggotaController>(
+                      builder: (_) {
+                        return StatistikPenilaianBottomSheet(listStatistik: _.listStatistik);
+                      },
+                    ),
                     isScrollControlled: true,
                   );
                 },
