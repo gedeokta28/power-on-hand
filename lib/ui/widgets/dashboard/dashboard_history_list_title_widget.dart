@@ -5,11 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 class DashboardHistoryListTitleWidget extends StatelessWidget {
   final String title;
   final String date;
+  final Function onTapDate;
 
   const DashboardHistoryListTitleWidget({
     Key key,
     @required this.title,
     @required this.date,
+    this.onTapDate,
   }) : super(key: key);
 
   @override
@@ -33,12 +35,15 @@ class DashboardHistoryListTitleWidget extends StatelessWidget {
             color: Color(0xFFBACCFD),
           ),
         ),
-        Text(
-          date,
-          style: GoogleFonts.varelaRound(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: Color(0xFFBACCFD),
+        InkWell(
+          onTap: onTapDate,
+          child: Text(
+            date,
+            style: GoogleFonts.varelaRound(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFFBACCFD),
+            ),
           ),
         ),
       ],

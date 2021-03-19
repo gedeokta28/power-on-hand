@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:power_on_hand/core/controllers/base_controller.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
 import 'package:power_on_hand/core/models/title_model.dart';
 import 'package:power_on_hand/core/models/user_model.dart';
@@ -17,7 +16,7 @@ import 'package:power_on_hand/ui/screens/user_type/kasubdit/dashboard/kasubdit_d
 import 'package:power_on_hand/ui/screens/user_type/panit/panit_dashboard_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/wadir/wadir_dashboard_screen.dart';
 
-class UserController extends BaseController {
+class UserController extends GetxController {
   static UserController get to => Get.find();
 
   List<TitleModel> listTitle = [];
@@ -38,10 +37,8 @@ class UserController extends BaseController {
 
   // Get title list to use in register
   Future getTitleList() async {
-    setLoading(true);
     listTitle = await _userService.getListTitle();
     update();
-    setLoading(false);
   }
 
   Future register({

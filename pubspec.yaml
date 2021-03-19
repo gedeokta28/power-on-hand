@@ -40,6 +40,8 @@ dependencies:
   get_storage: ^1.4.0
   dio: ^3.0.10
   cached_network_image: ^2.5.0
+  intl: ^0.16.1
+
 
 dev_dependencies:
   flutter_test:

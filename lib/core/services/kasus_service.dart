@@ -3,8 +3,11 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:power_on_hand/core/models/affair_model.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
+import 'package:power_on_hand/core/models/kasus_model.dart';
 import 'package:power_on_hand/core/models/provision_model.dart';
 import 'package:power_on_hand/core/services/http_connection.dart';
+
+enum UserType { kanit, panit }
 
 class KasusService extends HttpConnection {
   Future getAffairList() async {
@@ -54,5 +57,34 @@ class KasusService extends HttpConnection {
     });
 
     return await post('/report/store', data: _data);
+  }
+
+  // get kasus for panit and kanit
+  Future getKasusListForPanitKanit(UserType userType) async {
+    int type = 0;
+    if (userType == UserType.kanit) {
+      type = 1;
+    }
+
+    ApiResponseModel resp = await get('/report/list?status=$type');
+    if (resp.status == 200) {
+      List<KasusModel> data = [];
+      resp.data.forEach((el) {
+        data.add(KasusModel.fromJson(el));
+      });
+      return data;
+    }
+  }
+
+  // get kasus for history
+  Future getKasusListForAnggota(String formattedDate) async {
+    ApiResponseModel resp = await get('/report/history?date=$formattedDate');
+    if (resp.status == 200) {
+      List<KasusModel> data = [];
+      resp.data.forEach((el) {
+        data.add(KasusModel.fromJson(el));
+      });
+      return data;
+    }
   }
 }
