@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/core/controllers/kasus_controller.dart';
+import 'package:power_on_hand/core/controllers/anggota_controller.dart';
 import 'package:power_on_hand/core/utils/helper_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
 import 'package:power_on_hand/ui/screens/user_type/anggota/anggota_input_kasus_screen.dart';
@@ -67,15 +67,15 @@ class _AnggotaDashboardScreenState extends State<AnggotaDashboardScreen> {
               setState(() {
                 choosenDate = DateFormat("dd MMMM yyyy").format(res);
               });
-              KasusController.to.getKasusHistoryList(date: res);
+              AnggotaController.to.getKasusHistoryList(date: res);
             }
           },
         ),
-        SizedBox(height: sy(24)),
-        GetBuilder<KasusController>(
+        SizedBox(height: 24),
+        GetBuilder<AnggotaController>(
           builder: (_) {
             return SizedBox(
-              height: sy(200),
+              height: 200,
               child: _.listKasusHistory == null || _.isLoading
                   ? Center(child: CircularProgressIndicator())
                   : _.listKasusHistory.isEmpty

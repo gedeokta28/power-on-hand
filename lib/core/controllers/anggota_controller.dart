@@ -12,8 +12,8 @@ import 'package:power_on_hand/core/services/kasus_service.dart';
 import 'package:power_on_hand/core/utils/dialog_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/success_screen.dart';
 
-class KasusController extends BaseController {
-  static KasusController get to => Get.find();
+class AnggotaController extends BaseController {
+  static AnggotaController get to => Get.find();
 
   List<ProvisionModel> listProvision = [];
   List<AffairModel> listAffair = [];

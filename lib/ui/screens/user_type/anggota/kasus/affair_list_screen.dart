@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:power_on_hand/core/controllers/kasus_controller.dart';
+import 'package:power_on_hand/core/controllers/anggota_controller.dart';
 
 class AffairListScreen extends StatelessWidget {
   @override
@@ -16,7 +16,7 @@ class AffairListScreen extends StatelessWidget {
         ),
         body: Container(
           height: double.infinity,
-          child: GetBuilder<KasusController>(
+          child: GetBuilder<AnggotaController>(
             autoRemove: false,
             builder: (_) {
               return _.listAffair.isEmpty

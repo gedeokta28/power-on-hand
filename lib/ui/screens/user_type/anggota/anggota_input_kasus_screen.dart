@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:power_on_hand/core/controllers/kasus_controller.dart';
+import 'package:power_on_hand/core/controllers/anggota_controller.dart';
 import 'package:power_on_hand/core/models/affair_model.dart';
 import 'package:power_on_hand/core/models/provision_model.dart';
 import 'package:power_on_hand/core/utils/file_utils.dart';
@@ -43,7 +43,7 @@ class _AnggotaInputKasusScreenState extends State<AnggotaInputKasusScreen> {
       buttonText: 'Upload',
       buttonOnTap: () {
         if (_formKey.currentState.validate()) {
-          KasusController.to.uploadKasus(
+          AnggotaController.to.uploadKasus(
               uraian: cUraian.text,
               dasar: cDasar.text,
               rencana: cRencana.text,
@@ -137,7 +137,7 @@ class _AnggotaInputKasusScreenState extends State<AnggotaInputKasusScreen> {
                   _affairChosen = res;
                   cPerkara.text = _affairChosen.name;
                   // put provision from affair chosen
-                  _provisionChosen = KasusController.to.getProvisionByAffairChosen(res.id);
+                  _provisionChosen = AnggotaController.to.getProvisionByAffairChosen(res.id);
                   cPasal.text = _provisionChosen.name;
                 }
               },
