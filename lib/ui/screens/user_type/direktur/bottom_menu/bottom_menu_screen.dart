@@ -46,22 +46,27 @@ class _BottomMenuScreenState extends State<BottomMenuScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
+                  GestureDetector(
                     onTap: Get.back,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                        width: sy(36),
-                        height: sy(4),
-                        margin: EdgeInsets.fromLTRB(8, 0, 8, 16),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.black54,
+                    onVerticalDragDown: (e) => Get.back(),
+                    child: ListBody(
+                      children: [
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: sy(36),
+                            height: sy(4),
+                            margin: EdgeInsets.fromLTRB(8, 0, 8, 16),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.black54,
+                            ),
+                          ),
                         ),
-                      ),
+                        isSwitchSubdit ? SubditTopMenu() : StaffTopMenu(),
+                      ],
                     ),
                   ),
-                  isSwitchSubdit ? SubditTopMenu() : StaffTopMenu(),
                   SizedBox(height: 6),
                   Row(
                     children: [

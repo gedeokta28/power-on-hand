@@ -150,8 +150,11 @@ class DirekturDashboardScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 12),
-            InkWell(
+            GestureDetector(
               onTap: () {
+                Get.to(() => BottomMenuScreen(), transition: Transition.downToUp);
+              },
+              onVerticalDragStart: (e) {
                 Get.to(() => BottomMenuScreen(), transition: Transition.downToUp);
               },
               child: Card(
