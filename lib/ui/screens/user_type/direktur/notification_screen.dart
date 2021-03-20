@@ -8,44 +8,16 @@ import 'package:power_on_hand/ui/widgets/grafik/rounded_chip_color.dart';
 class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return BaseBottomMenu(
+      title: 'Notifications',
       children: [
-        BaseBottomMenu(
-          children: [
-            SizedBox(
-              height: sy(510),
-              child: ListView(
-                children: [
-                  NotificationItem(),
-                  NotificationItem(),
-                  NotificationItem(),
-                  NotificationItem(),
-                  NotificationItem(),
-                  NotificationItem(),
-                  NotificationItem(),
-                ],
-              ),
-            ),
-          ],
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + sy(14)),
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: Material(
-              elevation: 0,
-              color: Colors.transparent,
-              child: Text(
-                'Notifications',
-                style: GoogleFonts.varelaRound(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-        ),
+        NotificationItem(),
+        NotificationItem(),
+        NotificationItem(),
+        NotificationItem(),
+        NotificationItem(),
+        NotificationItem(),
+        NotificationItem(),
       ],
     );
   }
