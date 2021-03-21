@@ -30,18 +30,42 @@ class InputStatusDialog extends StatelessWidget {
               onTap: () {
                 UserController.to.updateStatus(status: 'Dinas');
               },
+              trailing: Container(
+                width: 12,
+                height: 12,
+                decoration: BoxDecoration(
+                  color: Colors.greenAccent[400],
+                  borderRadius: BorderRadius.circular(180),
+                ),
+              ),
             ),
             ListTile(
               title: Text('Lepas Dinas', style: GoogleFonts.varelaRound()),
               onTap: () {
                 UserController.to.updateStatus(status: 'Lepas Dinas');
               },
+              trailing: Container(
+                width: 12,
+                height: 12,
+                decoration: BoxDecoration(
+                  color: Colors.redAccent.shade400,
+                  borderRadius: BorderRadius.circular(180),
+                ),
+              ),
             ),
             ListTile(
               title: Text('Piket', style: GoogleFonts.varelaRound()),
               onTap: () {
                 UserController.to.updateStatus(status: 'Piket');
               },
+              trailing: Container(
+                width: 12,
+                height: 12,
+                decoration: BoxDecoration(
+                  color: Colors.redAccent.shade400,
+                  borderRadius: BorderRadius.circular(180),
+                ),
+              ),
             ),
           ],
         ),

@@ -10,7 +10,7 @@ class StatistikPenilaianWidget extends StatelessWidget {
   const StatistikPenilaianWidget({Key key, @required this.listStatistik}) : super(key: key);
 
   final Color barBackgroundColor = const Color(0xff72d8bf);
-  final maxY = 100.0;
+  final maxY = 110.0;
 
   BarChartGroupData makeGroupData(
     int x,

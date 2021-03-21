@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/base_bottom_menu.dart';
-import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/subdit/subdit_daftar_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/subdit/subdit_daftar_kasus_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/subdit/subdit_daftar_laporan_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/subdit/subdit_daftar_lp_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/subdit/subdit_daftar_paparan_screen.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
 
@@ -25,7 +29,7 @@ class SubditProfileScreen extends StatelessWidget {
                 isFlex: true,
                 color: Colors.white,
                 onTap: () {
-                  Get.to(() => SubditDaftarScreen());
+                  Get.to(() => SubditDaftarKasusScreen());
                 },
               ),
               ButtonWithArrowWidget(
@@ -33,7 +37,7 @@ class SubditProfileScreen extends StatelessWidget {
                 isFlex: true,
                 color: Colors.white,
                 onTap: () {
-                  Get.to(() => SubditDaftarScreen());
+                  showToast('wip');
                 },
               ),
               ButtonWithArrowWidget(
@@ -41,7 +45,7 @@ class SubditProfileScreen extends StatelessWidget {
                 isFlex: true,
                 color: Colors.white,
                 onTap: () {
-                  Get.to(() => SubditDaftarScreen());
+                  Get.to(() => SubditDaftarLPScreen());
                 },
               ),
               ButtonWithArrowWidget(
@@ -49,7 +53,7 @@ class SubditProfileScreen extends StatelessWidget {
                 isFlex: true,
                 color: Colors.white,
                 onTap: () {
-                  Get.to(() => SubditDaftarScreen());
+                  Get.to(() => SubditDaftarLaporanScreen());
                 },
               ),
               ButtonWithArrowWidget(
@@ -57,7 +61,7 @@ class SubditProfileScreen extends StatelessWidget {
                 isFlex: true,
                 color: Colors.white,
                 onTap: () {
-                  Get.to(() => SubditDaftarScreen());
+                  Get.to(() => SubditDaftarPaparanScreen());
                 },
               ),
             ],

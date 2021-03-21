@@ -84,29 +84,29 @@ class BaseCommonDashboard extends StatelessWidget {
                       onTap: () {
                         Get.dialog(InputStatusDialog());
                       },
-                      child: Chip(
-                        backgroundColor: Color(0xFF4DB4FF),
-                        visualDensity: VisualDensity.compact,
-                        label: GetBuilder<UserController>(
-                          builder: (_) {
-                            return Text(
+                      child: GetBuilder<UserController>(
+                        builder: (_) {
+                          return Chip(
+                            backgroundColor: Color(0xFF4DB4FF),
+                            visualDensity: VisualDensity.compact,
+                            label: Text(
                               _.user.work ?? '',
                               style: GoogleFonts.varelaRound(
                                 fontSize: 12,
                                 color: Colors.white,
                               ),
-                            );
-                          },
-                        ),
-                        labelPadding: EdgeInsets.only(right: 4),
-                        avatar: Container(
-                          width: 12,
-                          height: 12,
-                          decoration: BoxDecoration(
-                            color: Colors.greenAccent[400],
-                            borderRadius: BorderRadius.circular(180),
-                          ),
-                        ),
+                            ),
+                            labelPadding: EdgeInsets.only(right: 4),
+                            avatar: Container(
+                              width: 12,
+                              height: 12,
+                              decoration: BoxDecoration(
+                                color: _.user.work == 'Dinas' ? Colors.greenAccent[400] : Colors.redAccent.shade400,
+                                borderRadius: BorderRadius.circular(180),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                     SizedBox(height: 28),

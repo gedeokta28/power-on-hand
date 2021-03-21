@@ -77,7 +77,7 @@ class StatistikPenilaianBottomSheet extends StatelessWidget {
                     .cast<Widget>(),
           ),
           SizedBox(height: 12),
-          Container(
+          Align(
             alignment: Alignment.centerLeft,
             child: PointWidget(
               text: 'Point',
@@ -153,7 +153,7 @@ class PointWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.all(8),
+          margin: EdgeInsets.symmetric(vertical: 8),
           padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
           decoration: BoxDecoration(
             color: Colors.red[300],

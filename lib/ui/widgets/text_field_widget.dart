@@ -16,7 +16,6 @@ class TextFieldWidget extends StatelessWidget {
   final int maxLines;
   final Function onChanged;
   final bool addSuffixIcon;
-  final bool hasShadow;
   final Color fillColor;
 
   TextFieldWidget(
@@ -32,7 +31,6 @@ class TextFieldWidget extends StatelessWidget {
       this.fillColor,
       this.isReadOnly = false,
       this.addSuffixIcon = false,
-      this.hasShadow = true,
       this.isPassword = false,
       this.isTheLast = false});
 
@@ -53,20 +51,6 @@ class TextFieldWidget extends StatelessWidget {
               ),
         SizedBox(height: 4),
         Container(
-          // decoration: !hasShadow
-          //     ? null
-          //     : BoxDecoration(
-          //         color: Colors.white,
-          //         borderRadius: BorderRadius.circular(20),
-          //         boxShadow: [
-          //           BoxShadow(
-          //             blurRadius: 1,
-          //             spreadRadius: 0.1,
-          //             color: Colors.black.withOpacity(0.2),
-          //             offset: Offset(0, 1),
-          //           )
-          //         ],
-          //       ),
           child: TextFormField(
             maxLines: maxLines,
             readOnly: isReadOnly,

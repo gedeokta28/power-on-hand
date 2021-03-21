@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/controllers/chart_controller.dart';
 import 'package:power_on_hand/core/controllers/user_controller.dart';
+import 'package:power_on_hand/ui/screens/navigation_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/bottom_menu_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
@@ -29,16 +30,17 @@ class DirekturDashboardScreen extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      UserController.to.logout();
+                      Get.to(() => NavigationScreen(), transition: Transition.fadeIn);
                     },
                     child: Icon(FontAwesomeIcons.alignLeft),
                   ),
                   Spacer(),
                   InkWell(
-                      onTap: () {
-                        Get.to(() => NotificationScreen());
-                      },
-                      child: Icon(FontAwesomeIcons.solidBell)),
+                    onTap: () {
+                      Get.to(() => NotificationScreen());
+                    },
+                    child: Icon(FontAwesomeIcons.solidBell),
+                  ),
                 ],
               ),
             ),
