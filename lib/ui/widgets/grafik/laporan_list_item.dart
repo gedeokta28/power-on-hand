@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:power_on_hand/core/models/kasus_model.dart';
+import 'package:power_on_hand/core/utils/helper_utils.dart';
 import 'package:power_on_hand/ui/widgets/grafik/rounded_chip_color.dart';
 
 class LaporanListItem extends StatefulWidget {
+  final KasusModel kasus;
+  final List<int> kasusChosenId;
+
   const LaporanListItem({
-    Key key,
-  }) : super(key: key);
+    @required this.kasus,
+    @required this.kasusChosenId,
+  });
 
   @override
   _LaporanListItemState createState() => _LaporanListItemState();
@@ -24,7 +30,7 @@ class _LaporanListItemState extends State<LaporanListItem> {
     return Padding(
       padding: EdgeInsets.only(top: 8),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Checkbox(
             value: check,
@@ -32,11 +38,19 @@ class _LaporanListItemState extends State<LaporanListItem> {
               setState(() {
                 check = val;
               });
+              if (val) {
+                widget.kasusChosenId.add(widget.kasus.id);
+              } else {
+                widget.kasusChosenId.remove(widget.kasus.id);
+              }
             },
           ),
-          RoundedChipColor(text: 'Arif Sucahyo', color: Color(0xFFB5FF88)),
-          RoundedChipColor(text: 'Judi Online', color: Color(0xFF3DB9FF)),
-          RoundedChipColor(text: '21/02/2021', color: Color(0xFFFF8080)),
+          RoundedChipColor(text: widget.kasus.description, color: Color(0xFFB5FF88)),
+          RoundedChipColor(text: widget.kasus.anvil, color: Color(0xFF3DB9FF)),
+          RoundedChipColor(
+            text: HelperUtils.getHumanDate(widget.kasus.createdAt),
+            color: Color(0xFFFF8080),
+          ),
         ],
       ),
     );

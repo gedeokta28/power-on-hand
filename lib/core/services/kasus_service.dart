@@ -87,4 +87,13 @@ class KasusService extends HttpConnection {
       return data;
     }
   }
+
+  // updatestatusmass
+  Future postStatusKasus(int status, List<int> listKasusId) async {
+    FormData _data = FormData.fromMap({
+      "id": listKasusId.join(','),
+      "status": status,
+    });
+    return await post('/report/updatestatusmass', data: _data);
+  }
 }

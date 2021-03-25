@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/base_bottom_menu.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/subdit/daftar_anggota_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/subdit/subdit_daftar_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/subdit/subdit_daftar_laporan_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/subdit/subdit_daftar_lp_screen.dart';
@@ -37,7 +37,7 @@ class SubditProfileScreen extends StatelessWidget {
                 isFlex: true,
                 color: Colors.white,
                 onTap: () {
-                  showToast('wip');
+                  Get.to(() => DaftarAnggotaScreen());
                 },
               ),
               ButtonWithArrowWidget(
