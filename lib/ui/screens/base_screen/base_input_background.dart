@@ -115,7 +115,7 @@ class BaseInputBackground extends StatelessWidget {
                         child: Text(
                           title,
                           style: GoogleFonts.varelaRound(
-                            fontSize: 32,
+                            fontSize: 28,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),

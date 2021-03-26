@@ -20,7 +20,7 @@ class DashboardMenuItemWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: SizedBox(
-        width: Get.width / 6,
+        width: Get.width / 5.7,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -28,7 +28,6 @@ class DashboardMenuItemWidget extends StatelessWidget {
               width: Get.width / 7,
               height: Get.width / 7,
               child: widget == null ? SizedBox() : widget,
-              alignment: Alignment.center,
               margin: EdgeInsets.only(bottom: sy(4)),
               decoration: BoxDecoration(
                 color: Colors.red.shade300,
@@ -37,13 +36,16 @@ class DashboardMenuItemWidget extends StatelessWidget {
             ),
             title == null
                 ? SizedBox()
-                : Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.varelaRound(
-                      fontSize: 10,
-                      color: Colors.black87,
-                      fontWeight: FontWeight.bold,
+                : SizedBox(
+                    height: 28,
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.varelaRound(
+                        fontSize: 10,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
           ],

@@ -41,6 +41,7 @@ dependencies:
   dio: ^3.0.10
   cached_network_image: ^2.5.0
   intl: ^0.16.1
+  pin_code_fields: ^6.1.0
 
 
 dev_dependencies:

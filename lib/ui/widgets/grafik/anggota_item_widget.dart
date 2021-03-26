@@ -13,12 +13,14 @@ class AnggotaItemWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(sy(4)),
       decoration: BoxDecoration(
-        gradient: new LinearGradient(
-          colors: [Colors.lightBlueAccent.shade100, Colors.lightBlueAccent.shade100.withOpacity(0.5)],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 4,
+          )
+        ],
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: sy(12), vertical: sy(8)),

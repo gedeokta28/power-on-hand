@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/user_controller.dart';
+import 'package:power_on_hand/ui/screens/navigation_screen.dart';
 import 'package:power_on_hand/ui/widgets/dialog/input_dialog.dart';
 
 class BaseCommonDashboard extends StatelessWidget {
@@ -53,17 +54,11 @@ class BaseCommonDashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            UserController.to.logout();
-                          },
-                          child: Icon(FontAwesomeIcons.signOutAlt),
-                        ),
-                        Spacer(),
-                        InkWell(onTap: Get.back, child: Icon(FontAwesomeIcons.ellipsisV)),
-                      ],
+                    InkWell(
+                      onTap: () {
+                        Get.to(() => NavigationScreen(), transition: Transition.fadeIn);
+                      },
+                      child: Icon(FontAwesomeIcons.alignLeft),
                     ),
                     SizedBox(height: sy(22)),
                     SizedBox(

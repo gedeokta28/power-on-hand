@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:power_on_hand/core/controllers/user_controller.dart';
+import 'package:power_on_hand/ui/screens/navigation_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/direktur/direktur_dashboard_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
@@ -22,7 +25,10 @@ class KasubditDashboardScreen extends StatelessWidget {
             padding: EdgeInsets.all(Get.width * 0.02),
             child: Row(
               children: [
-                InkWell(onTap: Get.back, child: Icon(FontAwesomeIcons.alignLeft)),
+                InkWell(
+                  onTap: () => Get.to(() => NavigationScreen()),
+                  child: Icon(FontAwesomeIcons.alignLeft),
+                ),
                 Spacer(),
                 InkWell(
                     onTap: () {
@@ -35,41 +41,34 @@ class KasubditDashboardScreen extends StatelessWidget {
           SizedBox(height: 16),
           SizedBox(
             width: Get.width / 1.5,
-            child: Text(
-              'Hi, Username',
-              style: GoogleFonts.varelaRound(
-                fontSize: 32,
-                color: Colors.white,
-              ),
+            child: GetBuilder<UserController>(
+              builder: (_) {
+                return Text(
+                  'HI, Perwira ${_?.user?.name ?? ""}',
+                  style: GoogleFonts.varelaRound(
+                    fontSize: 28,
+                    color: Colors.white,
+                  ),
+                );
+              },
             ),
           ),
           SizedBox(height: 24),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              // StatistikItemWidget(
-              //   title: 'Statistik Penilaian',
-              //   onTapLihat: () {
-              //     showToast('wip');
-              //   },
-              //   color: Color(0xFFF44771),
-              //   chartWidget: StatistikPenilaianWidget(),
-              // ),
-              // StatistikItemWidget(
-              //   title: 'Statistik Laporan',
-              //   onTapLihat: () {
-              //     showToast('wip');
-              //   },
-              //   color: Color(0xFF9DFFE1),
-              //   chartWidget: GrafikWidget(),
-              // ),
-            ],
-          ),
+          ChartDashboardWidgets(),
           SizedBox(height: 12),
-          Card(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          Container(
             margin: EdgeInsets.zero,
-            color: Color(0xFFFFD8D8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF39FEC2),
+                  Color(0xFFAF38FF),
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
             child: Padding(
               padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
               child: Column(
@@ -108,17 +107,31 @@ class KasubditDashboardScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 4),
-                  Container(
-                    height: 150,
-                    child: ListView(
-                      physics: BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        AnggotaItemWidget(),
-                        AnggotaItemWidget(),
-                        AnggotaItemWidget(),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Icon(
+                        FontAwesomeIcons.chevronLeft,
+                        size: 16,
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 150,
+                          child: ListView(
+                            physics: BouncingScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              AnggotaItemWidget(),
+                              AnggotaItemWidget(),
+                              AnggotaItemWidget(),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Icon(
+                        FontAwesomeIcons.chevronRight,
+                        size: 16,
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -128,44 +141,48 @@ class KasubditDashboardScreen extends StatelessWidget {
           Card(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             margin: EdgeInsets.zero,
-            color: Color(0xFFFDE6FF),
             child: Padding(
               padding: EdgeInsets.fromLTRB(4, 8, 4, 8),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  DashboardMenuItemWidget(
-                    title: 'Upload Kasus',
-                    onTap: () => Get.to(() => KanitUploadKasusScreen()),
-                  ),
-                  DashboardMenuItemWidget(
-                    title: 'Upload LP',
-                    onTap: () => Get.to(() => KanitUploadLpScreen()),
-                  ),
-                  DashboardMenuItemWidget(
-                    title: 'Upload Paparan',
-                    onTap: () => Get.to(() => KanitUploadPaparanScreen()),
-                  ),
-                  DashboardMenuItemWidget(
-                    title: 'Aktivitas Anggota',
-                    onTap: () {
-                      // Get.bottomSheet(
-                      //   StatistikPenilaianBottomSheet(),
-                      //   isScrollControlled: true,
-                      // );
-                    },
-                  ),
-                  DashboardMenuItemWidget(
-                    title: 'Statistik Penilaian',
-                    onTap: () {
-                      // Get.bottomSheet(
-                      //   StatistikPenilaianBottomSheet(),
-                      //   isScrollControlled: true,
-                      // );
-                    },
-                  ),
-                ],
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    DashboardMenuItemWidget(
+                      title: 'Upload Kasus',
+                      onTap: () => Get.to(() => KanitUploadKasusScreen()),
+                    ),
+                    DashboardMenuItemWidget(
+                      title: 'Upload LP',
+                      onTap: () => Get.to(() => KanitUploadLpScreen()),
+                    ),
+                    DashboardMenuItemWidget(
+                      title: 'Upload Paparan',
+                      onTap: () => Get.to(() => KanitUploadPaparanScreen()),
+                    ),
+                    DashboardMenuItemWidget(
+                      title: 'Aktivitas Anggota',
+                      onTap: () {
+                        // Get.bottomSheet(
+                        //   StatistikPenilaianBottomSheet(),
+                        //   isScrollControlled: true,
+                        // );
+                      },
+                    ),
+                    DashboardMenuItemWidget(
+                      title: 'Statistik Penilaian',
+                      onTap: () {
+                        // Get.bottomSheet(
+                        //   StatistikPenilaianBottomSheet(),
+                        //   isScrollControlled: true,
+                        // );
+                      },
+                    ),
+                    DashboardMenuItemWidget(
+                      title: 'Upload Paparan',
+                      onTap: () => Get.to(() => KanitUploadPaparanScreen()),
+                    ),
+                  ],
+                ),
               ),
             ),
           )

@@ -30,7 +30,6 @@ class _LaporanListItemState extends State<LaporanListItem> {
     return Padding(
       padding: EdgeInsets.only(top: 8),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Checkbox(
             value: check,
@@ -46,9 +45,14 @@ class _LaporanListItemState extends State<LaporanListItem> {
             },
           ),
           RoundedChipColor(text: widget.kasus.description, color: Color(0xFFB5FF88)),
+          Spacer(),
           RoundedChipColor(text: widget.kasus.anvil, color: Color(0xFF3DB9FF)),
+          Spacer(),
           RoundedChipColor(
-            text: HelperUtils.getHumanDate(widget.kasus.createdAt),
+            text: HelperUtils.getHumanDate(
+              widget.kasus.createdAt,
+              format: 'dd/mm/y',
+            ),
             color: Color(0xFFFF8080),
           ),
         ],

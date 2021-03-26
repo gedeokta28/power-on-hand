@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/user_controller.dart';
 import 'package:power_on_hand/core/utils/validate_utils.dart';
+import 'package:power_on_hand/ui/screens/forget_password_screen.dart';
 import 'package:power_on_hand/ui/screens/register_screen.dart';
 import 'package:power_on_hand/ui/widgets/half_color_button.dart';
 import 'package:power_on_hand/ui/widgets/logo_bareskim.dart';
@@ -129,6 +130,7 @@ class LoginScreen extends StatelessWidget {
                   text: 'Forgot Passwords',
                   color: Color(0xFFFFAE48),
                   width: 180,
+                  onTap: () => Get.to(() => ForgetPasswordScreen()),
                 ),
               ],
             ),

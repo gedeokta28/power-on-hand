@@ -87,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(height: sy(22)),
+                        SizedBox(height: 22),
                         Text(
                           'Create \nAccount',
                           style: GoogleFonts.varelaRound(

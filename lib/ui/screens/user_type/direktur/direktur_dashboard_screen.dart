@@ -132,46 +132,30 @@ class AnggotaDashboardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    return Container(
       margin: EdgeInsets.zero,
-      color: Color(0xFFFFD8D8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFF39FEC2),
+            Color(0xFFAF38FF),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
       child: Padding(
         padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: Column(
           children: [
             Text(
-              'Daftar Anggota',
+              'Daftar Piket Anggota',
               style: GoogleFonts.varelaRound(
                 fontSize: 12,
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
-            ),
-            SizedBox(height: 2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  FontAwesomeIcons.chevronLeft,
-                  size: 16,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(
-                    'Unit II',
-                    style: GoogleFonts.varelaRound(
-                      fontSize: 14,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Icon(
-                  FontAwesomeIcons.chevronRight,
-                  size: 16,
-                ),
-              ],
             ),
             SizedBox(height: 4),
             Container(
@@ -209,7 +193,6 @@ class ChartDashboardWidgets extends StatelessWidget {
               onTapLihat: () {
                 showToast('wip');
               },
-              color: Color(0xFFF44771),
               chartWidget: StatistikPenilaianWidget(
                 listStatistik: chartCont.listValuationChart,
               ),
@@ -219,7 +202,6 @@ class ChartDashboardWidgets extends StatelessWidget {
               onTapLihat: () {
                 showToast('wip');
               },
-              color: Color(0xFF9DFFE1),
               chartWidget: GrafikWidget(
                 listReport: chartCont.listReportChart,
               ),

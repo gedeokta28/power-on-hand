@@ -4,8 +4,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:oktoast/oktoast.dart';
-import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/anggota_controller.dart';
 import 'package:power_on_hand/core/models/affair_model.dart';
 import 'package:power_on_hand/core/utils/file_utils.dart';
@@ -152,7 +150,7 @@ class _AnggotaInputLaporanHarianScreenState extends State<AnggotaInputLaporanHar
                 }
               },
             ),
-            SizedBox(height: sy(28)),
+            SizedBox(height: 28),
             PrimaryButton(
               title: 'Upload',
               flex: true,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/user_controller.dart';
 import 'package:power_on_hand/ui/screens/profile_screen.dart';
 import 'package:power_on_hand/ui/screens/setting_profile_screen.dart';
@@ -12,6 +13,7 @@ class NavigationScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: Get.width,
+        padding: EdgeInsets.symmetric(horizontal: paddingX, vertical: paddingY * 2),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -22,40 +24,50 @@ class NavigationScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: Row(
+        child: Stack(
           children: [
-            SizedBox(
-              height: Get.height,
-              width: 70,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  NavigationItem(
-                    title: 'My Profile',
-                    icon: FontAwesomeIcons.userAlt,
-                    onTap: () {
-                      Get.to(() => ProfileScreen());
-                    },
-                  ),
-                  NavigationItem(
-                    title: 'Setting',
-                    icon: FontAwesomeIcons.userCog,
-                    onTap: () {
-                      Get.to(() => SettingProfileScreen());
-                    },
-                  ),
-                  NavigationItem(
-                    title: 'Logout',
-                    icon: FontAwesomeIcons.signOutAlt,
-                    onTap: () {
-                      UserController.to.logout();
-                    },
-                  ),
-                ],
+            Align(
+              alignment: Alignment.topLeft,
+              child: InkWell(
+                onTap: Get.back,
+                child: Icon(FontAwesomeIcons.chevronLeft, color: Colors.black87),
               ),
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 70,
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      NavigationItem(
+                        title: 'My Profile',
+                        icon: FontAwesomeIcons.userAlt,
+                        onTap: () {
+                          Get.to(() => ProfileScreen());
+                        },
+                      ),
+                      NavigationItem(
+                        title: 'Setting',
+                        icon: FontAwesomeIcons.userCog,
+                        onTap: () {
+                          Get.to(() => SettingProfileScreen());
+                        },
+                      ),
+                      NavigationItem(
+                        title: 'Logout',
+                        icon: FontAwesomeIcons.signOutAlt,
+                        onTap: () {
+                          UserController.to.logout();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),

@@ -2,28 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/panit_controller.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
 import 'package:power_on_hand/ui/widgets/grafik/laporan_list_item.dart';
 import 'package:power_on_hand/ui/widgets/input/text_and_input_widget.dart';
 
-class PanitUploadKasusScreen extends StatefulWidget {
+class PanitUploadLaporanHarianScreen extends StatefulWidget {
   @override
-  _PanitUploadKasusScreenState createState() => _PanitUploadKasusScreenState();
+  _PanitUploadLaporanHarianScreenState createState() => _PanitUploadLaporanHarianScreenState();
 }
 
-class _PanitUploadKasusScreenState extends State<PanitUploadKasusScreen> {
+class _PanitUploadLaporanHarianScreenState extends State<PanitUploadLaporanHarianScreen> {
   List<int> kasusChosenId = [];
   @override
   Widget build(BuildContext context) {
     return BaseInputBackground(
-      title: 'Upload Kasus',
+      title: 'Upload Laporan Harian',
       buttonOnTap: () {
-        PanitController.to.updateStatusKasus(
-          status: 1,
-          listKasusId: kasusChosenId,
-        );
+        // PanitController.to.updateStatusKasus(
+        //   status: 1,
+        //   listKasusId: kasusChosenId,
+        // );
+        showToast('wip');
       },
       buttonText: 'Upload',
       children: Column(

@@ -7,21 +7,28 @@ class StatistikItemWidget extends StatelessWidget {
   final String title;
   final Function onTapLihat;
   final Widget chartWidget;
-  final Color color;
 
   const StatistikItemWidget({
     Key key,
     @required this.title,
-    @required this.color,
     @required this.onTapLihat,
     @required this.chartWidget,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    return Container(
       margin: EdgeInsets.zero,
-      color: color,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFF39FEC2),
+            Color(0xFFAF38FF),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
       child: Padding(
         padding: EdgeInsets.fromLTRB(2, 8, 2, 0),
         child: Column(

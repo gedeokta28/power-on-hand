@@ -5,6 +5,7 @@ import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/kanit_controller.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_laporan_harian_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_paparan_screen.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
@@ -32,7 +33,7 @@ class KanitDashboardScreen extends StatelessWidget {
               ButtonWithArrowWidget(
                 text: 'Upload Laporan Harian',
                 onTap: () {
-                  Get.to(() => KanitUploadLpScreen());
+                  Get.to(() => KanitUploadLaporanHarianScreen());
                 },
               ),
               ButtonWithArrowWidget(
