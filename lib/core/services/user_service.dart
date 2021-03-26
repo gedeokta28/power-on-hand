@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
+import 'package:power_on_hand/core/models/grade_model.dart';
 import 'package:power_on_hand/core/models/title_model.dart';
 import 'package:power_on_hand/core/models/user_model.dart';
 import 'package:power_on_hand/core/services/http_connection.dart';
@@ -58,5 +59,32 @@ class UserService extends HttpConnection {
     FormData _data = FormData.fromMap({"work": status});
 
     return await post('/user/updatestatus', data: _data);
+  }
+
+  Future postUpdate(
+    String birthDate,
+    String gender,
+    String phone,
+    int gradeId,
+  ) async {
+    FormData _data = FormData.fromMap({
+      "birth_date": birthDate,
+      "gender": gender,
+      "whatsapp_number": phone,
+      "grade_id": gradeId,
+    });
+
+    return await post('/user/update', data: _data);
+  }
+
+  Future getGradeList() async {
+    ApiResponseModel resp = await get('/grade/list');
+    if (resp.status == 200) {
+      List<GradeModel> data = [];
+      resp.data.forEach((el) {
+        data.add(GradeModel.fromJson(el));
+      });
+      return data;
+    }
   }
 }

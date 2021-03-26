@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
+import 'package:power_on_hand/core/models/grade_model.dart';
 import 'package:power_on_hand/core/models/title_model.dart';
 import 'package:power_on_hand/core/models/user_model.dart';
 import 'package:power_on_hand/core/services/user_service.dart';
@@ -20,6 +22,7 @@ class UserController extends GetxController {
   static UserController get to => Get.find();
 
   List<TitleModel> listTitle = [];
+  List<GradeModel> listGrade = [];
   UserModel user;
 
   var _userService = UserService();
@@ -143,7 +146,7 @@ class UserController extends GetxController {
 
     //* Throw errors
     if (res.status >= 400) {
-      DialogUtils.showInfo(res.data['errors'].toString());
+      DialogUtils.showInfo(res.data['errors'].toString(), closePreDialog: true);
       return;
     }
 
@@ -151,7 +154,41 @@ class UserController extends GetxController {
       DialogUtils.showInfo('Status update success', closePreDialog: true);
       getUser();
     } else {
-      DialogUtils.showWarning('Login gagal, silahkan coba lagi atau hubungi admin');
+      DialogUtils.showWarning('Update gagal, silahkan coba lagi atau hubungi admin');
     }
+  }
+
+  Future updateProfile({
+    @required DateTime birthDate,
+    @required String gender,
+    @required String phone,
+    @required int gradeId,
+  }) async {
+    DialogUtils.showLoading('Updating...');
+    ApiResponseModel res = await _userService.postUpdate(
+      DateFormat("yyyy-MM-dd").format(birthDate),
+      gender,
+      phone,
+      gradeId,
+    );
+
+    //* Throw errors
+    if (res.status >= 400) {
+      DialogUtils.showInfo(res.data['errors'].toString(), closePreDialog: true);
+      return;
+    }
+
+    if (res?.status == 200) {
+      DialogUtils.showInfo('Update profile success', closePreDialog: true);
+      getUser();
+    } else {
+      DialogUtils.showWarning('Update gagal, silahkan coba lagi atau hubungi admin');
+    }
+  }
+
+  // Get grade list to use in setting profile
+  Future getGradeList() async {
+    listGrade = await _userService.getGradeList();
+    update();
   }
 }

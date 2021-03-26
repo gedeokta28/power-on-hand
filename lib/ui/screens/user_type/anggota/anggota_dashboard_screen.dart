@@ -57,6 +57,12 @@ class _AnggotaDashboardScreenState extends State<AnggotaDashboardScreen> {
                   );
                 },
               ),
+              ButtonWithArrowWidget(
+                text: 'Penilaian Lapangan',
+                onTap: () {
+                  showToast('wip');
+                },
+              ),
             ],
           ),
         ),

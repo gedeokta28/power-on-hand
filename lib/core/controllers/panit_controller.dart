@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/base_controller.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
 import 'package:power_on_hand/core/models/kasus_model.dart';

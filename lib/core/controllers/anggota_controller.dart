@@ -10,7 +10,9 @@ import 'package:power_on_hand/core/models/chart/daily_model.dart';
 import 'package:power_on_hand/core/models/kasus_model.dart';
 import 'package:power_on_hand/core/models/provision_model.dart';
 import 'package:power_on_hand/core/services/chart_service.dart';
+import 'package:power_on_hand/core/services/data_list_service.dart';
 import 'package:power_on_hand/core/services/kasus_service.dart';
+import 'package:power_on_hand/core/services/laporan_harian_service.dart';
 import 'package:power_on_hand/core/utils/dialog_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/success_screen.dart';
 
@@ -24,6 +26,8 @@ class AnggotaController extends BaseController {
 
   var _kasusService = KasusService();
   var _chartService = ChartService();
+  var _dataService = DataListService();
+  var _laporahHarianService = LaporanHarianService();
 
   @override
   void onInit() {
@@ -33,12 +37,12 @@ class AnggotaController extends BaseController {
   }
 
   Future getProvisionList() async {
-    listProvision = await _kasusService.getProvisionList();
+    listProvision = await _dataService.getProvisionList();
     update();
   }
 
   Future getAffairList() async {
-    listAffair = await _kasusService.getAffairList();
+    listAffair = await _dataService.getAffairList();
     update();
   }
 
@@ -46,6 +50,12 @@ class AnggotaController extends BaseController {
     return listProvision.firstWhere((el) => el.id == affairID);
   }
 
+  Future getAnggotaChart() async {
+    listStatistik = await _chartService.getAnggotaChart();
+    update();
+  }
+
+  //* Kasus Function Starts
   Future uploadKasus({
     @required String uraian,
     @required String dasar,
@@ -78,7 +88,7 @@ class AnggotaController extends BaseController {
       Get.off(() => SuccessScreen(title: 'Kasus Telah Dikirim'));
     } else {
       DialogUtils.showWarning(
-        'Pendaftaran gagal, silahkan coba lagi atau hubungi admin',
+        'Upload gagal, silahkan coba lagi atau hubungi admin',
         closePreDialog: true,
       );
     }
@@ -97,8 +107,38 @@ class AnggotaController extends BaseController {
     setLoading(false);
   }
 
-  Future getAnggotaChart() async {
-    listStatistik = await _chartService.getAnggotaChart();
-    update();
+  //* Kasus Function Starts
+  Future uploadLaporanHarian({
+    @required String namaTsk,
+    @required int affairID,
+    @required File pTkp,
+    @required File pBarangBukti,
+    @required File pKartuIdentitas,
+    @required File pSidikJari,
+  }) async {
+    DialogUtils.showLoading('Uploading...');
+    ApiResponseModel res = await _laporahHarianService.postLaporan(
+      namaTsk,
+      affairID,
+      pTkp,
+      pBarangBukti,
+      pKartuIdentitas,
+      pSidikJari,
+    );
+
+    if (res?.status == 422) {
+      DialogUtils.showInfo(res.errors.toString(), closePreDialog: true);
+      return;
+    }
+
+    if (res?.status == 201) {
+      DialogUtils.closeDialog();
+      Get.off(() => SuccessScreen(title: 'Laporan Harian Telah Dikirim'));
+    } else {
+      DialogUtils.showWarning(
+        'Upload gagal, silahkan coba lagi atau hubungi admin',
+        closePreDialog: true,
+      );
+    }
   }
 }

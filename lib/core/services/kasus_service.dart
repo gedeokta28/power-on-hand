@@ -1,37 +1,12 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:power_on_hand/core/models/affair_model.dart';
+import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
 import 'package:power_on_hand/core/models/kasus_model.dart';
-import 'package:power_on_hand/core/models/provision_model.dart';
 import 'package:power_on_hand/core/services/http_connection.dart';
 
-enum UserType { kanit, panit }
-
 class KasusService extends HttpConnection {
-  Future getAffairList() async {
-    ApiResponseModel resp = await get('/affair/list');
-    if (resp.status == 200) {
-      List<AffairModel> data = [];
-      resp.data.forEach((el) {
-        data.add(AffairModel.fromJson(el));
-      });
-      return data;
-    }
-  }
-
-  Future getProvisionList() async {
-    ApiResponseModel resp = await get('/provision/list');
-    if (resp.status == 200) {
-      List<ProvisionModel> data = [];
-      resp.data.forEach((el) {
-        data.add(ProvisionModel.fromJson(el));
-      });
-      return data;
-    }
-  }
-
   Future reportStore(
     String uraian,
     String dasar,

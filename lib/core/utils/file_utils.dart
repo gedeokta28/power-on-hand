@@ -2,12 +2,14 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 
 class FileUtils {
-  static Future<PlatformFile> openFileExplorer() async {
+  static Future<PlatformFile> openFileExplorer({
+    List<String> extensions,
+  }) async {
     PlatformFile file;
     try {
       FilePickerResult result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['pdf', 'doc'],
+        type: FileType.any,
+        // allowedExtensions: ['pdf', 'doc'],
       );
 
       if (result != null) {
