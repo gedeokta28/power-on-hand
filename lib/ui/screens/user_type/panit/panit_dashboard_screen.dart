@@ -6,7 +6,7 @@ import 'package:power_on_hand/core/controllers/panit_controller.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
 import 'package:power_on_hand/ui/screens/user_type/panit/panit_upload_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/panit/panit_upload_laporan_harian_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/panit/panit_upload_lp_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/panit/panit_upload_laporan_screen.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_list_title_widget.dart';
@@ -45,9 +45,9 @@ class PanitDashboardScreen extends StatelessWidget {
                 },
               ),
               ButtonWithArrowWidget(
-                text: 'Upload LP',
+                text: 'Upload Laporan',
                 onTap: () {
-                  Get.to(() => PanitUploadLpScreen());
+                  Get.to(() => PanitUploadLaporanScreen());
                 },
               ),
             ],

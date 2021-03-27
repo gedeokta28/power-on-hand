@@ -1,10 +1,34 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
-import 'package:power_on_hand/core/services/base_service.dart';
+import 'package:power_on_hand/core/services/logging_interceptors.dart';
 import 'package:power_on_hand/core/utils/storage_utils.dart';
 
-abstract class HttpConnection extends BaseService {
+abstract class HttpConnection {
+  // dio init
+  Dio _dio() {
+    final options = BaseOptions(
+      receiveTimeout: 3000,
+      connectTimeout: 15000,
+      baseUrl: 'https://poh.kediriapp.com/api',
+      contentType: "application/json",
+
+      //! this is important so error code below 500 will not get thrown
+      validateStatus: (status) {
+        return status < 500;
+      },
+    );
+    var dio = Dio(options);
+
+    // adding logging interceptor
+    // to show all data flow
+    // and add token on specific request
+    dio.interceptors.add(LoggingInterceptors());
+
+    return dio;
+  }
+
+  Dio get dio => _dio();
   StorageUtils storageUtils = Get.find();
 
   var headers = {

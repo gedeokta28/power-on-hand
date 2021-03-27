@@ -1,9 +1,6 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/core/models/api_reponse_model.dart';
-import 'package:power_on_hand/core/models/laporan_harian_model.dart';
 import 'package:power_on_hand/core/services/http_connection.dart';
 
 class LaporanHarianService extends HttpConnection {
@@ -28,40 +25,40 @@ class LaporanHarianService extends HttpConnection {
   }
 
   // get kasus for panit and kanit
-  Future getLaporanHarianListForPanitKanit(UserType userType) async {
-    int type = 0;
-    if (userType == UserType.kanit) {
-      type = 1;
-    }
+  // Future getLaporanHarianListForPanitKanit(UserType userType) async {
+  //   int type = 0;
+  //   if (userType == UserType.kanit) {
+  //     type = 1;
+  //   }
 
-    ApiResponseModel resp = await get('/report/daily?status=$type');
-    if (resp.status == 200) {
-      List<LaporanHarianModel> data = [];
-      resp.data.forEach((el) {
-        data.add(LaporanHarianModel.fromJson(el));
-      });
-      return data;
-    }
-  }
+  //   ApiResponseModel resp = await get('/report/daily?status=$type');
+  //   if (resp.status == 200) {
+  //     List<LaporanHarianModel> data = [];
+  //     resp.data.forEach((el) {
+  //       data.add(LaporanHarianModel.fromJson(el));
+  //     });
+  //     return data;
+  //   }
+  // }
 
   // get kasus for history
-  Future getLaporanHarianListForAnggota(String formattedDate) async {
-    ApiResponseModel resp = await get('/daily/history?date=$formattedDate');
-    if (resp.status == 200) {
-      List<LaporanHarianModel> data = [];
-      resp.data.forEach((el) {
-        data.add(LaporanHarianModel.fromJson(el));
-      });
-      return data;
-    }
-  }
+  // Future getLaporanHarianListForAnggota(String formattedDate) async {
+  //   ApiResponseModel resp = await get('/daily/history?date=$formattedDate');
+  //   if (resp.status == 200) {
+  //     List<LaporanHarianModel> data = [];
+  //     resp.data.forEach((el) {
+  //       data.add(LaporanHarianModel.fromJson(el));
+  //     });
+  //     return data;
+  //   }
+  // }
 
   // updatestatusmass
-  Future postStatusLaporanHarian(int status, List<int> listLaporanHarianId) async {
-    FormData _data = FormData.fromMap({
-      "id": listLaporanHarianId.join(','),
-      "status": status,
-    });
-    return await post('/daily/updatestatusmass', data: _data);
-  }
+  // Future postStatusLaporanHarian(int status, List<int> listLaporanHarianId) async {
+  //   FormData _data = FormData.fromMap({
+  //     "id": listLaporanHarianId.join(','),
+  //     "status": status,
+  //   });
+  //   return await post('/daily/updatestatusmass', data: _data);
+  // }
 }

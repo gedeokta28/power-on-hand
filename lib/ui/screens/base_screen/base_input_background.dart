@@ -75,8 +75,8 @@ class BaseInputBackground extends StatelessWidget {
                   top: -420,
                   left: -220,
                   child: Container(
-                    width: 600,
-                    height: 600,
+                    width: 650,
+                    height: 580,
                     decoration: BoxDecoration(
                       color: Color(0xFF4C525C),
                       borderRadius: BorderRadius.circular(300),
@@ -110,7 +110,7 @@ class BaseInputBackground extends StatelessWidget {
                       ),
                       Container(
                         width: Get.width / 1.5,
-                        height: 110,
+                        height: 100,
                         alignment: Alignment.centerLeft,
                         child: Text(
                           title,

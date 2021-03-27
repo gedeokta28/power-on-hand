@@ -7,6 +7,7 @@ import 'package:power_on_hand/core/controllers/anggota_controller.dart';
 import 'package:power_on_hand/core/controllers/chart_controller.dart';
 import 'package:power_on_hand/core/controllers/direktur_controller.dart';
 import 'package:power_on_hand/core/controllers/kanit_controller.dart';
+import 'package:power_on_hand/core/controllers/laporan_controller.dart';
 import 'package:power_on_hand/core/controllers/panit_controller.dart';
 import 'package:power_on_hand/core/controllers/user_controller.dart';
 import 'package:power_on_hand/core/utils/storage_utils.dart';
@@ -22,6 +23,7 @@ void main() async {
   Get.lazyPut(() => KanitController(), fenix: true);
   Get.lazyPut(() => DirekturController(), fenix: true);
   Get.lazyPut(() => ChartController(), fenix: true);
+  Get.lazyPut(() => LaporanController(), fenix: true);
   runApp(MyApp());
 }
 
