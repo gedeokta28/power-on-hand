@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/controllers/anggota_controller.dart';
-import 'package:power_on_hand/core/models/basic_list_model.dart';
+import 'package:power_on_hand/core/models/kategori_penilaian_model.dart';
 
 class KategoriPenilaianListScreen extends StatelessWidget {
   @override
@@ -29,7 +29,7 @@ class KategoriPenilaianListScreen extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 itemCount: _.listKategoriPenilaian.length,
                 itemBuilder: (context, index) {
-                  BasicListModel kategori = _.listKategoriPenilaian[index];
+                  KategoriPenilaianModel kategori = _.listKategoriPenilaian[index];
                   return ListTile(
                     onTap: () {
                       // return affair chosen
@@ -37,7 +37,7 @@ class KategoriPenilaianListScreen extends StatelessWidget {
                     },
                     dense: true,
                     title: Text(
-                      kategori.name,
+                      kategori.description,
                       style: GoogleFonts.varelaRound(fontSize: 14),
                     ),
                   );

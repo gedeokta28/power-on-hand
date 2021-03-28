@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
-import 'package:power_on_hand/core/models/basic_list_model.dart';
+import 'package:power_on_hand/core/models/kategori_penilaian_model.dart';
 import 'package:power_on_hand/core/services/http_connection.dart';
 
 class PenilaianService extends HttpConnection {
@@ -23,9 +23,9 @@ class PenilaianService extends HttpConnection {
   Future getKategoriList() async {
     ApiResponseModel resp = await get('/category/list');
     if (resp.status == 200) {
-      List<BasicListModel> data = [];
+      List<KategoriPenilaianModel> data = [];
       resp.data.forEach((el) {
-        data.add(BasicListModel.fromJson(el));
+        data.add(KategoriPenilaianModel.fromJson(el));
       });
       return data;
     }

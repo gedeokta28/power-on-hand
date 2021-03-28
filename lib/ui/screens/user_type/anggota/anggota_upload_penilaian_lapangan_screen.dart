@@ -4,7 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:power_on_hand/core/controllers/anggota_controller.dart';
-import 'package:power_on_hand/core/models/basic_list_model.dart';
+import 'package:power_on_hand/core/models/kategori_penilaian_model.dart';
 import 'package:power_on_hand/core/models/laporan_model.dart';
 import 'package:power_on_hand/core/utils/file_utils.dart';
 import 'package:power_on_hand/core/utils/validate_utils.dart';
@@ -26,7 +26,7 @@ class _AnggotaUploadPenilainLapanganScreenState extends State<AnggotaUploadPenil
   PlatformFile pFilePenilaianLapangan;
   final _formKey = GlobalKey<FormState>();
 
-  BasicListModel choosenKategori;
+  KategoriPenilaianModel choosenKategori;
   LaporanModel choosenLaporan;
 
   @override
@@ -68,7 +68,7 @@ class _AnggotaUploadPenilainLapanganScreenState extends State<AnggotaUploadPenil
                 if (res != null) {
                   // put result to affair
                   choosenKategori = res;
-                  cKategoriPenilaian.text = choosenKategori.name;
+                  cKategoriPenilaian.text = choosenKategori.description;
                 }
               },
             ),

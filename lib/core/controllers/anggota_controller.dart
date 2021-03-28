@@ -6,9 +6,9 @@ import 'package:intl/intl.dart';
 import 'package:power_on_hand/core/controllers/base_controller.dart';
 import 'package:power_on_hand/core/models/affair_model.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
-import 'package:power_on_hand/core/models/basic_list_model.dart';
 import 'package:power_on_hand/core/models/chart/daily_model.dart';
 import 'package:power_on_hand/core/models/kasus_model.dart';
+import 'package:power_on_hand/core/models/kategori_penilaian_model.dart';
 import 'package:power_on_hand/core/models/laporan_model.dart';
 import 'package:power_on_hand/core/models/provision_model.dart';
 import 'package:power_on_hand/core/services/chart_service.dart';
@@ -27,7 +27,7 @@ class AnggotaController extends BaseController {
   List<AffairModel> listAffair = [];
   List<KasusModel> listKasusHistory;
   List<DailyModel> listStatistik;
-  List<BasicListModel> listKategoriPenilaian;
+  List<KategoriPenilaianModel> listKategoriPenilaian;
   List<LaporanModel> listLaporan;
 
   var _kasusService = KasusService();
@@ -72,6 +72,7 @@ class AnggotaController extends BaseController {
   // function to get kategori list for penilaian form
   Future getKategoriPenilaianList() async {
     listKategoriPenilaian = await _penilaianService.getKategoriList();
+    print(listKategoriPenilaian.length);
     update();
   }
 

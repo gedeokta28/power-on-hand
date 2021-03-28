@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/core/controllers/panit_controller.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
-import 'package:power_on_hand/ui/widgets/grafik/laporan_list_item.dart';
 import 'package:power_on_hand/ui/widgets/input/text_and_input_widget.dart';
 
 class KanitUploadLaporanHarianScreen extends StatefulWidget {
@@ -70,14 +67,14 @@ class _KanitUploadLaporanHarianScreenState extends State<KanitUploadLaporanHaria
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        'Nama Penyidik',
+                        'Nama',
                         style: GoogleFonts.varelaRound(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        'Perkara',
+                        'Deskripsi',
                         style: GoogleFonts.varelaRound(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -93,29 +90,29 @@ class _KanitUploadLaporanHarianScreenState extends State<KanitUploadLaporanHaria
                     ],
                   ),
                 ),
-                GetBuilder<PanitController>(
-                  builder: (_) {
-                    return SizedBox(
-                      height: Get.height / 2,
-                      child: _.listKasusHistory == null || _.isLoading
-                          ? Center(child: CircularProgressIndicator())
-                          : _.listKasusHistory.isEmpty
-                              ? Center(
-                                  child: Text('No history found '),
-                                )
-                              : ListView.separated(
-                                  separatorBuilder: (context, index) => Divider(height: 1),
-                                  itemCount: _.listKasusHistory.length,
-                                  itemBuilder: (context, index) {
-                                    return LaporanListItem(
-                                      kasus: _.listKasusHistory[index],
-                                      kasusChosenId: kasusChosenId,
-                                    );
-                                  },
-                                ),
-                    );
-                  },
-                ),
+                // GetBuilder<PanitController>(
+                //   builder: (_) {
+                //     return SizedBox(
+                //       height: Get.height / 2,
+                //       child: _.listKasusHistory == null || _.isLoading
+                //           ? Center(child: CircularProgressIndicator())
+                //           : _.listKasusHistory.isEmpty
+                //               ? Center(
+                //                   child: Text('No history found '),
+                //                 )
+                //               : ListView.separated(
+                //                   separatorBuilder: (context, index) => Divider(height: 1),
+                //                   itemCount: _.listKasusHistory.length,
+                //                   itemBuilder: (context, index) {
+                //                     return LaporanListItem(
+                //                       kasus: _.listKasusHistory[index],
+                //                       kasusChosenId: kasusChosenId,
+                //                     );
+                //                   },
+                //                 ),
+                //     );
+                //   },
+                // ),
               ],
             ),
           )
