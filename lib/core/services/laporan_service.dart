@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:power_on_hand/core/models/api_reponse_model.dart';
+import 'package:power_on_hand/core/models/laporan_model.dart';
 import 'package:power_on_hand/core/services/http_connection.dart';
 
 class LaporanService extends HttpConnection {
@@ -16,6 +18,17 @@ class LaporanService extends HttpConnection {
     });
 
     return await post('/policyreport/store', data: _data);
+  }
+
+  Future getAllLaporanList() async {
+    ApiResponseModel resp = await get('/policyreport/all');
+    if (resp.status == 200) {
+      List<LaporanModel> data = [];
+      resp.data.forEach((el) {
+        data.add(LaporanModel.fromJson(el));
+      });
+      return data;
+    }
   }
 
   // // get kasus for panit and kanit

@@ -9,7 +9,7 @@ import 'package:power_on_hand/core/models/provision_model.dart';
 import 'package:power_on_hand/core/utils/file_utils.dart';
 import 'package:power_on_hand/core/utils/validate_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
-import 'package:power_on_hand/ui/screens/user_type/anggota/kasus/affair_list_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/anggota/list/affair_list_screen.dart';
 import 'package:power_on_hand/ui/widgets/input/text_and_input_widget.dart';
 import 'package:power_on_hand/ui/widgets/text_field_widget.dart';
 

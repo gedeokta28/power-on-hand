@@ -1,43 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:power_on_hand/core/controllers/user_controller.dart';
-import 'package:power_on_hand/core/models/basic_list_model.dart';
+import 'package:power_on_hand/core/controllers/anggota_controller.dart';
+import 'package:power_on_hand/core/models/laporan_model.dart';
 
-class GradeListScreen extends StatelessWidget {
+class LaporanListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Daftar Pangkat ',
+            'Daftar Laporan',
             style: GoogleFonts.varelaRound(),
           ),
         ),
         body: Container(
           height: double.infinity,
-          child: GetBuilder<UserController>(
+          child: GetBuilder<AnggotaController>(
             autoRemove: false,
             builder: (_) {
-              if (_.listGrade.isEmpty) {
-                _.getGradeList();
+              if (_.listLaporan == null) {
+                _.getLaporanList();
                 return Center(child: CircularProgressIndicator());
               }
               return ListView.separated(
                 separatorBuilder: (_, __) => Divider(height: 1),
                 physics: BouncingScrollPhysics(),
-                itemCount: _.listGrade.length,
+                itemCount: _.listLaporan.length,
                 itemBuilder: (context, index) {
-                  BasicListModel grade = _.listGrade[index];
+                  LaporanModel laporan = _.listLaporan[index];
                   return ListTile(
                     onTap: () {
-                      // return Grade chosen
-                      Get.back(result: grade);
+                      // return affair chosen
+                      Get.back(result: laporan);
                     },
                     dense: true,
                     title: Text(
-                      grade.name,
+                      laporan.id.toString(),
                       style: GoogleFonts.varelaRound(fontSize: 14),
                     ),
                   );

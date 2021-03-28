@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
-import 'package:power_on_hand/core/models/grade_model.dart';
+import 'package:power_on_hand/core/models/basic_list_model.dart';
 import 'package:power_on_hand/core/models/title_model.dart';
 import 'package:power_on_hand/core/models/user_model.dart';
 import 'package:power_on_hand/core/services/http_connection.dart';
@@ -80,9 +80,9 @@ class UserService extends HttpConnection {
   Future getGradeList() async {
     ApiResponseModel resp = await get('/grade/list');
     if (resp.status == 200) {
-      List<GradeModel> data = [];
+      List<BasicListModel> data = [];
       resp.data.forEach((el) {
-        data.add(GradeModel.fromJson(el));
+        data.add(BasicListModel.fromJson(el));
       });
       return data;
     }

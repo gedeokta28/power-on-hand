@@ -6,13 +6,17 @@ import 'package:intl/intl.dart';
 import 'package:power_on_hand/core/controllers/base_controller.dart';
 import 'package:power_on_hand/core/models/affair_model.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
+import 'package:power_on_hand/core/models/basic_list_model.dart';
 import 'package:power_on_hand/core/models/chart/daily_model.dart';
 import 'package:power_on_hand/core/models/kasus_model.dart';
+import 'package:power_on_hand/core/models/laporan_model.dart';
 import 'package:power_on_hand/core/models/provision_model.dart';
 import 'package:power_on_hand/core/services/chart_service.dart';
 import 'package:power_on_hand/core/services/data_list_service.dart';
 import 'package:power_on_hand/core/services/kasus_service.dart';
 import 'package:power_on_hand/core/services/laporan_harian_service.dart';
+import 'package:power_on_hand/core/services/laporan_service.dart';
+import 'package:power_on_hand/core/services/penilaian_service.dart';
 import 'package:power_on_hand/core/utils/dialog_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/success_screen.dart';
 
@@ -23,11 +27,15 @@ class AnggotaController extends BaseController {
   List<AffairModel> listAffair = [];
   List<KasusModel> listKasusHistory;
   List<DailyModel> listStatistik;
+  List<BasicListModel> listKategoriPenilaian;
+  List<LaporanModel> listLaporan;
 
   var _kasusService = KasusService();
   var _chartService = ChartService();
   var _dataService = DataListService();
-  var _laporahHarianService = LaporanHarianService();
+  var _laporanHarianService = LaporanHarianService();
+  var _laporanService = LaporanService();
+  var _penilaianService = PenilaianService();
 
   @override
   void onInit() {
@@ -52,6 +60,18 @@ class AnggotaController extends BaseController {
 
   Future getAnggotaChart() async {
     listStatistik = await _chartService.getAnggotaChart();
+    update();
+  }
+
+  // function to get laporan list for penilaian form
+  Future getLaporanList() async {
+    listLaporan = await _laporanService.getAllLaporanList();
+    update();
+  }
+
+  // function to get kategori list for penilaian form
+  Future getKategoriPenilaianList() async {
+    listKategoriPenilaian = await _penilaianService.getKategoriList();
     update();
   }
 
@@ -107,7 +127,6 @@ class AnggotaController extends BaseController {
     setLoading(false);
   }
 
-  //* Kasus Function Starts
   Future uploadLaporanHarian({
     @required String namaTsk,
     @required int affairID,
@@ -117,7 +136,7 @@ class AnggotaController extends BaseController {
     @required File pSidikJari,
   }) async {
     DialogUtils.showLoading('Uploading...');
-    ApiResponseModel res = await _laporahHarianService.postLaporan(
+    ApiResponseModel res = await _laporanHarianService.postLaporan(
       namaTsk,
       affairID,
       pTkp,
@@ -134,6 +153,34 @@ class AnggotaController extends BaseController {
     if (res?.status == 201) {
       DialogUtils.closeDialog();
       Get.off(() => SuccessScreen(title: 'Laporan Harian Telah Dikirim'));
+    } else {
+      DialogUtils.showWarning(
+        'Upload gagal, silahkan coba lagi atau hubungi admin',
+        closePreDialog: true,
+      );
+    }
+  }
+
+  Future uploadPenilaian({
+    @required String kategoriId,
+    @required String laporanId,
+    @required File pFile,
+  }) async {
+    DialogUtils.showLoading('Uploading...');
+    ApiResponseModel res = await _penilaianService.postPenilaian(
+      kategoriId,
+      laporanId,
+      pFile,
+    );
+
+    if (res?.status == 422) {
+      DialogUtils.showInfo(res.errors.toString(), closePreDialog: true);
+      return;
+    }
+
+    if (res?.status == 201) {
+      DialogUtils.closeDialog();
+      Get.off(() => SuccessScreen(title: 'Penilaian Telah Dikirim'));
     } else {
       DialogUtils.showWarning(
         'Upload gagal, silahkan coba lagi atau hubungi admin',

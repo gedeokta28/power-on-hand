@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class GradeModel {
+class BasicListModel {
   int id;
   String name;
 
-  GradeModel({
+  BasicListModel({
     @required this.id,
     @required this.name,
   });
 
-  factory GradeModel.fromJson(Map<String, dynamic> json) {
-    return GradeModel(
+  factory BasicListModel.fromJson(Map<String, dynamic> json) {
+    return BasicListModel(
       id: json['id'],
       name: json['name'] ?? "",
     );

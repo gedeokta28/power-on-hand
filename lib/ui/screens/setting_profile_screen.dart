@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/user_controller.dart';
-import 'package:power_on_hand/core/models/grade_model.dart';
+import 'package:power_on_hand/core/models/basic_list_model.dart';
 import 'package:power_on_hand/core/utils/helper_utils.dart';
 import 'package:power_on_hand/core/utils/validate_utils.dart';
 import 'package:power_on_hand/ui/screens/grade_list_screen.dart';
@@ -25,7 +25,7 @@ class _SettingProfileScreenState extends State<SettingProfileScreen> {
   var cPhone = TextEditingController();
   var cGrade = TextEditingController();
   var cBirthDate = TextEditingController();
-  GradeModel gradeChoosen;
+  BasicListModel gradeChoosen;
   DateTime birthDate;
 
   @override
