@@ -31,11 +31,11 @@ class _PanitUploadKasusScreenState extends State<PanitUploadKasusScreen> {
         children: [
           TextAndChipWidget(
             text: 'Kepada',
-            textChip: 'Wadir',
+            textChip: 'Kanit',
           ),
           TextAndChipWidget(
             text: 'Dari',
-            textChip: 'Kasubdit',
+            textChip: 'Panit',
           ),
           SizedBox(height: 8),
           Text(

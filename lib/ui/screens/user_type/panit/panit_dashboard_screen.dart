@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
 import 'package:power_on_hand/ui/screens/user_type/panit/panit_upload_kasus_screen.dart';
@@ -48,6 +49,7 @@ class PanitDashboardScreen extends StatelessWidget {
               ButtonWithArrowWidget(
                 text: 'Statitik Penilaian',
                 onTap: () {
+                  showToast('wip');
                   // Get.bottomSheet(
                   //   StatistikPenilaianBottomSheet(),
                   //   isScrollControlled: true,

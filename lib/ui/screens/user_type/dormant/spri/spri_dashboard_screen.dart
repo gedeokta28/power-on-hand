@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
 import 'package:power_on_hand/ui/screens/user_type/dormant/spri/spri_input_kegiatan_direktur_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_laporan_screen.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_list_title_widget.dart';
@@ -29,7 +29,7 @@ class SpriDashboardScreen extends StatelessWidget {
               ButtonWithArrowWidget(
                 text: 'Input Kegiatan Tamu',
                 onTap: () {
-                  Get.to(() => KanitUploadLpScreen());
+                  Get.to(() => KanitUploadLaporanScreen());
                 },
               ),
             ],

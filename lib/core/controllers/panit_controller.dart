@@ -21,21 +21,4 @@ class PanitController extends BaseController {
   //   setLoading(false);
   // }
 
-  // Future updateStatusKasus({
-  //   @required int status,
-  //   @required List<int> listKasusId,
-  // }) async {
-  //   DialogUtils.showLoading('Uploading...');
-
-  //   ApiResponseModel res = await _kasusService.postStatusKasus(
-  //     status,
-  //     listKasusId,
-  //   );
-  //   if (res?.status == 200) {
-  //     DialogUtils.closeDialog();
-  //     Get.off(() => SuccessScreen(title: 'Kasus Telah Dikirim'));
-  //   } else {
-  //     DialogUtils.showInfo(res.errors.toString(), closePreDialog: true);
-  //   }
-  // }
 }

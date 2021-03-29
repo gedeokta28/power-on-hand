@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/laporan_harian_controller.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
@@ -25,7 +24,6 @@ class _PanitUploadLaporanHarianScreenState extends State<PanitUploadLaporanHaria
           status: 1,
           listKasusId: kasusChosenId,
         );
-        showToast('wip');
       },
       buttonText: 'Upload',
       children: Column(
@@ -33,11 +31,11 @@ class _PanitUploadLaporanHarianScreenState extends State<PanitUploadLaporanHaria
         children: [
           TextAndChipWidget(
             text: 'Kepada',
-            textChip: 'Wadir',
+            textChip: 'Kanit',
           ),
           TextAndChipWidget(
             text: 'Dari',
-            textChip: 'Kasubdit',
+            textChip: 'Panit',
           ),
           SizedBox(height: 8),
           Text(

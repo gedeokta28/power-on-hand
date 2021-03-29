@@ -7,7 +7,7 @@ import 'package:power_on_hand/ui/screens/navigation_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/direktur_dashboard_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_laporan_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_paparan_screen.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/dashboard_menu_item_widget.dart';
@@ -153,7 +153,7 @@ class KasubditDashboardScreen extends StatelessWidget {
                     ),
                     DashboardMenuItemWidget(
                       title: 'Upload LP',
-                      onTap: () => Get.to(() => KanitUploadLpScreen()),
+                      onTap: () => Get.to(() => KanitUploadLaporanScreen()),
                     ),
                     DashboardMenuItemWidget(
                       title: 'Upload Paparan',

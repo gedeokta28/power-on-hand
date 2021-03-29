@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_lp_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_laporan_screen.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/button_with_arrow_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/dashboard/dashboard_history_list_title_widget.dart';
@@ -22,13 +22,13 @@ class RenminDashboardScreen extends StatelessWidget {
               ButtonWithArrowWidget(
                 text: 'Upload Surat Keluar',
                 onTap: () {
-                  Get.to(() => KanitUploadLpScreen());
+                  Get.to(() => KanitUploadLaporanScreen());
                 },
               ),
               ButtonWithArrowWidget(
                 text: 'Upload Surat Masuk',
                 onTap: () {
-                  Get.to(() => KanitUploadLpScreen());
+                  Get.to(() => KanitUploadLaporanScreen());
                 },
               ),
             ],

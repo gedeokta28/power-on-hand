@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/kasus_controller.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
@@ -18,9 +17,12 @@ class _KanitUploadKasusScreenState extends State<KanitUploadKasusScreen> {
   @override
   Widget build(BuildContext context) {
     return BaseInputBackground(
-      title: 'Input Kasus',
+      title: 'Upload Kasus',
       buttonOnTap: () {
-        showToast('wip');
+        KasusController.to.updateStatusKasus(
+          status: 2,
+          listKasusId: kasusChosenId,
+        );
       },
       buttonText: 'Upload',
       children: Column(
@@ -28,11 +30,11 @@ class _KanitUploadKasusScreenState extends State<KanitUploadKasusScreen> {
         children: [
           TextAndChipWidget(
             text: 'Kepada',
-            textChip: 'Wadir',
+            textChip: 'Kasubdit',
           ),
           TextAndChipWidget(
             text: 'Dari',
-            textChip: 'Kasubdit',
+            textChip: 'Kanit',
           ),
           SizedBox(height: 8),
           Text(
@@ -60,7 +62,7 @@ class _KanitUploadKasusScreenState extends State<KanitUploadKasusScreen> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(sy(8)),
+                  padding: EdgeInsets.all(8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
