@@ -51,7 +51,7 @@ class _LaporanListItemState extends State<LaporanHarianListItem> {
           RoundedChipColor(
             text: HelperUtils.getHumanDate(
               widget.harian.createdAt,
-              format: 'dd/mm/y',
+              format: 'dd/MM/y',
             ),
             color: Color(0xFFFF8080),
           ),

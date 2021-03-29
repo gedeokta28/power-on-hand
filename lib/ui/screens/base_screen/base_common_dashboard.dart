@@ -42,11 +42,11 @@ class BaseCommonDashboard extends StatelessWidget {
               ),
               // Police Standing Image
               Positioned(
-                top: sy(120),
+                top: sy(140),
                 right: sx(10),
                 child: Image(
                   image: AssetImage('assets/images/police_standing.png'),
-                  height: sy(400),
+                  width: sx(150),
                 ),
               ),
               Padding(

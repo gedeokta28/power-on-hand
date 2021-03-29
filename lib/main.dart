@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -30,7 +31,10 @@ void main() async {
   Get.lazyPut(() => PaparanController(), fenix: true);
   Get.lazyPut(() => KasusController(), fenix: true);
   Get.lazyPut(() => LaporanHarianController(), fenix: true);
-  runApp(MyApp());
+  runApp(DevicePreview(
+    enabled: false,
+    builder: (context) => MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -42,6 +46,10 @@ class MyApp extends StatelessWidget {
       textPadding: EdgeInsets.all(10.0),
       child: GetMaterialApp(
         title: 'Power On Hand',
+        // device preview starts here
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        // device preview ends here
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,

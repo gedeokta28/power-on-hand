@@ -37,8 +37,12 @@ class LaporanListScreen extends StatelessWidget {
                     },
                     dense: true,
                     title: Text(
-                      laporan.id.toString(),
+                      laporan.nomor,
                       style: GoogleFonts.varelaRound(fontSize: 14),
+                    ),
+                    subtitle: Text(
+                      laporan.type,
+                      style: GoogleFonts.varelaRound(),
                     ),
                   );
                 },
