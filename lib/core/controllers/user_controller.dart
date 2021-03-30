@@ -24,6 +24,7 @@ class UserController extends GetxController {
   List<TitleModel> listTitle = [];
   List<BasicListModel> listGrade = [];
   UserModel user;
+  int point = 0;
 
   var _userService = UserService();
 
@@ -41,6 +42,11 @@ class UserController extends GetxController {
   // Get title list to use in register
   Future getTitleList() async {
     listTitle = await _userService.getListTitle();
+    update();
+  }
+
+  Future getPoint() async {
+    point = await _userService.getUserPoint();
     update();
   }
 
@@ -101,6 +107,7 @@ class UserController extends GetxController {
   Future getUser() async {
     user = await _userService.me();
     update();
+    getPoint();
   }
 
 // Send user to their dashboard according to role
@@ -162,6 +169,7 @@ class UserController extends GetxController {
     @required DateTime birthDate,
     @required String gender,
     @required String phone,
+    @required String name,
     @required int gradeId,
   }) async {
     DialogUtils.showLoading('Updating...');
@@ -169,12 +177,13 @@ class UserController extends GetxController {
       DateFormat("yyyy-MM-dd").format(birthDate),
       gender,
       phone,
+      name,
       gradeId,
     );
 
     //* Throw errors
     if (res.status >= 400) {
-      DialogUtils.showInfo(res.data['errors'].toString(), closePreDialog: true);
+      DialogUtils.showInfo(res.errors, closePreDialog: true);
       return;
     }
 

@@ -65,13 +65,15 @@ class UserService extends HttpConnection {
     String birthDate,
     String gender,
     String phone,
+    String name,
     int gradeId,
   ) async {
     FormData _data = FormData.fromMap({
       "birth_date": birthDate,
       "gender": gender,
-      "whatsapp_number": phone,
+      "phone_no": phone,
       "grade_id": gradeId,
+      "name": name,
     });
 
     return await post('/user/update', data: _data);
@@ -85,6 +87,13 @@ class UserService extends HttpConnection {
         data.add(BasicListModel.fromJson(el));
       });
       return data;
+    }
+  }
+
+  Future getUserPoint() async {
+    Response res = await get('/assessment/point', pure: true);
+    if (res.statusCode == 200) {
+      return res.data['point'];
     }
   }
 }

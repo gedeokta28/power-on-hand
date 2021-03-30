@@ -49,7 +49,7 @@ class SubditProfileScreen extends StatelessWidget {
                 },
               ),
               ButtonWithArrowWidget(
-                text: 'Daftar Laporan Harian',
+                text: 'Daftar Laporan Lapangan',
                 isFlex: true,
                 color: Colors.white,
                 onTap: () {

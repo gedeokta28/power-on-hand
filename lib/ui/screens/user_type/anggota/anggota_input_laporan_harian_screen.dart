@@ -40,7 +40,7 @@ class _AnggotaInputLaporanHarianScreenState extends State<AnggotaInputLaporanHar
   @override
   Widget build(BuildContext context) {
     return BaseInputBackground(
-      title: 'Input Laporan Harian',
+      title: 'Input Laporan Lapangan',
       children: Form(
         key: _formKey,
         child: Column(

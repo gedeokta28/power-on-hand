@@ -3,11 +3,13 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/laporan_controller.dart';
 import 'package:power_on_hand/core/utils/file_utils.dart';
 import 'package:power_on_hand/core/utils/validate_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
+import 'package:power_on_hand/ui/widgets/input/base_dropdown_widget.dart';
 import 'package:power_on_hand/ui/widgets/input/text_and_input_widget.dart';
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
 import 'package:power_on_hand/ui/widgets/text_field_widget.dart';
@@ -21,8 +23,13 @@ class _KanitUploadLaporanScreenState extends State<KanitUploadLaporanScreen> {
   PlatformFile pfileLaporan;
   final cLaporan = TextEditingController();
   final cNomor = TextEditingController();
-  String type;
   final _formKey = GlobalKey<FormState>();
+  String type;
+
+  var listDropdownData = [
+    BaseDropdownModel(title: 'Laporan Informasi', value: 'li'),
+    BaseDropdownModel(title: 'Laporan Polisi', value: 'lp'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -50,47 +57,15 @@ class _KanitUploadLaporanScreenState extends State<KanitUploadLaporanScreen> {
               ),
             ),
             SizedBox(height: 4),
-            Container(
-              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(32.0),
-                border: Border.all(),
-                color: Colors.white,
-              ),
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton(
-                    value: type,
-                    isExpanded: true,
-                    hint: Text(
-                      'Pilih Tipe Laporan',
-                      style: GoogleFonts.varelaRound(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black38,
-                      ),
-                    ),
-                    items: [
-                      DropdownMenuItem(
-                        child: Text(
-                          "Laporan Informasi",
-                          style: GoogleFonts.varelaRound(fontSize: 14),
-                        ),
-                        value: 'li',
-                      ),
-                      DropdownMenuItem(
-                        child: Text(
-                          "Laporan Polisi",
-                          style: GoogleFonts.varelaRound(fontSize: 14),
-                        ),
-                        value: 'lp',
-                      ),
-                    ],
-                    onChanged: (value) {
-                      setState(() {
-                        type = value;
-                      });
-                    }),
-              ),
+            BaseDropdownWidget(
+              value: type,
+              dropdownHintText: 'Pilih Tipe Laporan',
+              listDropdownData: listDropdownData,
+              onChanged: (value) {
+                setState(() {
+                  type = value;
+                });
+              },
             ),
             TextFieldWidget(
               title: 'Nomor',

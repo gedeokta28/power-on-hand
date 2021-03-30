@@ -32,7 +32,7 @@ class _AnggotaUploadPenilainLapanganScreenState extends State<AnggotaUploadPenil
   @override
   Widget build(BuildContext context) {
     return BaseInputBackground(
-      title: 'Penilaian Lapangan',
+      title: 'Penilaian Penyidikan dan Penyelidikan',
       children: Form(
         key: _formKey,
         child: Column(

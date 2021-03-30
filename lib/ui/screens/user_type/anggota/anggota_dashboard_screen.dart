@@ -40,7 +40,7 @@ class _AnggotaDashboardScreenState extends State<AnggotaDashboardScreen> {
                 },
               ),
               ButtonWithArrowWidget(
-                text: 'Input Laporan Harian',
+                text: 'Input Laporan Lapangan',
                 onTap: () {
                   Get.to(() => AnggotaInputLaporanHarianScreen());
                 },
@@ -49,17 +49,13 @@ class _AnggotaDashboardScreenState extends State<AnggotaDashboardScreen> {
                 text: 'Statistik Penilaian',
                 onTap: () {
                   Get.bottomSheet(
-                    GetBuilder<AnggotaController>(
-                      builder: (_) {
-                        return StatistikPenilaianBottomSheet(listStatistik: _.listStatistik);
-                      },
-                    ),
+                    StatistikPenilaianBottomSheet(),
                     isScrollControlled: true,
                   );
                 },
               ),
               ButtonWithArrowWidget(
-                text: 'Penilaian Lapangan',
+                text: 'Penilaian Penyidikan dan Penyelidikan',
                 onTap: () {
                   Get.to(() => AnggotaUploadPenilainLapanganScreen());
                 },

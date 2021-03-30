@@ -64,7 +64,7 @@ class NotificationItem extends StatelessWidget {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    'Telah Mengupload Laporan Harian Ke Kanit III',
+                    'Telah Mengupload Laporan Lapangan Ke Kanit III',
                     style: GoogleFonts.varelaRound(
                       color: Colors.black87,
                       fontSize: 12,

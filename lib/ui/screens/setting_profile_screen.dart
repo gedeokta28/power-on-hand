@@ -10,6 +10,7 @@ import 'package:power_on_hand/core/models/basic_list_model.dart';
 import 'package:power_on_hand/core/utils/helper_utils.dart';
 import 'package:power_on_hand/core/utils/validate_utils.dart';
 import 'package:power_on_hand/ui/screens/grade_list_screen.dart';
+import 'package:power_on_hand/ui/widgets/input/base_dropdown_widget.dart';
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
 import 'package:power_on_hand/ui/widgets/text_field_widget.dart';
 
@@ -21,12 +22,33 @@ class SettingProfileScreen extends StatefulWidget {
 class _SettingProfileScreenState extends State<SettingProfileScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  var cGender = TextEditingController();
+  var cName = TextEditingController();
   var cPhone = TextEditingController();
   var cGrade = TextEditingController();
   var cBirthDate = TextEditingController();
   BasicListModel gradeChoosen;
   DateTime birthDate;
+
+  String gender;
+  var listDropdownData = [
+    BaseDropdownModel(title: 'Laki - Laki', value: 'M'),
+    BaseDropdownModel(title: 'Perempuan', value: 'F'),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    cName.text = UserController.to.user.name ?? "";
+    cPhone.text = UserController.to.user.phone ?? "";
+    gender = UserController.to.user.gender ?? null;
+    if (UserController.to.user.gradeId != null) {
+      cGrade.text = UserController.to.user.grade ?? "";
+      gradeChoosen = BasicListModel(id: UserController.to.user.gradeId, name: UserController.to.user.grade);
+    }
+    cBirthDate.text = UserController.to.user.birthDate == null
+        ? ""
+        : DateFormat("dd MMMM yyyy").format(UserController.to.user.birthDate);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +106,7 @@ class _SettingProfileScreenState extends State<SettingProfileScreen> {
                     TextFieldWidget(
                       fillColor: Colors.grey[300].withOpacity(0.8),
                       title: 'Nama :',
+                      cText: cName,
                       validator: (value) {
                         return ValidateUtils.requiredField(value, 'Nama wajib diisi');
                       },
@@ -114,7 +137,9 @@ class _SettingProfileScreenState extends State<SettingProfileScreen> {
                         return ValidateUtils.requiredField(value, 'Tanggal Lahir wajib diisi');
                       },
                       onTap: () async {
-                        var res = await HelperUtils.getDatePicker();
+                        var res = await HelperUtils.getDatePicker(
+                          firstDate: DateTime.now().subtract(Duration(days: 70 * 365)),
+                        );
                         if (res != null) {
                           setState(() {
                             birthDate = res;
@@ -123,12 +148,24 @@ class _SettingProfileScreenState extends State<SettingProfileScreen> {
                         }
                       },
                     ),
-                    TextFieldWidget(
+                    SizedBox(height: 8),
+                    Text(
+                      'Jenis Kelamin : ',
+                      style: GoogleFonts.varelaRound(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    BaseDropdownWidget(
+                      value: gender,
+                      dropdownHintText: 'Pilih Jenis Kelamin',
+                      listDropdownData: listDropdownData,
                       fillColor: Colors.grey[300].withOpacity(0.8),
-                      title: 'Jenis Kelamin :',
-                      cText: cGender,
-                      validator: (value) {
-                        return ValidateUtils.requiredField(value, 'Jenis Kelamin wajib diisi');
+                      onChanged: (value) {
+                        setState(() {
+                          gender = value;
+                        });
                       },
                     ),
                     TextFieldWidget(
@@ -146,8 +183,9 @@ class _SettingProfileScreenState extends State<SettingProfileScreen> {
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
                             UserController.to.updateProfile(
-                              birthDate: birthDate,
-                              gender: cGender.text,
+                              name: cName.text,
+                              birthDate: birthDate ?? UserController.to.user.birthDate,
+                              gender: gender,
                               phone: cPhone.text,
                               gradeId: gradeChoosen.id,
                             );

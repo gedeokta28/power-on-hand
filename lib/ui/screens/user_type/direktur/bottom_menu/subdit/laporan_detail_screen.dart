@@ -8,14 +8,14 @@ class LaporanDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseBottomMenu(
-      title: 'Laporan Harian Detail',
+      title: 'Laporan Lapangan Detail',
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: paddingX),
           child: ListBody(
             children: [
               Text(
-                'Laporan Harian',
+                'Laporan Lapangan',
                 style: GoogleFonts.roboto(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,

@@ -13,7 +13,7 @@ class SubditDaftarLaporanScreen extends StatelessWidget {
       children: [
         SearchInputWidget('Cari Laporan'),
         SubditDaftarItem(
-          title: 'Laporan Harian-01',
+          title: 'Laporan Lapangan-01',
           penyidik: 'Brigadi Angga Saputra ',
           subtitle: 'Pencemaran Nama Baik',
           onTap: () {
@@ -21,7 +21,7 @@ class SubditDaftarLaporanScreen extends StatelessWidget {
           },
         ),
         SubditDaftarItem(
-          title: 'Laporan Harian-01',
+          title: 'Laporan Lapangan-01',
           penyidik: 'Brigadi Angga Saputra ',
           subtitle: 'Pencemaran Nama Baik',
           onTap: () {
@@ -29,7 +29,7 @@ class SubditDaftarLaporanScreen extends StatelessWidget {
           },
         ),
         SubditDaftarItem(
-          title: 'Laporan Harian-01',
+          title: 'Laporan Lapangan-01',
           penyidik: 'Brigadi Angga Saputra ',
           subtitle: 'Pencemaran Nama Baik',
           onTap: () {
@@ -37,7 +37,7 @@ class SubditDaftarLaporanScreen extends StatelessWidget {
           },
         ),
         SubditDaftarItem(
-          title: 'Laporan Harian-01',
+          title: 'Laporan Lapangan-01',
           penyidik: 'Brigadi Angga Saputra ',
           subtitle: 'Pencemaran Nama Baik',
           onTap: () {

@@ -9,11 +9,12 @@ abstract class HttpConnection {
   Dio _dio() {
     final options = BaseOptions(
       receiveTimeout: 3000,
-      connectTimeout: 15000,
+      connectTimeout: 5000,
       baseUrl: 'https://poh.kediriapp.com/api',
       contentType: "application/json",
 
       //! this is important so error code below 500 will not get thrown
+      // such as validation error
       validateStatus: (status) {
         return status < 500;
       },

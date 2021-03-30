@@ -20,4 +20,4 @@ class Styles {
   static final primaryColor = Color(0xFF2BD9F5);
 }
 
-enum UserType { kanit, panit }
+enum UserType { anggota, kanit, panit }

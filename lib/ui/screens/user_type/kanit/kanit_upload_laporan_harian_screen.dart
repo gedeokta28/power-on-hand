@@ -18,7 +18,7 @@ class _KanitUploadLaporanHarianScreenState extends State<KanitUploadLaporanHaria
   @override
   Widget build(BuildContext context) {
     return BaseInputBackground(
-      title: 'Upload Laporan Harian',
+      title: 'Upload Laporan Lapangan',
       buttonOnTap: () {
         LaporanHarianController.to.updateStatusLaporanHarian(
           status: 2,

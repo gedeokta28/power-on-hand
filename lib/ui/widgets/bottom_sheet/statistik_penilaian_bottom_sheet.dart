@@ -2,16 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:power_on_hand/core/models/chart/daily_model.dart';
+import 'package:power_on_hand/core/controllers/statistik_controller.dart';
 import 'package:random_color/random_color.dart';
 
-class StatistikPenilaianBottomSheet extends StatelessWidget {
-  final List<DailyModel> listStatistik;
-  const StatistikPenilaianBottomSheet({
-    Key key,
-    @required this.listStatistik,
-  }) : super(key: key);
+class StatistikPenilaianBottomSheet extends StatefulWidget {
+  @override
+  _StatistikPenilaianBottomSheetState createState() => _StatistikPenilaianBottomSheetState();
+}
+
+class _StatistikPenilaianBottomSheetState extends State<StatistikPenilaianBottomSheet> {
+  DateTime choosenDate;
+
+  @override
+  void initState() {
+    super.initState();
+    choosenDate = DateTime.now();
+    StatistikController.to.getStatistikChart(choosenDate);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +46,12 @@ class StatistikPenilaianBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                onTap: Get.back,
+                onTap: () {
+                  setState(() {
+                    choosenDate = choosenDate.subtract(Duration(days: 1));
+                  });
+                  StatistikController.to.getStatistikChart(choosenDate);
+                },
                 child: Icon(
                   FontAwesomeIcons.longArrowAltLeft,
                   color: Colors.blue.shade600,
@@ -46,7 +60,7 @@ class StatistikPenilaianBottomSheet extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(8),
                 child: Text(
-                  'Senin, 01-02-2021',
+                  DateFormat('dd-MMM-y').format(choosenDate).toString(),
                   style: GoogleFonts.varelaRound(
                     fontSize: 14,
                     color: Colors.black87,
@@ -55,7 +69,12 @@ class StatistikPenilaianBottomSheet extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: Get.back,
+                onTap: () {
+                  setState(() {
+                    choosenDate = choosenDate.add(Duration(days: 1));
+                  });
+                  StatistikController.to.getStatistikChart(choosenDate);
+                },
                 child: Icon(
                   FontAwesomeIcons.longArrowAltRight,
                   color: Colors.blue.shade600,
@@ -63,26 +82,28 @@ class StatistikPenilaianBottomSheet extends StatelessWidget {
               ),
             ],
           ),
-          Wrap(
-            runSpacing: 12,
-            spacing: 12,
-            children: listStatistik == null
-                ? Center(child: CircularProgressIndicator())
-                : listStatistik
-                    .map((statistik) => GrafikPercentWidget(
-                          title: statistik.name,
-                          percentage: statistik.percentange,
-                        ))
-                    .toList()
-                    .cast<Widget>(),
-          ),
-          SizedBox(height: 12),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: PointWidget(
-              text: 'Point',
-              textChip: '25',
-            ),
+          GetBuilder<StatistikController>(
+            initState: (_) {},
+            builder: (_) {
+              return Wrap(
+                runSpacing: 12,
+                spacing: 12,
+                children: _.listStatistik == null || _.isLoading
+                    ? [Center(child: CircularProgressIndicator())]
+                    : _.listStatistik
+                        .map((statistik) {
+                          // if(UserController.to.user.title == 'anggota'){
+                          //   if(statistik.name = "")
+                          // }
+                          return GrafikPercentWidget(
+                            title: statistik.name,
+                            percentage: statistik.percentange,
+                          );
+                        })
+                        .toList()
+                        .cast<Widget>(),
+              );
+            },
           ),
         ],
       ),
