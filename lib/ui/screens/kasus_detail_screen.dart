@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
+import 'package:power_on_hand/core/models/kasus_model.dart';
+import 'package:power_on_hand/core/utils/download_utils.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/bottom_menu/base_bottom_menu.dart';
 import 'package:power_on_hand/ui/widgets/grafik/rounded_chip_color.dart';
 
 class KasusDetailScreen extends StatelessWidget {
+  final KasusModel kasus;
+  KasusDetailScreen(this.kasus);
+
   @override
   Widget build(BuildContext context) {
     return BaseBottomMenu(
@@ -41,7 +46,7 @@ class KasusDetailScreen extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                'Exercitationem aut quo debitis.',
+                kasus.description ?? "",
                 style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -54,7 +59,7 @@ class KasusDetailScreen extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                'Rem quis enim. Ex officiis aperiam. Facere cum iure rerum qui. Impedit quia mollitia ut vel aut sed tempora. Dolorem et quisquam.',
+                kasus.anvil ?? "",
                 style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -67,20 +72,25 @@ class KasusDetailScreen extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                'David Oey',
+                kasus.idcard?.split('/')[2],
                 style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(height: 4),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: RoundedChipColor(
-                  text: 'Lihat Foto Identitas',
-                  color: Colors.red.shade700,
-                  fontColor: Colors.white,
-                  padding: 12,
+              InkWell(
+                onTap: () async {
+                  await DownloadUtils.download(baseURL + kasus.idcard);
+                },
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: RoundedChipColor(
+                    text: 'Lihat Foto Identitas',
+                    color: Colors.red.shade700,
+                    fontColor: Colors.white,
+                    padding: 12,
+                  ),
                 ),
               ),
               SizedBox(height: 12),
@@ -89,20 +99,25 @@ class KasusDetailScreen extends StatelessWidget {
                 style: GoogleFonts.roboto(fontSize: 14),
               ),
               Text(
-                'Laptop Asus dan 2 handphone merk Xiomi 5a',
+                kasus.evidence?.split('/')[2],
                 style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(height: 4),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: RoundedChipColor(
-                  text: 'Lihat Foto Barang Bukti',
-                  color: Colors.red.shade700,
-                  fontColor: Colors.white,
-                  padding: 12,
+              InkWell(
+                onTap: () async {
+                  await DownloadUtils.download(baseURL + kasus.evidence);
+                },
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: RoundedChipColor(
+                    text: 'Lihat Foto Barang Bukti',
+                    color: Colors.red.shade700,
+                    fontColor: Colors.white,
+                    padding: 12,
+                  ),
                 ),
               ),
               SizedBox(height: 12),
@@ -112,7 +127,7 @@ class KasusDetailScreen extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                'Rem quis enim. Ex officiis aperiam. Facere cum iure rerum qui. Impedit quia mollitia ut vel aut sed tempora. Dolorem et quisquam.',
+                kasus.persuasive ?? "",
                 style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -125,7 +140,7 @@ class KasusDetailScreen extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                'Necessitatibus laboriosam exercitationem non debitis.',
+                kasus.affairId ?? "",
                 style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -138,7 +153,7 @@ class KasusDetailScreen extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                'Rem quis enim. Ex officiis aperiam.',
+                kasus.provisionId ?? "",
                 style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -151,7 +166,7 @@ class KasusDetailScreen extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                'Voluptatum fugit eaque nesciunt perspiciatis ducimus alias.',
+                kasus.plan,
                 style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,

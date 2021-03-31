@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/anggota_controller.dart';
 import 'package:power_on_hand/core/utils/helper_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
+import 'package:power_on_hand/ui/screens/kasus_detail_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/anggota/anggota_input_giat_pengaman_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/anggota/anggota_input_kasus_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/anggota/anggota_input_laporan_harian_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/anggota/anggota_upload_penilaian_lapangan_screen.dart';
@@ -43,6 +44,12 @@ class _AnggotaDashboardScreenState extends State<AnggotaDashboardScreen> {
                 text: 'Input Laporan Lapangan',
                 onTap: () {
                   Get.to(() => AnggotaInputLaporanHarianScreen());
+                },
+              ),
+              ButtonWithArrowWidget(
+                text: 'Input Giat Pengaman (PAM)',
+                onTap: () {
+                  Get.to(() => AnggotaInputGiatPengamanScreen());
                 },
               ),
               ButtonWithArrowWidget(
@@ -98,7 +105,7 @@ class _AnggotaDashboardScreenState extends State<AnggotaDashboardScreen> {
                             return DashboardHistoryItemWidget(
                               title: _.listKasusHistory[index].description,
                               onTap: () {
-                                showToast('under construction');
+                                Get.to(() => KasusDetailScreen(_.listKasusHistory[index]));
                               },
                             );
                           },

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
 import 'package:power_on_hand/core/services/logging_interceptors.dart';
 import 'package:power_on_hand/core/utils/storage_utils.dart';
@@ -10,7 +11,7 @@ abstract class HttpConnection {
     final options = BaseOptions(
       receiveTimeout: 3000,
       connectTimeout: 5000,
-      baseUrl: 'https://poh.kediriapp.com/api',
+      baseUrl: baseURL + 'api',
       contentType: "application/json",
 
       //! this is important so error code below 500 will not get thrown

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:power_on_hand/core/constant/constant.dart';
-
 class ButtonWithArrowWidget extends StatelessWidget {
   final String text;
   final Function onTap;
@@ -23,7 +21,7 @@ class ButtonWithArrowWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: EdgeInsets.only(top: 16),
-        padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+        padding: EdgeInsets.fromLTRB(12, 8, 12, 8),
         decoration: BoxDecoration(
           color: color ?? Colors.grey[300].withOpacity(0.8),
           borderRadius: BorderRadius.circular(20),
@@ -42,12 +40,12 @@ class ButtonWithArrowWidget extends StatelessWidget {
             Text(
               text,
               style: GoogleFonts.varelaRound(
-                fontSize: 16,
+                fontSize: 15,
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
               ),
             ),
-            isFlex ? Spacer() : SizedBox(width: sy(22)),
+            isFlex ? Spacer() : SizedBox(width: 8),
             Icon(FontAwesomeIcons.chevronRight)
           ],
         ),

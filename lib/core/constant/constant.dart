@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+const String baseURL = 'https://poh.kediriapp.com/';
+
 const double baseHeight = 640.0;
 const double baseWidth = 360.0;
 

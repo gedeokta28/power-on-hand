@@ -113,6 +113,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.10"
+  downloads_path_provider:
+    dependency: "direct main"
+    description:
+      name: downloads_path_provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   equatable:
     dependency: transitive
     description:
@@ -350,6 +357,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.2"
+  open_file:
+    dependency: "direct main"
+    description:
+      name: open_file
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.3"
   path:
     dependency: transitive
     description:
@@ -420,6 +434,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.9+1"
+  permission_handler:
+    dependency: "direct main"
+    description:
+      name: permission_handler
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.1.0+2"
+  permission_handler_platform_interface:
+    dependency: transitive
+    description:
+      name: permission_handler_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
   petitparser:
     dependency: transitive
     description:

@@ -103,7 +103,7 @@ class DialogUtils {
     );
   }
 
-  static void showWarningToast(context, String text) {
+  static void showWarningToast(String text) {
     showToastWidget(
       Container(
         height: 80,

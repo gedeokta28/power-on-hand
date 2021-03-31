@@ -17,6 +17,7 @@
     tools:node="remove" />
 
     <application
+        android:requestLegacyExternalStorage="true"
         android:name="io.flutter.app.FlutterApplication"
         android:label="power_on_hand"
         android:icon="@mipmap/ic_launcher">
