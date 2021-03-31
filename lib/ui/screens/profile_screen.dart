@@ -98,7 +98,7 @@ class ProfileScreen extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: PointWidget(
-                            text: 'Point',
+                            text: 'Riawayat Point',
                             textChip: _.point.toString(),
                           ),
                         ),

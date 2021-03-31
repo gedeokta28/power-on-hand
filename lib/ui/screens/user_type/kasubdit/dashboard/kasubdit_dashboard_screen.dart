@@ -6,9 +6,10 @@ import 'package:power_on_hand/core/controllers/user_controller.dart';
 import 'package:power_on_hand/ui/screens/navigation_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/direktur_dashboard_screen.dart';
 import 'package:power_on_hand/ui/screens/user_type/direktur/notification_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_kasus_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_laporan_screen.dart';
-import 'package:power_on_hand/ui/screens/user_type/kanit/kanit_upload_paparan_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/kasubdit/dashboard/kasubdit_statistik_penilaian_bottom_sheet.dart';
+import 'package:power_on_hand/ui/screens/user_type/kasubdit/dashboard/kasubdit_upload_kasus_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/kasubdit/dashboard/kasubdit_upload_laporan_screen.dart';
+import 'package:power_on_hand/ui/screens/user_type/kasubdit/dashboard/kasubdit_upload_paparan_screen.dart';
 import 'package:power_on_hand/ui/widgets/grafik/anggota_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/grafik/dashboard_menu_item_widget.dart';
 import 'package:power_on_hand/ui/widgets/scaffold_three_color_container.dart';
@@ -148,19 +149,19 @@ class KasubditDashboardScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     DashboardMenuItemWidget(
-                      title: 'Upload Kasus',
-                      onTap: () => Get.to(() => KanitUploadKasusScreen()),
+                      title: 'Upload \nKasus',
+                      onTap: () => Get.to(() => KasubditUploadKasusScreen()),
                     ),
                     DashboardMenuItemWidget(
-                      title: 'Upload LP',
-                      onTap: () => Get.to(() => KanitUploadLaporanScreen()),
+                      title: 'Upload \nLaporan',
+                      onTap: () => Get.to(() => KasubditUploadLaporanScreen()),
                     ),
                     DashboardMenuItemWidget(
-                      title: 'Upload Paparan',
-                      onTap: () => Get.to(() => KanitUploadPaparanScreen()),
+                      title: 'Upload \nPaparan',
+                      onTap: () => Get.to(() => KasubditUploadPaparanScreen()),
                     ),
                     DashboardMenuItemWidget(
-                      title: 'Aktivitas Anggota',
+                      title: 'Aktivitas \nAnggota',
                       onTap: () {
                         // Get.bottomSheet(
                         //   StatistikPenilaianBottomSheet(),
@@ -169,17 +170,17 @@ class KasubditDashboardScreen extends StatelessWidget {
                       },
                     ),
                     DashboardMenuItemWidget(
-                      title: 'Statistik Penilaian',
+                      title: 'Statistik \nPenilaian',
                       onTap: () {
-                        // Get.bottomSheet(
-                        //   StatistikPenilaianBottomSheet(),
-                        //   isScrollControlled: true,
-                        // );
+                        Get.bottomSheet(
+                          KasubditStatistikPenilaianBottomSheet(),
+                          isScrollControlled: true,
+                        );
                       },
                     ),
                     DashboardMenuItemWidget(
-                      title: 'Upload Paparan',
-                      onTap: () => Get.to(() => KanitUploadPaparanScreen()),
+                      title: 'Upload Laporan Lapangan',
+                      onTap: () => Get.to(() => KasubditUploadLaporanScreen()),
                     ),
                   ],
                 ),

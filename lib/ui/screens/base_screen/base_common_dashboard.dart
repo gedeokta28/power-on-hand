@@ -8,6 +8,7 @@ import 'package:power_on_hand/core/constant/constant.dart';
 import 'package:power_on_hand/core/controllers/user_controller.dart';
 import 'package:power_on_hand/ui/screens/navigation_screen.dart';
 import 'package:power_on_hand/ui/widgets/dialog/input_dialog.dart';
+import 'package:power_on_hand/ui/widgets/logo_bareskim.dart';
 
 class BaseCommonDashboard extends StatelessWidget {
   final List<Widget> children;
@@ -54,19 +55,24 @@ class BaseCommonDashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        Get.to(() => NavigationScreen(), transition: Transition.fadeIn);
-                      },
-                      child: Icon(FontAwesomeIcons.alignLeft),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Get.to(() => NavigationScreen(), transition: Transition.fadeIn);
+                          },
+                          child: Icon(FontAwesomeIcons.alignLeft),
+                        ),
+                        Spacer(),
+                        LogoBareskimWidget(),
+                      ],
                     ),
-                    SizedBox(height: sy(22)),
                     SizedBox(
                       width: Get.width / 1.5,
                       child: GetBuilder<UserController>(
                         builder: (_) {
                           return Text(
-                            'HI, Perwira ${_?.user?.name ?? ""}',
+                            'HI, ${_?.user?.grade ?? ""} ${_?.user?.name ?? ""}',
                             style: GoogleFonts.varelaRound(
                               fontSize: 28,
                               color: Colors.white,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
 
@@ -20,13 +19,13 @@ class DashboardMenuItemWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: SizedBox(
-        width: Get.width / 5.7,
+        width: 80,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              width: Get.width / 7,
-              height: Get.width / 7,
+              width: 50,
+              height: 50,
               child: widget == null ? SizedBox() : widget,
               margin: EdgeInsets.only(bottom: sy(4)),
               decoration: BoxDecoration(
