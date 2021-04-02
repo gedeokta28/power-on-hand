@@ -93,22 +93,22 @@ class _PanitUploadKasusScreenState extends State<PanitUploadKasusScreen> {
                 ),
                 GetBuilder<KasusController>(
                   builder: (_) {
-                    if (_.listKasusHistory == null) {
-                      _.getKasusHistoryList(UserType.panit);
+                    if (_.listKasusByType == null) {
+                      _.getKasusListByType(UserType.panit);
                       return Center(child: CircularProgressIndicator());
                     }
                     return SizedBox(
                       height: Get.height / 2,
-                      child: _.listKasusHistory.isEmpty
+                      child: _.listKasusByType.isEmpty
                           ? Center(
                               child: Text('No history found '),
                             )
                           : ListView.separated(
                               separatorBuilder: (context, index) => Divider(height: 1),
-                              itemCount: _.listKasusHistory.length,
+                              itemCount: _.listKasusByType.length,
                               itemBuilder: (context, index) {
                                 return LaporanKasusListItem(
-                                  kasus: _.listKasusHistory[index],
+                                  kasus: _.listKasusByType[index],
                                   kasusChosenId: kasusChosenId,
                                 );
                               },

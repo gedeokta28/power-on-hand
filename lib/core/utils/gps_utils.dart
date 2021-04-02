@@ -1,3 +1,5 @@
+import 'package:geocoder/geocoder.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -29,10 +31,11 @@ class GPSUtils {
     var locData = await location.getLocation();
     return LatLng(locData.latitude, locData.longitude);
   }
-}
 
-class LatLng {
-  double latitude;
-  double longitude;
-  LatLng(this.latitude, this.longitude);
+  static Future getAdress(LatLng latlng) async {
+    List<Address> address = await Geocoder.local.findAddressesFromCoordinates(
+      Coordinates(latlng.latitude, latlng.longitude),
+    );
+    return address.first.addressLine;
+  }
 }

@@ -52,7 +52,7 @@ class KasusService extends HttpConnection {
   }
 
   // get kasus for history
-  Future getKasusListForAnggota(String formattedDate) async {
+  Future getKasusHistory(String formattedDate) async {
     ApiResponseModel resp = await get('/report/history?date=$formattedDate');
     if (resp.status == 200) {
       List<KasusModel> data = [];

@@ -4,8 +4,9 @@ import 'package:power_on_hand/core/utils/helper_utils.dart';
 
 class SearchInputWidget extends StatelessWidget {
   final String title;
+  final bool addDate;
 
-  SearchInputWidget(this.title);
+  SearchInputWidget(this.title, {this.addDate = true});
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -49,15 +50,17 @@ class SearchInputWidget extends StatelessWidget {
             ),
           ),
         ),
-        InkWell(
-          onTap: () {
-            HelperUtils.getDatePicker();
-          },
-          child: Ink(
-            padding: EdgeInsets.fromLTRB(8, 0, 16, 16),
-            child: Icon(FontAwesomeIcons.calendarDay, size: 20),
-          ),
-        ),
+        !addDate
+            ? SizedBox()
+            : InkWell(
+                onTap: () {
+                  HelperUtils.getDatePicker();
+                },
+                child: Ink(
+                  padding: EdgeInsets.fromLTRB(8, 0, 16, 16),
+                  child: Icon(FontAwesomeIcons.calendarDay, size: 20),
+                ),
+              ),
       ],
     );
   }

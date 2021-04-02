@@ -1,9 +1,17 @@
+import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:power_on_hand/core/controllers/maps_controller.dart';
+import 'package:power_on_hand/core/controllers/pengaman_controller.dart';
 import 'package:power_on_hand/core/utils/file_utils.dart';
+import 'package:power_on_hand/core/utils/gps_utils.dart';
 import 'package:power_on_hand/core/utils/validate_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_input_background.dart';
+import 'package:power_on_hand/ui/screens/map_picker_screen.dart';
 import 'package:power_on_hand/ui/widgets/input/base_dropdown_widget.dart';
 import 'package:power_on_hand/ui/widgets/primary_button.dart';
 import 'package:power_on_hand/ui/widgets/text_field_widget.dart';
@@ -14,22 +22,29 @@ class AnggotaInputGiatPengamanScreen extends StatefulWidget {
 }
 
 class _AnggotaInputGiatPengamanScreenState extends State<AnggotaInputGiatPengamanScreen> {
+  @override
+  void initState() {
+    super.initState();
+    MapsController.to.initLocation();
+  }
+
   final _formKey = GlobalKey<FormState>();
   PlatformFile pFile;
 
   var cDasarSprint = TextEditingController();
   var cNamaGiat = TextEditingController();
-  var cLat = TextEditingController();
-  var cLng = TextEditingController();
+  var cLokasi = TextEditingController();
   var cDurasi = TextEditingController();
   var cFIle = TextEditingController();
 
+  LatLng pinLocation;
+
   String duration;
   var listDurationData = [
-    BaseDropdownModel(title: '3 jam', value: 'M'),
-    BaseDropdownModel(title: '6 jam', value: 'M'),
-    BaseDropdownModel(title: '9 jam', value: 'M'),
-    BaseDropdownModel(title: '12 jam', value: 'M'),
+    BaseDropdownModel(title: '3 jam', value: '3'),
+    BaseDropdownModel(title: '6 jam', value: '6'),
+    BaseDropdownModel(title: '9 jam', value: '9'),
+    BaseDropdownModel(title: '12 jam', value: '12'),
   ];
 
   @override
@@ -53,6 +68,22 @@ class _AnggotaInputGiatPengamanScreenState extends State<AnggotaInputGiatPengama
               cText: cNamaGiat,
               validator: (value) {
                 return ValidateUtils.requiredField(value, 'Nama Giat wajib diisi');
+              },
+            ),
+            TextFieldWidget(
+              title: 'Masukkan Lokasi',
+              cText: cLokasi,
+              isReadOnly: true,
+              onTap: () async {
+                LatLng latLng = await Get.to(() => MapPickerScreen());
+                if (latLng != null) {
+                  cLokasi.text = latLng.latitude.toString();
+                  pinLocation = latLng;
+                  cLokasi.text = await GPSUtils.getAdress(latLng);
+                }
+              },
+              validator: (value) {
+                return ValidateUtils.requiredField(value, 'Lokasi wajib diisi');
               },
             ),
             SizedBox(height: 8),
@@ -99,14 +130,14 @@ class _AnggotaInputGiatPengamanScreenState extends State<AnggotaInputGiatPengama
               padding: 14,
               onPressed: () async {
                 if (_formKey.currentState.validate()) {
-                  // AnggotaController.to.uploadLaporanHarian(
-                  //   namaTsk: cNamaTsk.text,
-                  //   affairID: _affairChosen.id,
-                  //   pTkp: File(pTkp.path),
-                  //   pBarangBukti: File(pBarangBukti.path),
-                  //   pKartuIdentitas: File(pKartuIdentitas.path),
-                  //   pSidikJari: File(pSidikJari.path),
-                  // );
+                  PengamanController.to.uploadLaporan(
+                    dasar: cDasarSprint.text,
+                    nama: cNamaGiat.text,
+                    duration: duration,
+                    pFile: File(pFile.path),
+                    latitude: pinLocation.latitude,
+                    longitude: pinLocation.longitude,
+                  );
                 }
               },
             ),

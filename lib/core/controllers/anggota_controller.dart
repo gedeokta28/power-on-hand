@@ -2,11 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:power_on_hand/core/controllers/base_controller.dart';
 import 'package:power_on_hand/core/models/affair_model.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
-import 'package:power_on_hand/core/models/kasus_model.dart';
 import 'package:power_on_hand/core/models/kategori_penilaian_model.dart';
 import 'package:power_on_hand/core/models/laporan_model.dart';
 import 'package:power_on_hand/core/models/provision_model.dart';
@@ -23,7 +21,6 @@ class AnggotaController extends BaseController {
 
   List<ProvisionModel> listProvision = [];
   List<AffairModel> listAffair = [];
-  List<KasusModel> listKasusHistory;
   List<LaporanModel> listLaporan;
   List<KategoriPenilaianModel> listKategoriPenilaian;
 
@@ -39,7 +36,6 @@ class AnggotaController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    getKasusHistoryList();
   }
 
   Future getProvisionList() async {
@@ -127,19 +123,6 @@ class AnggotaController extends BaseController {
         closePreDialog: true,
       );
     }
-  }
-
-  Future getKasusHistoryList({DateTime date}) async {
-    setLoading(true);
-    if (date == null) {
-      date = DateTime.now();
-    }
-
-    var formattedDate = DateFormat("yyyy-MM-dd").format(date);
-    listKasusHistory = await _kasusService.getKasusListForAnggota(formattedDate);
-    update();
-
-    setLoading(false);
   }
 
   Future uploadLaporanHarian({

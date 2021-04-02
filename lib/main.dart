@@ -11,8 +11,10 @@ import 'package:power_on_hand/core/controllers/kanit_controller.dart';
 import 'package:power_on_hand/core/controllers/kasus_controller.dart';
 import 'package:power_on_hand/core/controllers/laporan_controller.dart';
 import 'package:power_on_hand/core/controllers/laporan_harian_controller.dart';
+import 'package:power_on_hand/core/controllers/maps_controller.dart';
 import 'package:power_on_hand/core/controllers/panit_controller.dart';
 import 'package:power_on_hand/core/controllers/paparan_controller.dart';
+import 'package:power_on_hand/core/controllers/pengaman_controller.dart';
 import 'package:power_on_hand/core/controllers/statistik_controller.dart';
 import 'package:power_on_hand/core/controllers/user_controller.dart';
 import 'package:power_on_hand/core/utils/gps_utils.dart';
@@ -34,6 +36,8 @@ void main() async {
   Get.lazyPut(() => KasusController(), fenix: true);
   Get.lazyPut(() => LaporanHarianController(), fenix: true);
   Get.lazyPut(() => StatistikController(), fenix: true);
+  Get.lazyPut(() => MapsController(), fenix: true);
+  Get.lazyPut(() => PengamanController(), fenix: true);
 
   GPSUtils.getCurrentLocation();
 

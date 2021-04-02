@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:downloads_path_provider/downloads_path_provider.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -10,10 +9,6 @@ import 'package:power_on_hand/core/utils/dialog_utils.dart';
 
 class DownloadUtils {
   static Future<Directory> getDownloadDirectory() async {
-    if (Platform.isAndroid) {
-      return await DownloadsPathProvider.downloadsDirectory;
-    }
-    // iOS directory visible to user
     return await getApplicationDocumentsDirectory();
   }
 
@@ -49,7 +44,7 @@ class DownloadUtils {
           'Download berhasil \n\nApakah anda ingin membuka folder ?',
           'Buka',
           onClick: () {
-            OpenFile.open(dir.path);
+            OpenFile.open(savePath);
           },
         );
       }

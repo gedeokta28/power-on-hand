@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:power_on_hand/core/constant/constant.dart';
-import 'package:power_on_hand/core/controllers/anggota_controller.dart';
+import 'package:power_on_hand/core/controllers/kasus_controller.dart';
 import 'package:power_on_hand/core/utils/helper_utils.dart';
 import 'package:power_on_hand/ui/screens/base_screen/base_common_dashboard.dart';
 import 'package:power_on_hand/ui/screens/kasus_detail_screen.dart';
@@ -73,7 +73,7 @@ class _AnggotaDashboardScreenState extends State<AnggotaDashboardScreen> {
         SizedBox(height: sy(12)),
         Divider(),
         DashboardHistoryListTitleWidget(
-          title: 'History Dokumen',
+          title: 'History Kasus',
           date: choosenDate.isNotEmpty ? choosenDate : DateFormat("dd MMMM yyyy").format(DateTime.now()),
           onTapDate: () async {
             var res = await HelperUtils.getDatePicker();
@@ -81,35 +81,36 @@ class _AnggotaDashboardScreenState extends State<AnggotaDashboardScreen> {
               setState(() {
                 choosenDate = DateFormat("dd MMMM yyyy").format(res);
               });
-              AnggotaController.to.getKasusHistoryList(date: res);
+              KasusController.to.getKasusHistoryList(date: res);
             }
           },
         ),
         SizedBox(height: 24),
-        GetBuilder<AnggotaController>(
+        GetBuilder<KasusController>(
           builder: (_) {
+            if (_.listKasusHistory == null || _.isLoading == true) {
+              return Center(child: CircularProgressIndicator());
+            }
             return SizedBox(
               height: 200,
-              child: _.listKasusHistory == null || _.isLoading
-                  ? Center(child: CircularProgressIndicator())
-                  : _.listKasusHistory.isEmpty
-                      ? Center(
-                          child: Text('No history found '),
-                        )
-                      : ListView.separated(
-                          separatorBuilder: (_, __) => Divider(height: 1),
-                          itemCount: _.listKasusHistory.length,
-                          physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return DashboardHistoryItemWidget(
-                              title: _.listKasusHistory[index].description,
-                              onTap: () {
-                                Get.to(() => KasusDetailScreen(_.listKasusHistory[index]));
-                              },
-                            );
+              child: _.listKasusHistory.isEmpty
+                  ? Center(
+                      child: Text('No history found '),
+                    )
+                  : ListView.separated(
+                      separatorBuilder: (_, __) => Divider(height: 1),
+                      itemCount: _.listKasusHistory.length,
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return DashboardHistoryItemWidget(
+                          title: _.listKasusHistory[index].description,
+                          onTap: () {
+                            Get.to(() => KasusDetailScreen(_.listKasusHistory[index]));
                           },
-                        ),
+                        );
+                      },
+                    ),
             );
           },
         ),

@@ -10,7 +10,7 @@ abstract class HttpConnection {
   Dio _dio() {
     final options = BaseOptions(
       receiveTimeout: 3000,
-      connectTimeout: 5000,
+      connectTimeout: 7000,
       baseUrl: baseURL + 'api',
       contentType: "application/json",
 
