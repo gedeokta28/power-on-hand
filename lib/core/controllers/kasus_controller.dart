@@ -15,6 +15,7 @@ class KasusController extends BaseController {
   List<KasusModel> listKasusByType;
   List<KasusModel> listKasusHistory;
   var _kasusService = KasusService();
+  KasusModel kasusDetail;
 
   @override
   void onInit() {
@@ -56,5 +57,12 @@ class KasusController extends BaseController {
     } else {
       DialogUtils.showInfo(res.errors.toString(), closePreDialog: true);
     }
+  }
+
+  Future getKasusDetail(int id) async {
+    setLoading(true);
+    kasusDetail = await _kasusService.getKasusDetail(id);
+    update();
+    setLoading(false);
   }
 }

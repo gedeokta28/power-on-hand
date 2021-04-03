@@ -13,7 +13,7 @@ class LaporanHarianController extends BaseController {
 
   List<LaporanHarianModel> listLaporanHarian;
   var _laporanHarianService = LaporanHarianService();
-
+  LaporanHarianModel laporanDetail;
   @override
   void onInit() {
     super.onInit();
@@ -40,5 +40,12 @@ class LaporanHarianController extends BaseController {
     } else {
       DialogUtils.showInfo(res.errors.toString(), closePreDialog: true);
     }
+  }
+
+  Future getLaporanDetail(int id) async {
+    setLoading(true);
+    laporanDetail = await _laporanHarianService.getLaporanDetail(id);
+    update();
+    setLoading(false);
   }
 }

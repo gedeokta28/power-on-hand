@@ -71,4 +71,12 @@ class KasusService extends HttpConnection {
     });
     return await post('/report/updatestatusmass', data: _data);
   }
+
+  // get kasus for history
+  Future getKasusDetail(int id) async {
+    ApiResponseModel resp = await get('/report/show?id=$id');
+    if (resp.status == 200) {
+      return KasusModel.fromJson(resp.data);
+    }
+  }
 }

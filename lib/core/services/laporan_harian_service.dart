@@ -64,4 +64,12 @@ class LaporanHarianService extends HttpConnection {
     });
     return await post('/daily/updatestatusmass', data: _data);
   }
+
+  // get Laporan for history
+  Future getLaporanDetail(int id) async {
+    ApiResponseModel resp = await get('/daily/show?id=$id');
+    if (resp.status == 200) {
+      return LaporanHarianModel.fromJson(resp.data);
+    }
+  }
 }

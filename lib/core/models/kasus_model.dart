@@ -13,6 +13,9 @@ class KasusModel {
   String plan;
   String userId;
   String status;
+  String affairName;
+  String provisionName;
+  String userName;
   DateTime createdAt;
 
   KasusModel({
@@ -28,6 +31,9 @@ class KasusModel {
     @required this.plan,
     @required this.userId,
     @required this.status,
+    @required this.provisionName,
+    @required this.affairName,
+    @required this.userName,
     @required this.createdAt,
   });
 
@@ -43,6 +49,9 @@ class KasusModel {
       affairId: json['affair_id'],
       provisionId: json['provision_id'],
       plan: json['plan'],
+      affairName: json['affair'] != null ? json['affair']['name'] : "",
+      provisionName: json['provision'] != null ? json['provision']['name'] : "",
+      userName: json['user'] != null ? json['user']['name'] : "",
       userId: json['userId'],
       status: json['status'],
       createdAt: DateTime.parse(json["created_at"]),
