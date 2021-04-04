@@ -48,6 +48,18 @@ class UserService extends HttpConnection {
     return await post('/auth/login', data: _data, needsToken: false, pure: true);
   }
 
+  Future position(
+    double latitude,
+    double longitude,
+  ) async {
+    FormData _data = FormData.fromMap({
+      "latitude": latitude,
+      "longitude": longitude,
+    });
+
+    return await post('/user/position', data: _data);
+  }
+
   Future me() async {
     Response res = await post('/auth/me', pure: true);
     if (res.statusCode == 200) {

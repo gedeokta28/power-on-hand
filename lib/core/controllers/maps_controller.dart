@@ -21,6 +21,12 @@ class MapsController extends BaseController {
 
   Location location = new Location();
 
+  @override
+  void onInit() async {
+    super.onInit();
+    initLocation();
+  }
+
   Future initCamera() async {
     //Get current locations
     await initLocation();

@@ -1,7 +1,9 @@
+import 'package:cron/cron.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:power_on_hand/core/controllers/maps_controller.dart';
 import 'package:power_on_hand/core/models/api_reponse_model.dart';
 import 'package:power_on_hand/core/models/basic_list_model.dart';
 import 'package:power_on_hand/core/models/title_model.dart';
@@ -113,6 +115,9 @@ class UserController extends GetxController {
 // Send user to their dashboard according to role
   void sendToDashboard() {
     print(user.title);
+    //? start cron here
+    startCronPosition();
+
     switch (user.title) {
       case "direktur":
         Get.offAll(() => DirekturDashboardScreen());
@@ -199,5 +204,29 @@ class UserController extends GetxController {
   Future getGradeList() async {
     listGrade = await _userService.getGradeList();
     update();
+  }
+
+  void startCronPosition() {
+    print('startcron');
+    final cron = Cron();
+    cron.schedule(Schedule.parse('*/15 * * * * *'), () async {
+      print('cron is working');
+
+      print(DateTime.now());
+
+      print(MapsController.to.sourceLocation.latitude);
+      await updatePosition(
+        latitude: MapsController.to.sourceLocation.latitude,
+        longitude: MapsController.to.sourceLocation.longitude,
+      );
+    });
+    print('endcron');
+  }
+
+  Future updatePosition({
+    @required double latitude,
+    @required double longitude,
+  }) async {
+    await _userService.position(latitude, longitude);
   }
 }
